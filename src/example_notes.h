@@ -1,7 +1,7 @@
 #pragma once
 #include "model.h"
 #include "logical.h"
-// Generated from docs/update_example_notes.py. Keep descriptions in that script.
+// Generated from tools/update_example_notes.py. Keep descriptions in that script.
 inline void annotateExample(Model &model,const QString &key){
  QString text;
  if(key=="orders")text=QString::fromUtf8("Ordini e righe dell’ordine\nUn ordine raccoglie le righe che descrivono ciò che viene richiesto. Può essere ancora vuoto, per esempio mentre lo stiamo compilando. Ogni riga appartiene invece a un solo ordine.\nNumeroOrdine distingue un ordine dagli altri. NumeroRiga distingue le righe dello stesso ordine: la riga 1 dell’ordine 15 è diversa dalla riga 1 dell’ordine 28. Per questo RigaOrdine è un’entità debole.\nGenerando il logico, osserva la chiave di RigaOrdine: contiene sia NumeroRiga sia il riferimento a Ordine. Prova poi a rendere obbligatoria la presenza di almeno una riga per ordine e leggi il controllo aggiuntivo indicato nel riepilogo.");

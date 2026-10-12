@@ -1,4 +1,4 @@
-﻿"""Single source for shipped example notes and the embedded example descriptions."""
+"""Single source for shipped example notes and the embedded example descriptions."""
 from pathlib import Path
 import json
 
@@ -174,7 +174,7 @@ def note_for(model,key):
  return {'id':'note-example-'+key,'text':TEXTS[key],'size':[720,300],'chen':position('chen'),'uml':position('uml'),'logical':logical}
 
 def write_header():
- lines=['#pragma once','#include "model.h"','#include "logical.h"','// Generated from docs/update_example_notes.py. Keep descriptions in that script.',
+ lines=['#pragma once','#include "model.h"','#include "logical.h"','// Generated from tools/update_example_notes.py. Keep descriptions in that script.',
  'inline void annotateExample(Model &model,const QString &key){',' QString text;']
  for key,text in TEXTS.items():lines.append(f' if(key=={json.dumps(key)})text=QString::fromUtf8({json.dumps(text,ensure_ascii=False)});')
  lines.extend([''' if(text.isEmpty())return;
@@ -187,7 +187,7 @@ def write_header():
 }
 inline Model ordersExample(){auto model=Model::example();annotateExample(model,"orders");return model;}
 '''])
- (ROOT/'example_notes.h').write_text('\n'.join(lines),encoding='utf-8')
+ (ROOT/'src/example_notes.h').write_text('\n'.join(lines),encoding='utf-8')
 
 def main():
  paths=sorted((ROOT/'esempi').rglob('*.schema'))+sorted((ROOT/'tests/fixtures/test-limite-azienda').glob('*.schema'))

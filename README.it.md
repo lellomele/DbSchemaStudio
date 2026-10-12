@@ -14,6 +14,8 @@ Un’applicazione desktop per imparare a progettare un database: disegna il mode
 
 ## Installazione su Windows
 
+Il repository contiene il codice sorgente; per usare l’app è sufficiente scaricare lo ZIP Windows indicato qui sotto.
+
 1. Scarica **DbSchemaStudio-0.9.7-Qt6-Windows-x64.zip** dalla pagina [Release](https://github.com/lellomele/DbSchemaStudio/releases/latest).
 2. Estrai tutto l’archivio in una cartella.
 3. Apri **DbSchemaStudio.exe** all’interno della cartella.

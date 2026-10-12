@@ -14,6 +14,8 @@ A desktop application for learning database design: draw a conceptual entity–r
 
 ## Install on Windows
 
+The repository contains the source code; to use the app, download only the Windows ZIP below.
+
 1. Download **DbSchemaStudio-0.9.7-Qt6-Windows-x64.zip** from [Releases](https://github.com/lellomele/DbSchemaStudio/releases/latest).
 2. Extract the entire archive into a folder.
 3. Open **DbSchemaStudio.exe** inside that folder.

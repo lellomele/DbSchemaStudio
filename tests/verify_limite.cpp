@@ -1,5 +1,5 @@
 #define main application_main
-#include "../main.cpp"
+#include "../src/main.cpp"
 #undef main
 #include <iostream>
 

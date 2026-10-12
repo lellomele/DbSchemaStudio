@@ -1,4 +1,4 @@
-﻿#include <QtWidgets>
+#include <QtWidgets>
 #include <QtPrintSupport>
 #include "model.h"
 #include "runtime_support.h"
@@ -367,22 +367,22 @@ public:
  void closeEvent(QCloseEvent *e)override{if(!testMode&&!maybeSave()){e->ignore();return;}storePreferences();if(!testMode)clearRecovery();e->accept();}
 };
 
-#include "interaction_tests.h"
-#include "branding_tests.h"
-#include "guidance_tests.h"
-#include "logical_tests.h"
-#include "rise_tests.h"
-#include "modern_tests.h"
-#include "type_tests.h"
-#include "completion_tests.h"
-#include "crowfoot_tests.h"
-#include "uml_book_tests.h"
-#include "physical_tests.h"
-#include "guide_assets.h"
-#include "arrangement_tests.h"
-#include "learning_tests.h"
-#include "notes_tests.h"
-#include "example_documentation_tests.h"
+#include "../tests/ui/interaction_tests.h"
+#include "../tests/ui/branding_tests.h"
+#include "../tests/ui/guidance_tests.h"
+#include "../tests/ui/logical_tests.h"
+#include "../tests/ui/rise_tests.h"
+#include "../tests/ui/modern_tests.h"
+#include "../tests/ui/type_tests.h"
+#include "../tests/ui/completion_tests.h"
+#include "../tests/ui/crowfoot_tests.h"
+#include "../tests/ui/uml_book_tests.h"
+#include "../tests/ui/physical_tests.h"
+#include "../tests/ui/guide_assets.h"
+#include "../tests/ui/arrangement_tests.h"
+#include "../tests/ui/learning_tests.h"
+#include "../tests/ui/notes_tests.h"
+#include "../tests/ui/example_documentation_tests.h"
 int selfTest(Window &w,QString output){
  fprintf(stdout,"Output: %s, current: %s\n",qPrintable(output),qPrintable(QDir::currentPath()));
  QDir().mkpath(output);QJsonArray tests;int failures=0;

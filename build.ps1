@@ -6,7 +6,7 @@ $QtPrefix=[IO.Path]::GetFullPath($QtPrefix)
 $env:PATH=(Join-Path $QtPrefix 'bin')+';'+(Join-Path $CompilerPrefix 'bin')+';'+$env:PATH
 $compiler=Join-Path $CompilerPrefix 'bin\g++.exe'
 $include=Join-Path $QtPrefix 'include\qt6'
-$compileArgs=@('-std=c++17','-O2','-Wall','-Wextra','-Wpedantic','-DQT_NO_DEBUG','-DUNICODE','-D_UNICODE','-isystem',"$include",'-isystem',"$include\QtWidgets",'-isystem',"$include\QtGui",'-isystem',"$include\QtCore",'-isystem',"$include\QtPrintSupport",'-c')
+$compileArgs=@('-I',(Join-Path $PSScriptRoot 'src'),'-std=c++17','-O2','-Wall','-Wextra','-Wpedantic','-DQT_NO_DEBUG','-DUNICODE','-D_UNICODE','-isystem',"$include",'-isystem',"$include\QtWidgets",'-isystem',"$include\QtGui",'-isystem',"$include\QtCore",'-isystem',"$include\QtPrintSupport",'-c')
 $rcc=Join-Path $QtPrefix 'share\qt6\bin\rcc.exe'
 $resourceTemp=Join-Path ([IO.Path]::GetTempPath()) ('DbSchemaStudio-icons-'+[Guid]::NewGuid().ToString('N')+'.cpp')
 try {
@@ -19,7 +19,7 @@ if($LASTEXITCODE -ne 0){throw 'Qt icon resource compilation failed'}
 & (Join-Path $CompilerPrefix 'bin\windres.exe') '--codepage=65001' '-I' $PSScriptRoot (Join-Path $PSScriptRoot 'app.rc') '-o' (Join-Path $buildRoot 'app.res.o')
 if($LASTEXITCODE -ne 0){throw 'Windows icon resource compilation failed'}
 foreach($source in @('main','model','logical','rise_import','physical')) {
- & $compiler @compileArgs (Join-Path $PSScriptRoot "$source.cpp") '-o' (Join-Path $buildRoot "$source.o")
+ & $compiler @compileArgs (Join-Path $PSScriptRoot "src\$source.cpp") '-o' (Join-Path $buildRoot "$source.o")
  if($LASTEXITCODE -ne 0){throw "Compilation failed: $source"}
 }
 & $compiler (Join-Path $buildRoot 'main.o') (Join-Path $buildRoot 'model.o') (Join-Path $buildRoot 'logical.o') (Join-Path $buildRoot 'rise_import.o') (Join-Path $buildRoot 'qrc_icons.o') (Join-Path $buildRoot 'physical.o') (Join-Path $buildRoot 'app.res.o') "-L$QtPrefix\lib" '-mwindows' '-lQt6Widgets' '-lQt6PrintSupport' '-lQt6Gui' '-lQt6Core' '-o' (Join-Path $buildRoot 'DbSchemaStudio.exe')
