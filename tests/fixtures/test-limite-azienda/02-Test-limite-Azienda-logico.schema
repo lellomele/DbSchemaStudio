@@ -1,0 +1,4974 @@
+{
+  "format": "SchemaStudio",
+  "logical": {
+    "isaStrategy": "joined",
+    "messages": [
+      {
+        "en": "Soggetto → table; identifier → PK.",
+        "it": "Soggetto → tabella; identificatore → PK.",
+        "source": "soggetto",
+        "warning": false
+      },
+      {
+        "en": "Cliente → table; identifier → PK.",
+        "it": "Cliente → tabella; identificatore → PK.",
+        "source": "cliente",
+        "warning": false
+      },
+      {
+        "en": "ClienteAzienda → table; identifier → PK.",
+        "it": "ClienteAzienda → tabella; identificatore → PK.",
+        "source": "azienda",
+        "warning": false
+      },
+      {
+        "en": "Dipendente → table; identifier → PK.",
+        "it": "Dipendente → tabella; identificatore → PK.",
+        "source": "dipendente",
+        "warning": false
+      },
+      {
+        "en": "Fornitore → table; identifier → PK.",
+        "it": "Fornitore → tabella; identificatore → PK.",
+        "source": "fornitore",
+        "warning": false
+      },
+      {
+        "en": "Badge → table; identifier → PK.",
+        "it": "Badge → tabella; identificatore → PK.",
+        "source": "badge",
+        "warning": false
+      },
+      {
+        "en": "Prodotto → table; identifier → PK.",
+        "it": "Prodotto → tabella; identificatore → PK.",
+        "source": "prodotto",
+        "warning": false
+      },
+      {
+        "en": "Bene → table; identifier → PK.",
+        "it": "Bene → tabella; identificatore → PK.",
+        "source": "bene",
+        "warning": false
+      },
+      {
+        "en": "Servizio → table; identifier → PK.",
+        "it": "Servizio → tabella; identificatore → PK.",
+        "source": "servizio",
+        "warning": false
+      },
+      {
+        "en": "Categoria → table; identifier → PK.",
+        "it": "Categoria → tabella; identificatore → PK.",
+        "source": "categoria",
+        "warning": false
+      },
+      {
+        "en": "Ordine → table; identifier → PK.",
+        "it": "Ordine → tabella; identificatore → PK.",
+        "source": "ordine",
+        "warning": false
+      },
+      {
+        "en": "RigaOrdine → table; identifier → PK.",
+        "it": "RigaOrdine → tabella; identificatore → PK.",
+        "source": "riga",
+        "warning": false
+      },
+      {
+        "en": "TrancheRiga → table; identifier → PK.",
+        "it": "TrancheRiga → tabella; identificatore → PK.",
+        "source": "tranche",
+        "warning": false
+      },
+      {
+        "en": "Spedizione → table; identifier → PK.",
+        "it": "Spedizione → tabella; identificatore → PK.",
+        "source": "spedizione",
+        "warning": false
+      },
+      {
+        "en": "Magazzino → table; identifier → PK.",
+        "it": "Magazzino → tabella; identificatore → PK.",
+        "source": "magazzino",
+        "warning": false
+      },
+      {
+        "en": "Ubicazione → table; identifier → PK.",
+        "it": "Ubicazione → tabella; identificatore → PK.",
+        "source": "ubicazione",
+        "warning": false
+      },
+      {
+        "en": "Lotto → table; identifier → PK.",
+        "it": "Lotto → tabella; identificatore → PK.",
+        "source": "lotto",
+        "warning": false
+      },
+      {
+        "en": "Scorta → table; identifier → PK.",
+        "it": "Scorta → tabella; identificatore → PK.",
+        "source": "scorta",
+        "warning": false
+      },
+      {
+        "en": "Offerta → table; identifier → PK.",
+        "it": "Offerta → tabella; identificatore → PK.",
+        "source": "offerta",
+        "warning": false
+      },
+      {
+        "en": "Progetto → table; identifier → PK.",
+        "it": "Progetto → tabella; identificatore → PK.",
+        "source": "progetto",
+        "warning": false
+      },
+      {
+        "en": "Incarico → table; identifier → PK.",
+        "it": "Incarico → tabella; identificatore → PK.",
+        "source": "incarico",
+        "warning": false
+      },
+      {
+        "en": "Pagamento → table; identifier → PK.",
+        "it": "Pagamento → tabella; identificatore → PK.",
+        "source": "pagamento",
+        "warning": false
+      },
+      {
+        "en": "Fattura → table; identifier → PK.",
+        "it": "Fattura → tabella; identificatore → PK.",
+        "source": "fattura",
+        "warning": false
+      },
+      {
+        "en": "Local identifiers of Cliente become an alternate UNIQUE key; the PK is inherited.",
+        "it": "Gli identificatori locali di Cliente diventano una chiave alternativa UNIQUE; la PK è ereditata.",
+        "source": "isa_cliente",
+        "warning": false
+      },
+      {
+        "en": "ISA: Cliente keeps its table with a PK that is also an FK to Soggetto.",
+        "it": "ISA: Cliente mantiene la propria tabella con PK anche FK verso Soggetto.",
+        "source": "isa_cliente",
+        "warning": false
+      },
+      {
+        "en": "Local identifiers of ClienteAzienda become an alternate UNIQUE key; the PK is inherited.",
+        "it": "Gli identificatori locali di ClienteAzienda diventano una chiave alternativa UNIQUE; la PK è ereditata.",
+        "source": "isa_azienda",
+        "warning": false
+      },
+      {
+        "en": "ISA: ClienteAzienda keeps its table with a PK that is also an FK to Cliente.",
+        "it": "ISA: ClienteAzienda mantiene la propria tabella con PK anche FK verso Cliente.",
+        "source": "isa_azienda",
+        "warning": false
+      },
+      {
+        "en": "Local identifiers of Dipendente become an alternate UNIQUE key; the PK is inherited.",
+        "it": "Gli identificatori locali di Dipendente diventano una chiave alternativa UNIQUE; la PK è ereditata.",
+        "source": "isa_dipendente",
+        "warning": false
+      },
+      {
+        "en": "ISA: Dipendente keeps its table with a PK that is also an FK to Soggetto.",
+        "it": "ISA: Dipendente mantiene la propria tabella con PK anche FK verso Soggetto.",
+        "source": "isa_dipendente",
+        "warning": false
+      },
+      {
+        "en": "Local identifiers of Fornitore become an alternate UNIQUE key; the PK is inherited.",
+        "it": "Gli identificatori locali di Fornitore diventano una chiave alternativa UNIQUE; la PK è ereditata.",
+        "source": "isa_fornitore",
+        "warning": false
+      },
+      {
+        "en": "ISA: Fornitore keeps its table with a PK that is also an FK to Soggetto.",
+        "it": "ISA: Fornitore mantiene la propria tabella con PK anche FK verso Soggetto.",
+        "source": "isa_fornitore",
+        "warning": false
+      },
+      {
+        "en": "ISA: Bene keeps its table with a PK that is also an FK to Prodotto.",
+        "it": "ISA: Bene mantiene la propria tabella con PK anche FK verso Prodotto.",
+        "source": "isa_bene",
+        "warning": false
+      },
+      {
+        "en": "ISA: Servizio keeps its table with a PK that is also an FK to Prodotto.",
+        "it": "ISA: Servizio mantiene la propria tabella con PK anche FK verso Prodotto.",
+        "source": "isa_servizio",
+        "warning": false
+      },
+      {
+        "en": "Weak entity RigaOrdine: PK = partial keys + Ordine PK; the inherited part is also an FK.",
+        "it": "Entità debole RigaOrdine: PK = componenti della chiave parziale + PK di Ordine; la parte ereditata è anche FK.",
+        "source": "contiene",
+        "warning": false
+      },
+      {
+        "en": "Minimum owner participation in Contiene requires an additional check beyond PK/FK.",
+        "it": "La partecipazione minima del proprietario in Contiene richiede un controllo aggiuntivo oltre a PK/FK.",
+        "source": "contiene",
+        "warning": true
+      },
+      {
+        "en": "Weak entity TrancheRiga: PK = partial keys + RigaOrdine PK; the inherited part is also an FK.",
+        "it": "Entità debole TrancheRiga: PK = componenti della chiave parziale + PK di RigaOrdine; la parte ereditata è anche FK.",
+        "source": "ripartisce",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Ubicazione: PK = partial keys + Magazzino PK; the inherited part is also an FK.",
+        "it": "Entità debole Ubicazione: PK = componenti della chiave parziale + PK di Magazzino; la parte ereditata è anche FK.",
+        "source": "ha_ubicazioni",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Lotto: PK = partial keys + Bene PK; the inherited part is also an FK.",
+        "it": "Entità debole Lotto: PK = componenti della chiave parziale + PK di Bene; la parte ereditata è anche FK.",
+        "source": "ha_lotti",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Scorta: PK = partial keys + Lotto PK; the inherited part is also an FK.",
+        "it": "Entità debole Scorta: PK = componenti della chiave parziale + PK di Lotto; la parte ereditata è anche FK.",
+        "source": "lotto_scorta",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Scorta: PK = partial keys + Ubicazione PK; the inherited part is also an FK.",
+        "it": "Entità debole Scorta: PK = componenti della chiave parziale + PK di Ubicazione; la parte ereditata è anche FK.",
+        "source": "posto_scorta",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Offerta: PK = partial keys + Fornitore PK; the inherited part is also an FK.",
+        "it": "Entità debole Offerta: PK = componenti della chiave parziale + PK di Fornitore; la parte ereditata è anche FK.",
+        "source": "propone",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Offerta: PK = partial keys + Bene PK; the inherited part is also an FK.",
+        "it": "Entità debole Offerta: PK = componenti della chiave parziale + PK di Bene; la parte ereditata è anche FK.",
+        "source": "oggetto_offerta",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Incarico: PK = partial keys + Dipendente PK; the inherited part is also an FK.",
+        "it": "Entità debole Incarico: PK = componenti della chiave parziale + PK di Dipendente; la parte ereditata è anche FK.",
+        "source": "incarica",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Incarico: PK = partial keys + Progetto PK; the inherited part is also an FK.",
+        "it": "Entità debole Incarico: PK = componenti della chiave parziale + PK di Progetto; la parte ereditata è anche FK.",
+        "source": "nel_progetto",
+        "warning": false
+      },
+      {
+        "en": "Weak entity Pagamento: PK = partial keys + Ordine PK; the inherited part is also an FK.",
+        "it": "Entità debole Pagamento: PK = componenti della chiave parziale + PK di Ordine; la parte ereditata è anche FK.",
+        "source": "incassa",
+        "warning": false
+      },
+      {
+        "en": "AssegnaBadge: FK in Badge referencing Dipendente (1:1, FK with UNIQUE constraint).",
+        "it": "AssegnaBadge: FK in Badge verso Dipendente (1:1, FK con vincolo UNIQUE).",
+        "source": "assegna",
+        "warning": false
+      },
+      {
+        "en": "Supervisione: FK in Dipendente referencing Dipendente (1:N).",
+        "it": "Supervisione: FK in Dipendente verso Dipendente (1:N).",
+        "source": "supervisione",
+        "warning": false
+      },
+      {
+        "en": "Supervisione: optional composite FK; all components must be NULL together or all must have values.",
+        "it": "Supervisione: FK composta facoltativa; tutti i componenti devono essere NULL insieme oppure valorizzati insieme.",
+        "source": "supervisione",
+        "warning": true
+      },
+      {
+        "en": "Classifica: M:N → junction table with two FKs and their union as the composite PK.",
+        "it": "Classifica: N:M → tabella di collegamento con le due FK e PK composta dalla loro unione.",
+        "source": "classifica",
+        "warning": false
+      },
+      {
+        "en": "Composizione: M:N → junction table with two FKs and their union as the composite PK.",
+        "it": "Composizione: N:M → tabella di collegamento con le due FK e PK composta dalla loro unione.",
+        "source": "composizione",
+        "warning": false
+      },
+      {
+        "en": "Emette: FK in Ordine referencing Cliente (1:N).",
+        "it": "Emette: FK in Ordine verso Cliente (1:N).",
+        "source": "emette",
+        "warning": false
+      },
+      {
+        "en": "Gestisce: FK in Ordine referencing Dipendente (1:N).",
+        "it": "Gestisce: FK in Ordine verso Dipendente (1:N).",
+        "source": "gestisce",
+        "warning": false
+      },
+      {
+        "en": "Gestisce: optional composite FK; all components must be NULL together or all must have values.",
+        "it": "Gestisce: FK composta facoltativa; tutti i componenti devono essere NULL insieme oppure valorizzati insieme.",
+        "source": "gestisce",
+        "warning": true
+      },
+      {
+        "en": "Riguarda: FK in RigaOrdine referencing Prodotto (1:N).",
+        "it": "Riguarda: FK in RigaOrdine verso Prodotto (1:N).",
+        "source": "riguarda",
+        "warning": false
+      },
+      {
+        "en": "Evade: FK in TrancheRiga referencing Spedizione (1:N).",
+        "it": "Evade: FK in TrancheRiga verso Spedizione (1:N).",
+        "source": "evade",
+        "warning": false
+      },
+      {
+        "en": "Evade: minimum participation on the side without the FK requires an additional check.",
+        "it": "Evade: la partecipazione minima sul lato senza FK richiede un controllo aggiuntivo.",
+        "source": "evade",
+        "warning": true
+      },
+      {
+        "en": "ParteDa: FK in Spedizione referencing Magazzino (1:N).",
+        "it": "ParteDa: FK in Spedizione verso Magazzino (1:N).",
+        "source": "parte_da",
+        "warning": false
+      },
+      {
+        "en": "Finanzia: M:N → junction table with two FKs and their union as the composite PK.",
+        "it": "Finanzia: N:M → tabella di collegamento con le due FK e PK composta dalla loro unione.",
+        "source": "finanzia",
+        "warning": false
+      },
+      {
+        "en": "Finanzia: minimum participation 1 is not enforced by the junction table alone.",
+        "it": "Finanzia: la partecipazione minima 1 non è garantita dalla sola tabella di collegamento.",
+        "source": "finanzia",
+        "warning": true
+      },
+      {
+        "en": "Soddisfa: M:N → junction table with two FKs and their union as the composite PK.",
+        "it": "Soddisfa: N:M → tabella di collegamento con le due FK e PK composta dalla loro unione.",
+        "source": "soddisfa",
+        "warning": false
+      },
+      {
+        "en": "Fatturazione: FK in Fattura referencing Ordine (1:1, FK with UNIQUE constraint).",
+        "it": "Fatturazione: FK in Fattura verso Ordine (1:1, FK con vincolo UNIQUE).",
+        "source": "fatturazione",
+        "warning": false
+      },
+      {
+        "en": "Riferisce: FK in Pagamento referencing Fattura (1:N).",
+        "it": "Riferisce: FK in Pagamento verso Fattura (1:N).",
+        "source": "riferisce",
+        "warning": false
+      },
+      {
+        "en": "Riferisce: optional composite FK; all components must be NULL together or all must have values.",
+        "it": "Riferisce: FK composta facoltativa; tutti i componenti devono essere NULL insieme oppure valorizzati insieme.",
+        "source": "riferisce",
+        "warning": true
+      }
+    ],
+    "oneToOne": {
+      "assegna": "B",
+      "fatturazione": "B"
+    },
+    "sourceDigest": "dfceeaa97022aa4744330d7167f4f92223407c8edaba155bdaa9e6a4a0b76739",
+    "tables": [
+      {
+        "autoName": "Soggetto",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:7d797a299ecaf87d05cb038bbaf0326d",
+            "name": "Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "soggetto_Paese",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:946abee76ee072e694856416dd850ad3",
+            "name": "Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "soggetto_Numero",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Denominazione",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:934c2c9287f8e2a9bf92e8a0b7b6b720",
+            "name": "Denominazione",
+            "nullable": true,
+            "pk": false,
+            "source": "soggetto_Denominazione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Email",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:2e1e94554f4f8ede375a9d201e1f9227",
+            "name": "Email",
+            "nullable": true,
+            "pk": false,
+            "source": "soggetto_Email",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:f1fe13570cbc1df075f074936f121dc1",
+        "name": "Soggetto",
+        "position": [
+          -2440,
+          -485
+        ],
+        "source": "soggetto",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Cliente",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceCliente",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:b77b6a8b3dccc92cd95caf8a60de8852",
+            "name": "CodiceCliente",
+            "nullable": false,
+            "pk": false,
+            "source": "cliente_CodiceCliente",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "IscrittoDal",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:32bba63afe171a64a832e5a0636ed651",
+            "name": "IscrittoDal",
+            "nullable": true,
+            "pk": false,
+            "source": "cliente_IscrittoDal",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:96639ba03b78418c82ddfc0ffd401487",
+            "name": "Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_cliente",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:be9965e2e092459760c0eefc383f9276",
+            "name": "Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_cliente",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:96639ba03b78418c82ddfc0ffd401487",
+              "column:be9965e2e092459760c0eefc383f9276"
+            ],
+            "id": "fk:56ec27f5ed19a9232502b721c6ddf524",
+            "source": "isa_cliente",
+            "target": "table:f1fe13570cbc1df075f074936f121dc1",
+            "targetColumns": [
+              "column:7d797a299ecaf87d05cb038bbaf0326d",
+              "column:946abee76ee072e694856416dd850ad3"
+            ]
+          }
+        ],
+        "id": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+        "name": "Cliente",
+        "position": [
+          -1355,
+          -1225
+        ],
+        "source": "cliente",
+        "uniqueKeys": [
+          [
+            "column:b77b6a8b3dccc92cd95caf8a60de8852"
+          ]
+        ]
+      },
+      {
+        "autoName": "ClienteAzienda",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "PartitaIVA",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:7ad666135d7213d7bfb176ffa064a436",
+            "name": "PartitaIVA",
+            "nullable": false,
+            "pk": false,
+            "source": "azienda_PartitaIVA",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Cliente_Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:ab505d0a7e3f0b398e69fb7d339dc0a3",
+            "name": "Cliente_Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_azienda",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Cliente_Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:ebe79ab924e4861a34e145c2087c4720",
+            "name": "Cliente_Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_azienda",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:ab505d0a7e3f0b398e69fb7d339dc0a3",
+              "column:ebe79ab924e4861a34e145c2087c4720"
+            ],
+            "id": "fk:f437a614c0cca4ed4971a776148dc119",
+            "source": "isa_azienda",
+            "target": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+            "targetColumns": [
+              "column:96639ba03b78418c82ddfc0ffd401487",
+              "column:be9965e2e092459760c0eefc383f9276"
+            ]
+          }
+        ],
+        "id": "table:fc83d33198e21ab6839cb2ffc107ce30",
+        "name": "ClienteAzienda",
+        "position": [
+          -805,
+          -2165
+        ],
+        "source": "azienda",
+        "uniqueKeys": [
+          [
+            "column:7ad666135d7213d7bfb176ffa064a436"
+          ]
+        ]
+      },
+      {
+        "autoName": "Dipendente",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "Matricola",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:eb328354402ae50e6df1e3b1a073937f",
+            "name": "Matricola",
+            "nullable": false,
+            "pk": false,
+            "source": "dipendente_Matricola",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "AssuntoDal",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:5a37e62683b3ba2fcd5ff7759f945266",
+            "name": "AssuntoDal",
+            "nullable": true,
+            "pk": false,
+            "source": "dipendente_AssuntoDal",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:0a164b0fbd6e1d6f47c6408ac63ccb95",
+            "name": "Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_dipendente",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:64d5aac6594dedf043e14db56e468bf0",
+            "name": "Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_dipendente",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "responsabile_Soggetto_Paese",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:337e2251fb1bdd6079574e8d9b3bc968",
+            "name": "responsabile_Soggetto_Paese",
+            "nullable": true,
+            "pk": false,
+            "source": "supervisione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "responsabile_Soggetto_Numero",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:517e41dce4fc32ec2fbf809abafa46ea",
+            "name": "responsabile_Soggetto_Numero",
+            "nullable": true,
+            "pk": false,
+            "source": "supervisione",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:0a164b0fbd6e1d6f47c6408ac63ccb95",
+              "column:64d5aac6594dedf043e14db56e468bf0"
+            ],
+            "id": "fk:f3bcbd7fe4b967382b948eb93279a96e",
+            "source": "isa_dipendente",
+            "target": "table:f1fe13570cbc1df075f074936f121dc1",
+            "targetColumns": [
+              "column:7d797a299ecaf87d05cb038bbaf0326d",
+              "column:946abee76ee072e694856416dd850ad3"
+            ]
+          },
+          {
+            "columns": [
+              "column:337e2251fb1bdd6079574e8d9b3bc968",
+              "column:517e41dce4fc32ec2fbf809abafa46ea"
+            ],
+            "id": "fk:dcac067288766b90c3afaea88ee5c760",
+            "source": "supervisione",
+            "target": "table:551f2642ec9a3fe2353714da7280214d",
+            "targetColumns": [
+              "column:0a164b0fbd6e1d6f47c6408ac63ccb95",
+              "column:64d5aac6594dedf043e14db56e468bf0"
+            ]
+          }
+        ],
+        "id": "table:551f2642ec9a3fe2353714da7280214d",
+        "name": "Dipendente",
+        "position": [
+          -2640,
+          0
+        ],
+        "source": "dipendente",
+        "uniqueKeys": [
+          [
+            "column:eb328354402ae50e6df1e3b1a073937f"
+          ]
+        ]
+      },
+      {
+        "autoName": "Fornitore",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceFornitore",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:5d2203a497868c2fdb628534fad13675",
+            "name": "CodiceFornitore",
+            "nullable": false,
+            "pk": false,
+            "source": "fornitore_CodiceFornitore",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:15da71c3c32426b30239534b0b1f6e02",
+            "name": "Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_fornitore",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:f323d03713c2516f7f3cea0ee2eba5df",
+            "name": "Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_fornitore",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:15da71c3c32426b30239534b0b1f6e02",
+              "column:f323d03713c2516f7f3cea0ee2eba5df"
+            ],
+            "id": "fk:d57c319ed780091896f2023a75e9965c",
+            "source": "isa_fornitore",
+            "target": "table:f1fe13570cbc1df075f074936f121dc1",
+            "targetColumns": [
+              "column:7d797a299ecaf87d05cb038bbaf0326d",
+              "column:946abee76ee072e694856416dd850ad3"
+            ]
+          }
+        ],
+        "id": "table:6a45f1678524562b946c38fe3eeb063f",
+        "name": "Fornitore",
+        "position": [
+          -1700,
+          1225
+        ],
+        "source": "fornitore",
+        "uniqueKeys": [
+          [
+            "column:5d2203a497868c2fdb628534fad13675"
+          ]
+        ]
+      },
+      {
+        "autoName": "Badge",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "NumeroBadge",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:f84d870de9ddb2d6ed1b00dc128fafb9",
+            "name": "NumeroBadge",
+            "nullable": false,
+            "pk": true,
+            "source": "badge_NumeroBadge",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "boolean",
+            "autoName": "Attivo",
+            "autoNullable": true,
+            "dataType": "boolean",
+            "generated": false,
+            "id": "column:aee2f05b6ad314ef9f63ee73f71a1651",
+            "name": "Attivo",
+            "nullable": true,
+            "pk": false,
+            "source": "badge_Attivo",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "Scadenza",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:04d84dec2c804c2ad4f791eeda82b5c6",
+            "name": "Scadenza",
+            "nullable": true,
+            "pk": false,
+            "source": "badge_Scadenza",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "titolare_Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:d6511ef39d578dc92a9573f9ae68e579",
+            "name": "titolare_Soggetto_Paese",
+            "nullable": false,
+            "pk": false,
+            "source": "assegna",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "titolare_Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:336e842229554d2bef445bd4af265a03",
+            "name": "titolare_Soggetto_Numero",
+            "nullable": false,
+            "pk": false,
+            "source": "assegna",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:d6511ef39d578dc92a9573f9ae68e579",
+              "column:336e842229554d2bef445bd4af265a03"
+            ],
+            "id": "fk:60c90c9108d8a4a2fa2c872fcd135e57",
+            "source": "assegna",
+            "target": "table:551f2642ec9a3fe2353714da7280214d",
+            "targetColumns": [
+              "column:0a164b0fbd6e1d6f47c6408ac63ccb95",
+              "column:64d5aac6594dedf043e14db56e468bf0"
+            ]
+          }
+        ],
+        "id": "table:4a23dbd60bcbaa6b34e22ade30740578",
+        "name": "Badge",
+        "position": [
+          -3390,
+          -200
+        ],
+        "source": "badge",
+        "uniqueKeys": [
+          [
+            "column:d6511ef39d578dc92a9573f9ae68e579",
+            "column:336e842229554d2bef445bd4af265a03"
+          ]
+        ]
+      },
+      {
+        "autoName": "Prodotto",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:a07309d40ee7c7cb58b7ad7a8b4ade6d",
+            "name": "CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "prodotto_CodiceProdotto",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Descrizione",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:72ec938b919dff5ac7a7e34a5f9b5e62",
+            "name": "Descrizione",
+            "nullable": true,
+            "pk": false,
+            "source": "prodotto_Descrizione",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:63fff987fb75c7bd2eddce81c9a03179",
+        "name": "Prodotto",
+        "position": [
+          1620,
+          2025
+        ],
+        "source": "prodotto",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Bene",
+        "columns": [
+          {
+            "autoDataType": "real",
+            "autoName": "Peso",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:8343120ecbabeec85b7600ea7d275fbe",
+            "name": "Peso",
+            "nullable": true,
+            "pk": false,
+            "source": "bene_Peso",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:9afbf34e9eeff71ca5f746501288a087",
+            "name": "Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_bene",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:9afbf34e9eeff71ca5f746501288a087"
+            ],
+            "id": "fk:694d38aca8b25ce26d92e977a2a2ff8f",
+            "source": "isa_bene",
+            "target": "table:63fff987fb75c7bd2eddce81c9a03179",
+            "targetColumns": [
+              "column:a07309d40ee7c7cb58b7ad7a8b4ade6d"
+            ]
+          }
+        ],
+        "id": "table:eaff8f7c018bdb254c2db35383a6fb49",
+        "name": "Bene",
+        "position": [
+          137.5,
+          2430
+        ],
+        "source": "bene",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Servizio",
+        "columns": [
+          {
+            "autoDataType": "real",
+            "autoName": "DurataOre",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:88ef1063a3a330b310fa47430862e544",
+            "name": "DurataOre",
+            "nullable": true,
+            "pk": false,
+            "source": "servizio_DurataOre",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:dae4975c2463ef6e2fc11c24280f8123",
+            "name": "Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_servizio",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:dae4975c2463ef6e2fc11c24280f8123"
+            ],
+            "id": "fk:be961242ab1c62bc3ea438aabdad1239",
+            "source": "isa_servizio",
+            "target": "table:63fff987fb75c7bd2eddce81c9a03179",
+            "targetColumns": [
+              "column:a07309d40ee7c7cb58b7ad7a8b4ade6d"
+            ]
+          }
+        ],
+        "id": "table:debd14b5924b022ee8a66a3955931c26",
+        "name": "Servizio",
+        "position": [
+          1835,
+          1760
+        ],
+        "source": "servizio",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Categoria",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceCategoria",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:eccb1523a7af82d38de4578b61f707a5",
+            "name": "CodiceCategoria",
+            "nullable": false,
+            "pk": true,
+            "source": "categoria_CodiceCategoria",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Nome",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:9dbeb7ab02b3e352baac1b1b8b64cb83",
+            "name": "Nome",
+            "nullable": true,
+            "pk": false,
+            "source": "categoria_Nome",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:bb584316d80ff07f058b75eda955cf86",
+        "name": "Categoria",
+        "position": [
+          1687.5,
+          2837.5
+        ],
+        "source": "categoria",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Ordine",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:0fb492b63ab0e501d2986fff4cb906bc",
+            "name": "Anno",
+            "nullable": false,
+            "pk": true,
+            "source": "ordine_Anno",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:e4a89fdfeeef554d4e07e033fbb7db53",
+            "name": "Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "ordine_Numero",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "Data",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:021bd18b95f49698763111fa7262612e",
+            "name": "Data",
+            "nullable": true,
+            "pk": false,
+            "source": "ordine_Data",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "boolean",
+            "autoName": "Confermato",
+            "autoNullable": true,
+            "dataType": "boolean",
+            "generated": false,
+            "id": "column:62838ae98e123fd7c5f03c075a788a30",
+            "name": "Confermato",
+            "nullable": true,
+            "pk": false,
+            "source": "ordine_Confermato",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "cliente_Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:f8ed28a9e914630686fbc1c1053bbe04",
+            "name": "cliente_Soggetto_Paese",
+            "nullable": false,
+            "pk": false,
+            "source": "emette",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "cliente_Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:771e2a15473ee1e4bbfe3971b4dbd1a1",
+            "name": "cliente_Soggetto_Numero",
+            "nullable": false,
+            "pk": false,
+            "source": "emette",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "gestore_Soggetto_Paese",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:47d73c3d84e9e239ea89224ea8d9294a",
+            "name": "gestore_Soggetto_Paese",
+            "nullable": true,
+            "pk": false,
+            "source": "gestisce",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "gestore_Soggetto_Numero",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:d27e92720cab294afb71cd6222ae742f",
+            "name": "gestore_Soggetto_Numero",
+            "nullable": true,
+            "pk": false,
+            "source": "gestisce",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:f8ed28a9e914630686fbc1c1053bbe04",
+              "column:771e2a15473ee1e4bbfe3971b4dbd1a1"
+            ],
+            "id": "fk:35b539a5bd031a720e76b3f3a2a0237d",
+            "source": "emette",
+            "target": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+            "targetColumns": [
+              "column:96639ba03b78418c82ddfc0ffd401487",
+              "column:be9965e2e092459760c0eefc383f9276"
+            ]
+          },
+          {
+            "columns": [
+              "column:47d73c3d84e9e239ea89224ea8d9294a",
+              "column:d27e92720cab294afb71cd6222ae742f"
+            ],
+            "id": "fk:c4ac2f798c7396e8424b6f1c68816649",
+            "source": "gestisce",
+            "target": "table:551f2642ec9a3fe2353714da7280214d",
+            "targetColumns": [
+              "column:0a164b0fbd6e1d6f47c6408ac63ccb95",
+              "column:64d5aac6594dedf043e14db56e468bf0"
+            ]
+          }
+        ],
+        "id": "table:67a72da2de34aed8ed92d65782d1ac52",
+        "name": "Ordine",
+        "position": [
+          0,
+          407.5
+        ],
+        "source": "ordine",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "RigaOrdine",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroRiga",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:7576349299d45bcc8c37774e969aff4e",
+            "name": "NumeroRiga",
+            "nullable": false,
+            "pk": true,
+            "source": "riga_NumeroRiga",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "Quantita",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:1bb23507bd5d071aed0cefbbc9151628",
+            "name": "Quantita",
+            "nullable": true,
+            "pk": false,
+            "source": "riga_Quantita",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "PrezzoUnitario",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:412293c0b1ebadd46d3f9e0f68904710",
+            "name": "PrezzoUnitario",
+            "nullable": true,
+            "pk": false,
+            "source": "riga_PrezzoUnitario",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:acbb0bb1b1d8048427c748d162e5e841",
+            "name": "ordine_Anno",
+            "nullable": false,
+            "pk": true,
+            "source": "contiene",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:b462c5de32dfea75fd037f63beba10b9",
+            "name": "ordine_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "contiene",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:95c172d8e5de554692dcd7156f31c5cc",
+            "name": "prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": false,
+            "source": "riguarda",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:acbb0bb1b1d8048427c748d162e5e841",
+              "column:b462c5de32dfea75fd037f63beba10b9"
+            ],
+            "id": "fk:6492d5b2a6a5356b1fd126c0b5eb50ff",
+            "source": "contiene",
+            "target": "table:67a72da2de34aed8ed92d65782d1ac52",
+            "targetColumns": [
+              "column:0fb492b63ab0e501d2986fff4cb906bc",
+              "column:e4a89fdfeeef554d4e07e033fbb7db53"
+            ]
+          },
+          {
+            "columns": [
+              "column:95c172d8e5de554692dcd7156f31c5cc"
+            ],
+            "id": "fk:fec8d48d86598715264f651f7f70dd6c",
+            "source": "riguarda",
+            "target": "table:63fff987fb75c7bd2eddce81c9a03179",
+            "targetColumns": [
+              "column:a07309d40ee7c7cb58b7ad7a8b4ade6d"
+            ]
+          }
+        ],
+        "id": "table:8c9d32a9eb24490e90b2521109246030",
+        "name": "RigaOrdine",
+        "position": [
+          1287.5,
+          807.5
+        ],
+        "source": "riga",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "TrancheRiga",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroTranche",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:3d46f59ee2b069aa64d3b24bf1651f0f",
+            "name": "NumeroTranche",
+            "nullable": false,
+            "pk": true,
+            "source": "tranche_NumeroTranche",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "Quantita",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:53ae04e1a2ee64cf6c3c33208789c5ba",
+            "name": "Quantita",
+            "nullable": true,
+            "pk": false,
+            "source": "tranche_Quantita",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "riga_NumeroRiga",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:7744194a1e98db3a9d0976fda063c43a",
+            "name": "riga_NumeroRiga",
+            "nullable": false,
+            "pk": true,
+            "source": "ripartisce",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "riga_ordine_Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:f0561cfc22710371705cd49b115502f0",
+            "name": "riga_ordine_Anno",
+            "nullable": false,
+            "pk": true,
+            "source": "ripartisce",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "riga_ordine_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:07e728be8ada8fca865757c244415310",
+            "name": "riga_ordine_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "ripartisce",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "spedizione_CodiceSpedizione",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:69de3bf7cd04d8011d189c089324677a",
+            "name": "spedizione_CodiceSpedizione",
+            "nullable": true,
+            "pk": false,
+            "source": "evade",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:7744194a1e98db3a9d0976fda063c43a",
+              "column:f0561cfc22710371705cd49b115502f0",
+              "column:07e728be8ada8fca865757c244415310"
+            ],
+            "id": "fk:579d492517bc45301eb0d9efcfa936f9",
+            "source": "ripartisce",
+            "target": "table:8c9d32a9eb24490e90b2521109246030",
+            "targetColumns": [
+              "column:7576349299d45bcc8c37774e969aff4e",
+              "column:acbb0bb1b1d8048427c748d162e5e841",
+              "column:b462c5de32dfea75fd037f63beba10b9"
+            ]
+          },
+          {
+            "columns": [
+              "column:69de3bf7cd04d8011d189c089324677a"
+            ],
+            "id": "fk:6605bb6f43865cebd143a9ea44093020",
+            "source": "evade",
+            "target": "table:975a19ae12ccdfebaccb3a4d5272055f",
+            "targetColumns": [
+              "column:b5f9bd31402a8d0e817fe09bfef9709b"
+            ]
+          }
+        ],
+        "id": "table:984826bb11875b65f1f5f676dd12cbd4",
+        "name": "TrancheRiga",
+        "position": [
+          2640,
+          1407.5
+        ],
+        "source": "tranche",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Spedizione",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceSpedizione",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:b5f9bd31402a8d0e817fe09bfef9709b",
+            "name": "CodiceSpedizione",
+            "nullable": false,
+            "pk": true,
+            "source": "spedizione_CodiceSpedizione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "datetime",
+            "autoName": "Partenza",
+            "autoNullable": true,
+            "dataType": "datetime",
+            "generated": false,
+            "id": "column:a1156b436efe390645fc6c09bb7d49d2",
+            "name": "Partenza",
+            "nullable": true,
+            "pk": false,
+            "source": "spedizione_Partenza",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "magazzino_CodiceMagazzino",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:d0a2be6c27e1672ab5879858a572dfb4",
+            "name": "magazzino_CodiceMagazzino",
+            "nullable": false,
+            "pk": false,
+            "source": "parte_da",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:d0a2be6c27e1672ab5879858a572dfb4"
+            ],
+            "id": "fk:32c42f65074e77ed0f885e75afd19722",
+            "source": "parte_da",
+            "target": "table:d486719787277d126b136603da2ad827",
+            "targetColumns": [
+              "column:0d1ec32388650957880b2e9a45f1f0e4"
+            ]
+          }
+        ],
+        "id": "table:975a19ae12ccdfebaccb3a4d5272055f",
+        "name": "Spedizione",
+        "position": [
+          3187.5,
+          2222.5
+        ],
+        "source": "spedizione",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Magazzino",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceMagazzino",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:0d1ec32388650957880b2e9a45f1f0e4",
+            "name": "CodiceMagazzino",
+            "nullable": false,
+            "pk": true,
+            "source": "magazzino_CodiceMagazzino",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Nome",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:de091972812a12ac8d087f0ed80a220b",
+            "name": "Nome",
+            "nullable": true,
+            "pk": false,
+            "source": "magazzino_Nome",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "time",
+            "autoName": "Apertura",
+            "autoNullable": true,
+            "dataType": "time",
+            "generated": false,
+            "id": "column:98d59ddd62447138a68304384e7eec46",
+            "name": "Apertura",
+            "nullable": true,
+            "pk": false,
+            "source": "magazzino_Apertura",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:d486719787277d126b136603da2ad827",
+        "name": "Magazzino",
+        "position": [
+          3387.5,
+          2907.5
+        ],
+        "source": "magazzino",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Ubicazione",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceUbicazione",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:237364a37845d6329d06dfefb78625aa",
+            "name": "CodiceUbicazione",
+            "nullable": false,
+            "pk": true,
+            "source": "ubicazione_CodiceUbicazione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "Capacita",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:d03fc9546a5ebe6769928ed34271c9ba",
+            "name": "Capacita",
+            "nullable": true,
+            "pk": false,
+            "source": "ubicazione_Capacita",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "magazzino_CodiceMagazzino",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:a5653cd599c6e94c9b960b50bc875943",
+            "name": "magazzino_CodiceMagazzino",
+            "nullable": false,
+            "pk": true,
+            "source": "ha_ubicazioni",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:a5653cd599c6e94c9b960b50bc875943"
+            ],
+            "id": "fk:c0207c89d351a4b3cb1515b95105e981",
+            "source": "ha_ubicazioni",
+            "target": "table:d486719787277d126b136603da2ad827",
+            "targetColumns": [
+              "column:0d1ec32388650957880b2e9a45f1f0e4"
+            ]
+          }
+        ],
+        "id": "table:e65bb32256078c6ceb1baa9d2f7065f4",
+        "name": "Ubicazione",
+        "position": [
+          2840,
+          3245
+        ],
+        "source": "ubicazione",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Lotto",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "NumeroLotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:e691b591ae129f4503309fba0fbfddfe",
+            "name": "NumeroLotto",
+            "nullable": false,
+            "pk": true,
+            "source": "lotto_NumeroLotto",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "Scadenza",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:6fbb9a7dc0bcfa8ba1bc590a638a169e",
+            "name": "Scadenza",
+            "nullable": true,
+            "pk": false,
+            "source": "lotto_Scadenza",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "bene_Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:a6802aa58a0ff134e5602c953410ea22",
+            "name": "bene_Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "ha_lotti",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:a6802aa58a0ff134e5602c953410ea22"
+            ],
+            "id": "fk:7c945212f9c5e578cc08b19d14d83b66",
+            "source": "ha_lotti",
+            "target": "table:eaff8f7c018bdb254c2db35383a6fb49",
+            "targetColumns": [
+              "column:9afbf34e9eeff71ca5f746501288a087"
+            ]
+          }
+        ],
+        "id": "table:041faf4c1048e04a7acc94ed43a7c323",
+        "name": "Lotto",
+        "position": [
+          805,
+          2980
+        ],
+        "source": "lotto",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Scorta",
+        "columns": [
+          {
+            "autoDataType": "real",
+            "autoName": "Quantita",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:9c06fa3873f5addee13c4c253cce13d5",
+            "name": "Quantita",
+            "nullable": true,
+            "pk": false,
+            "source": "scorta_Quantita",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "lotto_NumeroLotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:265c3351c0efaecff8a14a0eae7c6717",
+            "name": "lotto_NumeroLotto",
+            "nullable": false,
+            "pk": true,
+            "source": "lotto_scorta",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "lotto_bene_Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:f6e23615ffecda4e298ce803b660e011",
+            "name": "lotto_bene_Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "lotto_scorta",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "posto_CodiceUbicazione",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:1a224e87396b980de682751b735150d4",
+            "name": "posto_CodiceUbicazione",
+            "nullable": false,
+            "pk": true,
+            "source": "posto_scorta",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "posto_magazzino_CodiceMagazzino",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:9b9529866d7b5a830463c8157e6225df",
+            "name": "posto_magazzino_CodiceMagazzino",
+            "nullable": false,
+            "pk": true,
+            "source": "posto_scorta",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:265c3351c0efaecff8a14a0eae7c6717",
+              "column:f6e23615ffecda4e298ce803b660e011"
+            ],
+            "id": "fk:75096bbbda2fe1fa7531fa4fa0002cc0",
+            "source": "lotto_scorta",
+            "target": "table:041faf4c1048e04a7acc94ed43a7c323",
+            "targetColumns": [
+              "column:e691b591ae129f4503309fba0fbfddfe",
+              "column:a6802aa58a0ff134e5602c953410ea22"
+            ]
+          },
+          {
+            "columns": [
+              "column:1a224e87396b980de682751b735150d4",
+              "column:9b9529866d7b5a830463c8157e6225df"
+            ],
+            "id": "fk:7c04a6f89295e95ff892cf2ba042ece8",
+            "source": "posto_scorta",
+            "target": "table:e65bb32256078c6ceb1baa9d2f7065f4",
+            "targetColumns": [
+              "column:237364a37845d6329d06dfefb78625aa",
+              "column:a5653cd599c6e94c9b960b50bc875943"
+            ]
+          }
+        ],
+        "id": "table:ab0b960439eb1874883b60a4592e52ea",
+        "name": "Scorta",
+        "position": [
+          1687.5,
+          3380
+        ],
+        "source": "scorta",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Offerta",
+        "columns": [
+          {
+            "autoDataType": "date",
+            "autoName": "Dal",
+            "autoNullable": false,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:389d5dca14c0d950e26fb521c1a65ec8",
+            "name": "Dal",
+            "nullable": false,
+            "pk": true,
+            "source": "offerta_Dal",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "Prezzo",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:96acd5535859b6f6a053c3b00da80ed3",
+            "name": "Prezzo",
+            "nullable": true,
+            "pk": false,
+            "source": "offerta_Prezzo",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "fornitore_Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:865500ac810c130eaf19bc62c7310a2c",
+            "name": "fornitore_Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "propone",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "fornitore_Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:22c7b9df00b21b28a50683850561bc74",
+            "name": "fornitore_Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "propone",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "bene_Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:93950a3052aafd55bbd17b51b6dd184e",
+            "name": "bene_Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "oggetto_offerta",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:865500ac810c130eaf19bc62c7310a2c",
+              "column:22c7b9df00b21b28a50683850561bc74"
+            ],
+            "id": "fk:85464132f2964769374ddb4652e994a7",
+            "source": "propone",
+            "target": "table:6a45f1678524562b946c38fe3eeb063f",
+            "targetColumns": [
+              "column:15da71c3c32426b30239534b0b1f6e02",
+              "column:f323d03713c2516f7f3cea0ee2eba5df"
+            ]
+          },
+          {
+            "columns": [
+              "column:93950a3052aafd55bbd17b51b6dd184e"
+            ],
+            "id": "fk:4deed2418a67d510e7fb0acd449b9077",
+            "source": "oggetto_offerta",
+            "target": "table:eaff8f7c018bdb254c2db35383a6fb49",
+            "targetColumns": [
+              "column:9afbf34e9eeff71ca5f746501288a087"
+            ]
+          }
+        ],
+        "id": "table:8c1ffe442c8538bb7ed2d7b4a8e7a81d",
+        "name": "Offerta",
+        "position": [
+          -1015,
+          2095
+        ],
+        "source": "offerta",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Progetto",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceProgetto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:5dc34b63a8692158d7eb7f7cb95ed34d",
+            "name": "CodiceProgetto",
+            "nullable": false,
+            "pk": true,
+            "source": "progetto_CodiceProgetto",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Titolo",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:be890bd2776566bcb1e052a4677b65fc",
+            "name": "Titolo",
+            "nullable": true,
+            "pk": false,
+            "source": "progetto_Titolo",
+            "typeOverride": false
+          },
+          {
+            "autoName": "Note",
+            "autoNullable": true,
+            "generated": false,
+            "id": "column:b4f54e580eb842a907b74d93c7b5f2a1",
+            "name": "Note",
+            "nullable": true,
+            "pk": false,
+            "source": "progetto_Note"
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:24d7dc6c3ad8625048c21a67f389ec8e",
+        "name": "Progetto",
+        "position": [
+          -675,
+          -945
+        ],
+        "source": "progetto",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Incarico",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroIncarico",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:6a71f80fcf4124b626fba9ec84086d0e",
+            "name": "NumeroIncarico",
+            "nullable": false,
+            "pk": true,
+            "source": "incarico_NumeroIncarico",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "OrePreviste",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:e393b3a72903f87da21a1c8d5b53c491",
+            "name": "OrePreviste",
+            "nullable": true,
+            "pk": false,
+            "source": "incarico_OrePreviste",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "dipendente_Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:fd84d047fc4521781dcd82b8702aa66c",
+            "name": "dipendente_Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "incarica",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "dipendente_Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:474ccecedaaf231226d74292c07efab9",
+            "name": "dipendente_Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "incarica",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "progetto_CodiceProgetto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:25ca72fd4a3b35877de95e9dfb8e266f",
+            "name": "progetto_CodiceProgetto",
+            "nullable": false,
+            "pk": true,
+            "source": "nel_progetto",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:fd84d047fc4521781dcd82b8702aa66c",
+              "column:474ccecedaaf231226d74292c07efab9"
+            ],
+            "id": "fk:eea046fe672987f3d94b4a52508cd28a",
+            "source": "incarica",
+            "target": "table:551f2642ec9a3fe2353714da7280214d",
+            "targetColumns": [
+              "column:0a164b0fbd6e1d6f47c6408ac63ccb95",
+              "column:64d5aac6594dedf043e14db56e468bf0"
+            ]
+          },
+          {
+            "columns": [
+              "column:25ca72fd4a3b35877de95e9dfb8e266f"
+            ],
+            "id": "fk:38cb98effca6081c80fcf4c8cabe0efd",
+            "source": "nel_progetto",
+            "target": "table:24d7dc6c3ad8625048c21a67f389ec8e",
+            "targetColumns": [
+              "column:5dc34b63a8692158d7eb7f7cb95ed34d"
+            ]
+          }
+        ],
+        "id": "table:c8a931ad5e1f8bff4bb7e1b82530ebcf",
+        "name": "Incarico",
+        "position": [
+          -1822.5,
+          -402.5
+        ],
+        "source": "incarico",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Pagamento",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroPagamento",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:ea5dcc3dc7f3e539f0787d608fe06e5d",
+            "name": "NumeroPagamento",
+            "nullable": false,
+            "pk": true,
+            "source": "pagamento_NumeroPagamento",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "Importo",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:1b1aa4b8afdcaa6540eccdf1ae82995f",
+            "name": "Importo",
+            "nullable": true,
+            "pk": false,
+            "source": "pagamento_Importo",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "datetime",
+            "autoName": "Registrato",
+            "autoNullable": true,
+            "dataType": "datetime",
+            "generated": false,
+            "id": "column:b09f65246977eea2b7208191e63eb45e",
+            "name": "Registrato",
+            "nullable": true,
+            "pk": false,
+            "source": "pagamento_Registrato",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:08b3f9c6f73abc3a4f5bf632f9b54340",
+            "name": "ordine_Anno",
+            "nullable": false,
+            "pk": true,
+            "source": "incassa",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:9740c74fb3cebd756aab47741f51338b",
+            "name": "ordine_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "incassa",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "fattura_Anno",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:72d294bbad0d622472a5b5779bd965f6",
+            "name": "fattura_Anno",
+            "nullable": true,
+            "pk": false,
+            "source": "riferisce",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "fattura_Numero",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:5386befd11014836d4c8e3cd8f2a5943",
+            "name": "fattura_Numero",
+            "nullable": true,
+            "pk": false,
+            "source": "riferisce",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:08b3f9c6f73abc3a4f5bf632f9b54340",
+              "column:9740c74fb3cebd756aab47741f51338b"
+            ],
+            "id": "fk:bf7da41680731fb77995551c5f553c06",
+            "source": "incassa",
+            "target": "table:67a72da2de34aed8ed92d65782d1ac52",
+            "targetColumns": [
+              "column:0fb492b63ab0e501d2986fff4cb906bc",
+              "column:e4a89fdfeeef554d4e07e033fbb7db53"
+            ]
+          },
+          {
+            "columns": [
+              "column:72d294bbad0d622472a5b5779bd965f6",
+              "column:5386befd11014836d4c8e3cd8f2a5943"
+            ],
+            "id": "fk:cb40b17fce6862850efea1b15ec142ce",
+            "source": "riferisce",
+            "target": "table:d43b6f32ca76865d7eedb51aca47f0ff",
+            "targetColumns": [
+              "column:f22fb9d10d0a7f7c8c96201f8c9da3c5",
+              "column:b3cc74bb49989dc7d821d31fb5ee940d"
+            ]
+          }
+        ],
+        "id": "table:5165549774d6049bc7640d4d3e261009",
+        "name": "Pagamento",
+        "position": [
+          130,
+          -72.5
+        ],
+        "source": "pagamento",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Fattura",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:f22fb9d10d0a7f7c8c96201f8c9da3c5",
+            "name": "Anno",
+            "nullable": false,
+            "pk": true,
+            "source": "fattura_Anno",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:b3cc74bb49989dc7d821d31fb5ee940d",
+            "name": "Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "fattura_Numero",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "Data",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:a45acc633d0c9e55fa581f6e1658aa90",
+            "name": "Data",
+            "nullable": true,
+            "pk": false,
+            "source": "fattura_Data",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:abb34afb8029d5a42b8547a2fe3ff258",
+            "name": "ordine_Anno",
+            "nullable": false,
+            "pk": false,
+            "source": "fatturazione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:3c0cc393c1a4d0a339d59a0d081b0aa2",
+            "name": "ordine_Numero",
+            "nullable": false,
+            "pk": false,
+            "source": "fatturazione",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:abb34afb8029d5a42b8547a2fe3ff258",
+              "column:3c0cc393c1a4d0a339d59a0d081b0aa2"
+            ],
+            "id": "fk:c398b16e5d21cc0af67594caf624120b",
+            "source": "fatturazione",
+            "target": "table:67a72da2de34aed8ed92d65782d1ac52",
+            "targetColumns": [
+              "column:0fb492b63ab0e501d2986fff4cb906bc",
+              "column:e4a89fdfeeef554d4e07e033fbb7db53"
+            ]
+          }
+        ],
+        "id": "table:d43b6f32ca76865d7eedb51aca47f0ff",
+        "name": "Fattura",
+        "position": [
+          680,
+          -210
+        ],
+        "source": "fattura",
+        "uniqueKeys": [
+          [
+            "column:abb34afb8029d5a42b8547a2fe3ff258",
+            "column:3c0cc393c1a4d0a339d59a0d081b0aa2"
+          ]
+        ]
+      },
+      {
+        "autoName": "Classifica",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:2ae9d03a82ab978a1fb4bb49b5d96b32",
+            "name": "prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "classifica",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "categoria_CodiceCategoria",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:cbbe23081ba30717a5dddb4b9ee1056a",
+            "name": "categoria_CodiceCategoria",
+            "nullable": false,
+            "pk": true,
+            "source": "classifica",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:2ae9d03a82ab978a1fb4bb49b5d96b32"
+            ],
+            "id": "fk:b4f08b748fb5e5560cc2812ed767ab11",
+            "source": "classifica",
+            "target": "table:63fff987fb75c7bd2eddce81c9a03179",
+            "targetColumns": [
+              "column:a07309d40ee7c7cb58b7ad7a8b4ade6d"
+            ]
+          },
+          {
+            "columns": [
+              "column:cbbe23081ba30717a5dddb4b9ee1056a"
+            ],
+            "id": "fk:d1082e0301e4f3de1a75dfb73e9aad93",
+            "source": "classifica",
+            "target": "table:bb584316d80ff07f058b75eda955cf86",
+            "targetColumns": [
+              "column:eccb1523a7af82d38de4578b61f707a5"
+            ]
+          }
+        ],
+        "id": "table:d34ad779e2859a40e9ab7a11b3257952",
+        "name": "Classifica",
+        "position": [
+          1653.8,
+          2531.2
+        ],
+        "source": "classifica",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Composizione",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "assieme_Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:e76f614c9f88677eb04c32baa57424b8",
+            "name": "assieme_Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "composizione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "componente_Prodotto_CodiceProdotto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:cccf93995265d999b321e1b2f5762bd1",
+            "name": "componente_Prodotto_CodiceProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "composizione",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:e76f614c9f88677eb04c32baa57424b8"
+            ],
+            "id": "fk:1cc8e70ff7b4b0926f6b6b3024137d45",
+            "source": "composizione",
+            "target": "table:eaff8f7c018bdb254c2db35383a6fb49",
+            "targetColumns": [
+              "column:9afbf34e9eeff71ca5f746501288a087"
+            ]
+          },
+          {
+            "columns": [
+              "column:cccf93995265d999b321e1b2f5762bd1"
+            ],
+            "id": "fk:efbff4030a23d4e0e614d78772291898",
+            "source": "composizione",
+            "target": "table:eaff8f7c018bdb254c2db35383a6fb49",
+            "targetColumns": [
+              "column:9afbf34e9eeff71ca5f746501288a087"
+            ]
+          }
+        ],
+        "id": "table:e97d976208e2ac578afb44a8b605f7e5",
+        "name": "Composizione",
+        "position": [
+          89.5,
+          2192
+        ],
+        "source": "composizione",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Finanzia",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "finanziatore_Cliente_Soggetto_Paese",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:7adfb4228acc313db138e1e44badbfcf",
+            "name": "finanziatore_Cliente_Soggetto_Paese",
+            "nullable": false,
+            "pk": true,
+            "source": "finanzia",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "finanziatore_Cliente_Soggetto_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:d60ce76534414bdeb1aaa168f13ed501",
+            "name": "finanziatore_Cliente_Soggetto_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "finanzia",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "progetto_CodiceProgetto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:d6830992d24984d2824674cc23c467f6",
+            "name": "progetto_CodiceProgetto",
+            "nullable": false,
+            "pk": true,
+            "source": "finanzia",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:7adfb4228acc313db138e1e44badbfcf",
+              "column:d60ce76534414bdeb1aaa168f13ed501"
+            ],
+            "id": "fk:23fb5bd599dd6df0d0cb59d9d2ce7ab0",
+            "source": "finanzia",
+            "target": "table:fc83d33198e21ab6839cb2ffc107ce30",
+            "targetColumns": [
+              "column:ab505d0a7e3f0b398e69fb7d339dc0a3",
+              "column:ebe79ab924e4861a34e145c2087c4720"
+            ]
+          },
+          {
+            "columns": [
+              "column:d6830992d24984d2824674cc23c467f6"
+            ],
+            "id": "fk:c7f80d7933a6604f6d92c3ddf56ba130",
+            "source": "finanzia",
+            "target": "table:24d7dc6c3ad8625048c21a67f389ec8e",
+            "targetColumns": [
+              "column:5dc34b63a8692158d7eb7f7cb95ed34d"
+            ]
+          }
+        ],
+        "id": "table:5512892b241345290ada29955533a3eb",
+        "name": "Finanzia",
+        "position": [
+          -740,
+          -1755
+        ],
+        "source": "finanzia",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Soddisfa",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "progetto_CodiceProgetto",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:001c7652a14dde6a4bd610e8ea8a23a7",
+            "name": "progetto_CodiceProgetto",
+            "nullable": false,
+            "pk": true,
+            "source": "soddisfa",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "riga_NumeroRiga",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:1a903ebeac3af1435dddb981d581d56c",
+            "name": "riga_NumeroRiga",
+            "nullable": false,
+            "pk": true,
+            "source": "soddisfa",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "riga_ordine_Anno",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:1c59525ca557580449cbfbb098ab71d9",
+            "name": "riga_ordine_Anno",
+            "nullable": false,
+            "pk": true,
+            "source": "soddisfa",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "riga_ordine_Numero",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:97c5cc596f23d0658bd133ed404aecbf",
+            "name": "riga_ordine_Numero",
+            "nullable": false,
+            "pk": true,
+            "source": "soddisfa",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:001c7652a14dde6a4bd610e8ea8a23a7"
+            ],
+            "id": "fk:1c5c5c1f2b6e3cca1aeab3e58e80fc88",
+            "source": "soddisfa",
+            "target": "table:24d7dc6c3ad8625048c21a67f389ec8e",
+            "targetColumns": [
+              "column:5dc34b63a8692158d7eb7f7cb95ed34d"
+            ]
+          },
+          {
+            "columns": [
+              "column:1a903ebeac3af1435dddb981d581d56c",
+              "column:1c59525ca557580449cbfbb098ab71d9",
+              "column:97c5cc596f23d0658bd133ed404aecbf"
+            ],
+            "id": "fk:057a6b2439b5dd2b63171d367bb6a56a",
+            "source": "soddisfa",
+            "target": "table:8c9d32a9eb24490e90b2521109246030",
+            "targetColumns": [
+              "column:7576349299d45bcc8c37774e969aff4e",
+              "column:acbb0bb1b1d8048427c748d162e5e841",
+              "column:b462c5de32dfea75fd037f63beba10b9"
+            ]
+          }
+        ],
+        "id": "table:aa8b7e4738802666ca7962e2671b38ca",
+        "name": "Soddisfa",
+        "position": [
+          956.3,
+          224.5
+        ],
+        "source": "soddisfa",
+        "uniqueKeys": []
+      }
+    ],
+    "version": 2
+  },
+  "objects": [
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        -1663.2
+      ],
+      "id": "soggetto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Soggetto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -1100
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        -1850.4
+      ],
+      "dataType": "string",
+      "id": "soggetto_Paese",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Paese",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2120,
+        -1100
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3508.8,
+        -1501.1
+      ],
+      "dataType": "integer",
+      "id": "soggetto_Numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Numero",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -890
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3748.8,
+        -1501.1
+      ],
+      "dataType": "string",
+      "id": "soggetto_Denominazione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Denominazione",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2680,
+        -1100
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3798.5,
+        -1795.6
+      ],
+      "dataType": "string",
+      "id": "soggetto_Email",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Email",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -1310
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1965.6,
+        -2268
+      ],
+      "id": "cliente",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Cliente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1300,
+        -1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1965.6,
+        -2455.2
+      ],
+      "dataType": "string",
+      "id": "cliente_CodiceCliente",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceCliente",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1020,
+        -1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1965.6,
+        -2080.8
+      ],
+      "dataType": "date",
+      "id": "cliente_IscrittoDal",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "IscrittoDal",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1580,
+        -1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -453.6,
+        -2872.8
+      ],
+      "id": "azienda",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "ClienteAzienda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -300,
+        -1900
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -453.6,
+        -3060
+      ],
+      "dataType": "string",
+      "id": "azienda_PartitaIVA",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "PartitaIVA",
+      "owner": "azienda",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -20,
+        -1900
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        0
+      ],
+      "id": "dipendente",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Dipendente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        187.2
+      ],
+      "dataType": "string",
+      "id": "dipendente_Matricola",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Matricola",
+      "owner": "dipendente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2120,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3748.8,
+        -162.1
+      ],
+      "dataType": "date",
+      "id": "dipendente_AssuntoDal",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "AssuntoDal",
+      "owner": "dipendente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2680,
+        2.5716733430269922e-14
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3024,
+        2268
+      ],
+      "id": "fornitore",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Fornitore",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2000,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3024,
+        2455.2
+      ],
+      "dataType": "string",
+      "id": "fornitore_CodiceFornitore",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceFornitore",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1720,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -5140.8,
+        0
+      ],
+      "id": "badge",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Badge",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3400,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -5140.8,
+        187.2
+      ],
+      "dataType": "string",
+      "id": "badge_NumeroBadge",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroBadge",
+      "owner": "badge",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3120,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -5140.8,
+        -187.2
+      ],
+      "dataType": "boolean",
+      "id": "badge_Attivo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Attivo",
+      "owner": "badge",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3540,
+        181.86533479473212
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -4971.1,
+        -132.4
+      ],
+      "dataType": "date",
+      "id": "badge_Scadenza",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Scadenza",
+      "owner": "badge",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3540,
+        -181.86533479473206
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1814.4,
+        2268
+      ],
+      "id": "prodotto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Prodotto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1200,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1694.4,
+        2430.1
+      ],
+      "dataType": "string",
+      "id": "prodotto_CodiceProdotto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceProdotto",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1480,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1934.4,
+        2430.1
+      ],
+      "dataType": "string",
+      "id": "prodotto_Descrizione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Descrizione",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        920,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        378,
+        2721.6
+      ],
+      "id": "bene",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Bene",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        250,
+        1800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        378,
+        2534.4
+      ],
+      "dataType": "real",
+      "id": "bene_Peso",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Peso",
+      "owner": "bene",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        530,
+        1800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3175.2,
+        2419.2
+      ],
+      "id": "servizio",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Servizio",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2100,
+        1600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3175.2,
+        2606.4
+      ],
+      "dataType": "real",
+      "id": "servizio_DurataOre",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "DurataOre",
+      "owner": "servizio",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2380,
+        1600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        3402
+      ],
+      "id": "categoria",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Categoria",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1250,
+        2250
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        3589.2
+      ],
+      "dataType": "string",
+      "id": "categoria_CodiceCategoria",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceCategoria",
+      "owner": "categoria",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1530,
+        2250
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2010,
+        3239.9
+      ],
+      "dataType": "string",
+      "id": "categoria_Nome",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nome",
+      "owner": "categoria",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        970,
+        2250
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        680.4
+      ],
+      "id": "ordine",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Ordine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        867.6
+      ],
+      "dataType": "integer",
+      "id": "ordine_Anno",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Anno",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        280,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -169.7,
+        812.8
+      ],
+      "dataType": "integer",
+      "id": "ordine_Numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Numero",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1.7144488953513282e-14,
+        660
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        169.7,
+        812.8
+      ],
+      "dataType": "date",
+      "id": "ordine_Data",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Data",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -280,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -231.8,
+        728.9
+      ],
+      "dataType": "boolean",
+      "id": "ordine_Confermato",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Confermato",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -5.1433466860539845e-14,
+        240
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        680.4
+      ],
+      "id": "riga",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "RigaOrdine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1250,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        493.2
+      ],
+      "dataType": "integer",
+      "id": "riga_NumeroRiga",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroRiga",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1530,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2010,
+        842.5
+      ],
+      "dataType": "real",
+      "id": "riga_Quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1110,
+        631.8653347947321
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1770,
+        842.5
+      ],
+      "dataType": "real",
+      "id": "riga_PrezzoUnitario",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "PrezzoUnitario",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1110,
+        268.13466520526794
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        680.4
+      ],
+      "id": "tranche",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "TrancheRiga",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2400,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        867.6
+      ],
+      "dataType": "integer",
+      "id": "tranche_NumeroTranche",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroTranche",
+      "owner": "tranche",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2680,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        493.2
+      ],
+      "dataType": "real",
+      "id": "tranche_Quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "tranche",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2120,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        2041.2
+      ],
+      "id": "spedizione",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Spedizione",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3250,
+        1350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        1854
+      ],
+      "dataType": "string",
+      "id": "spedizione_CodiceSpedizione",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceSpedizione",
+      "owner": "spedizione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3530,
+        1350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        5034,
+        2203.3
+      ],
+      "dataType": "datetime",
+      "id": "spedizione_Partenza",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Partenza",
+      "owner": "spedizione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2970,
+        1350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        3704.4
+      ],
+      "id": "magazzino",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Magazzino",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3250,
+        2450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        3891.6
+      ],
+      "dataType": "string",
+      "id": "magazzino_CodiceMagazzino",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceMagazzino",
+      "owner": "magazzino",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3530,
+        2450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4794,
+        3542.3
+      ],
+      "dataType": "string",
+      "id": "magazzino_Nome",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nome",
+      "owner": "magazzino",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3110,
+        2631.865334794732
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        5034,
+        3542.3
+      ],
+      "dataType": "time",
+      "id": "magazzino_Apertura",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Apertura",
+      "owner": "magazzino",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3110,
+        2268.134665205268
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        4082.4
+      ],
+      "id": "ubicazione",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Ubicazione",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2400,
+        2700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        3895.2
+      ],
+      "dataType": "string",
+      "id": "ubicazione_CodiceUbicazione",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceUbicazione",
+      "owner": "ubicazione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2680,
+        2700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        4269.6
+      ],
+      "dataType": "real",
+      "id": "ubicazione_Capacita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Capacita",
+      "owner": "ubicazione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2120,
+        2700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        453.6,
+        4233.6
+      ],
+      "id": "lotto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Lotto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        300,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        453.6,
+        4420.8
+      ],
+      "dataType": "string",
+      "id": "lotto_NumeroLotto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroLotto",
+      "owner": "lotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        580,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        573.6,
+        4071.5
+      ],
+      "dataType": "date",
+      "id": "lotto_Scadenza",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Scadenza",
+      "owner": "lotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        20,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        4233.6
+      ],
+      "id": "scorta",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Scorta",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1250,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        4420.8
+      ],
+      "dataType": "real",
+      "id": "scorta_Quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "scorta",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1530,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        2570.4
+      ],
+      "id": "offerta",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Offerta",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -900,
+        1700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        2757.6
+      ],
+      "dataType": "date",
+      "id": "offerta_Dal",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Dal",
+      "owner": "offerta",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -620,
+        1700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        2383.2
+      ],
+      "dataType": "real",
+      "id": "offerta_Prezzo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Prezzo",
+      "owner": "offerta",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1180,
+        1700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -756,
+        -1058.4
+      ],
+      "id": "progetto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Progetto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -500,
+        -700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -756,
+        -871.2
+      ],
+      "dataType": "string",
+      "id": "progetto_CodiceProgetto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceProgetto",
+      "owner": "progetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -220,
+        -700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -818.1,
+        -1239.2
+      ],
+      "dataType": "string",
+      "id": "progetto_Titolo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Titolo",
+      "owner": "progetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -640,
+        -518.1346652052679
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -636,
+        -1220.5
+      ],
+      "id": "progetto_Note",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Note",
+      "owner": "progetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -640.0000000000001,
+        -881.865334794732
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2041.2,
+        -226.8
+      ],
+      "id": "incarico",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Incarico",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1350,
+        -150
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2041.2,
+        -414
+      ],
+      "dataType": "integer",
+      "id": "incarico_NumeroIncarico",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroIncarico",
+      "owner": "incarico",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1070,
+        -150
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2041.2,
+        -39.6
+      ],
+      "dataType": "real",
+      "id": "incarico_OrePreviste",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "OrePreviste",
+      "owner": "incarico",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1630,
+        -149.99999999999997
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -302.4,
+        -529.2
+      ],
+      "id": "pagamento",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Pagamento",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -200,
+        -350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -422.4,
+        -367.1
+      ],
+      "dataType": "integer",
+      "id": "pagamento_NumeroPagamento",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroPagamento",
+      "owner": "pagamento",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        80,
+        -350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -364.5,
+        -710
+      ],
+      "dataType": "real",
+      "id": "pagamento_Importo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Importo",
+      "owner": "pagamento",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -339.99999999999994,
+        -168.13466520526788
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -132.7,
+        -396.8
+      ],
+      "dataType": "datetime",
+      "id": "pagamento_Registrato",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Registrato",
+      "owner": "pagamento",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -340.0000000000001,
+        -531.865334794732
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1209.6,
+        -907.2
+      ],
+      "id": "fattura",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Fattura",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        800,
+        -600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1209.6,
+        -720
+      ],
+      "dataType": "integer",
+      "id": "fattura_Anno",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Anno",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1080,
+        -600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1209.6,
+        -1094.4
+      ],
+      "dataType": "integer",
+      "id": "fattura_Numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Numero",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        660,
+        -418.1346652052679
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1379.3,
+        -774.8
+      ],
+      "dataType": "date",
+      "id": "fattura_Data",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Data",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        659.9999999999999,
+        -781.865334794732
+      ]
+    },
+    {
+      "a": "cliente",
+      "b": "soggetto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2797.2,
+        -1965.6
+      ],
+      "id": "isa_cliente",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA cliente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1850,
+        -1300
+      ]
+    },
+    {
+      "a": "azienda",
+      "b": "cliente",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1209.6,
+        -2570.4
+      ],
+      "id": "isa_azienda",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA azienda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -800,
+        -1700
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "soggetto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        -907.2
+      ],
+      "id": "isa_dipendente",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA dipendente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -600
+      ]
+    },
+    {
+      "a": "fornitore",
+      "b": "soggetto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3235.7,
+        892.1
+      ],
+      "id": "isa_fornitore",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA fornitore",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1962.1,
+        562.6
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "prodotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1096.2,
+        2494.8
+      ],
+      "id": "isa_bene",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA bene",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        725,
+        1650
+      ]
+    },
+    {
+      "a": "servizio",
+      "b": "prodotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2494.8,
+        2343.6
+      ],
+      "id": "isa_servizio",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA servizio",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1650,
+        1550
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "badge",
+      "cardA": "0,1",
+      "cardB": "1,1",
+      "chen": [
+        -4384.8,
+        180
+      ],
+      "id": "assegna",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "AssegnaBadge",
+      "owner": "",
+      "roleA": "titolare",
+      "roleB": "badge",
+      "uml": [
+        -2900,
+        0
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "dipendente",
+      "cardA": "0,1",
+      "cardB": "0,N",
+      "chen": [
+        -4108.8,
+        0
+      ],
+      "id": "supervisione",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Supervisione",
+      "owner": "",
+      "roleA": "subalterno",
+      "roleB": "responsabile",
+      "uml": [
+        -3050,
+        -120
+      ]
+    },
+    {
+      "a": "prodotto",
+      "b": "categoria",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        1852.2,
+        2835
+      ],
+      "id": "classifica",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Classifica",
+      "owner": "",
+      "roleA": "prodotto",
+      "roleB": "categoria",
+      "uml": [
+        1225,
+        1875
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "bene",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        -102,
+        2721.6
+      ],
+      "id": "composizione",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Composizione",
+      "owner": "",
+      "roleA": "assieme",
+      "roleB": "componente",
+      "uml": [
+        -230,
+        1920
+      ]
+    },
+    {
+      "a": "cliente",
+      "b": "ordine",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -491.4,
+        -56.7
+      ],
+      "id": "emette",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Emette",
+      "owner": "",
+      "roleA": "cliente",
+      "roleB": "ordine",
+      "uml": [
+        -325,
+        -37.5
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "ordine",
+      "cardA": "0,N",
+      "cardB": "0,1",
+      "chen": [
+        -1814.4,
+        340.2
+      ],
+      "id": "gestisce",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Gestisce",
+      "owner": "",
+      "roleA": "gestore",
+      "roleB": "ordine",
+      "uml": [
+        -1200,
+        225
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "riga",
+      "cardA": "1,N",
+      "cardB": "1,1",
+      "chen": [
+        907.2,
+        680.4
+      ],
+      "id": "contiene",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Contiene",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "riga",
+      "uml": [
+        600,
+        450
+      ]
+    },
+    {
+      "a": "riga",
+      "b": "tranche",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2721.6,
+        680.4
+      ],
+      "id": "ripartisce",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Ripartisce",
+      "owner": "",
+      "roleA": "riga",
+      "roleB": "tranche",
+      "uml": [
+        1800,
+        450
+      ]
+    },
+    {
+      "a": "riga",
+      "b": "prodotto",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "chen": [
+        1890,
+        1481.8
+      ],
+      "id": "riguarda",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Riguarda",
+      "owner": "",
+      "roleA": "riga",
+      "roleB": "prodotto",
+      "uml": [
+        1250,
+        980
+      ]
+    },
+    {
+      "a": "spedizione",
+      "b": "tranche",
+      "cardA": "1,N",
+      "cardB": "0,1",
+      "chen": [
+        4271.4,
+        1360.8
+      ],
+      "id": "evade",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Evade",
+      "owner": "",
+      "roleA": "spedizione",
+      "roleB": "tranche",
+      "uml": [
+        2825,
+        900
+      ]
+    },
+    {
+      "a": "magazzino",
+      "b": "spedizione",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        2872.8
+      ],
+      "id": "parte_da",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "ParteDa",
+      "owner": "",
+      "roleA": "magazzino",
+      "roleB": "spedizione",
+      "uml": [
+        3250,
+        1900
+      ]
+    },
+    {
+      "a": "magazzino",
+      "b": "ubicazione",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4271.4,
+        3893.4
+      ],
+      "id": "ha_ubicazioni",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "HaUbicazioni",
+      "owner": "",
+      "roleA": "magazzino",
+      "roleB": "ubicazione",
+      "uml": [
+        2825,
+        2575
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "lotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        415.8,
+        3477.6
+      ],
+      "id": "ha_lotti",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "HaLotti",
+      "owner": "",
+      "roleA": "bene",
+      "roleB": "lotto",
+      "uml": [
+        275,
+        2300
+      ]
+    },
+    {
+      "a": "lotto",
+      "b": "scorta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1134,
+        4233.6
+      ],
+      "id": "lotto_scorta",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "LottoScorta",
+      "owner": "",
+      "roleA": "lotto",
+      "roleB": "scorta",
+      "uml": [
+        750,
+        2800
+      ]
+    },
+    {
+      "a": "ubicazione",
+      "b": "scorta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2759.4,
+        4158
+      ],
+      "id": "posto_scorta",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "PostoScorta",
+      "owner": "",
+      "roleA": "posto",
+      "roleB": "scorta",
+      "uml": [
+        1825,
+        2750
+      ]
+    },
+    {
+      "a": "fornitore",
+      "b": "offerta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2192.4,
+        2419.2
+      ],
+      "id": "propone",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Propone",
+      "owner": "",
+      "roleA": "fornitore",
+      "roleB": "offerta",
+      "uml": [
+        -1450,
+        1600
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "offerta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -529.2,
+        2494.8
+      ],
+      "id": "oggetto_offerta",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "OggettoOfferta",
+      "owner": "",
+      "roleA": "bene",
+      "roleB": "offerta",
+      "uml": [
+        -325,
+        1750
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "incarico",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2835,
+        -151.2
+      ],
+      "id": "incarica",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Incarica",
+      "owner": "",
+      "roleA": "dipendente",
+      "roleB": "incarico",
+      "uml": [
+        -1875,
+        -100
+      ]
+    },
+    {
+      "a": "progetto",
+      "b": "incarico",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        -680.4
+      ],
+      "id": "nel_progetto",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "NelProgetto",
+      "owner": "",
+      "roleA": "progetto",
+      "roleB": "incarico",
+      "uml": [
+        -900,
+        -450
+      ]
+    },
+    {
+      "a": "azienda",
+      "b": "progetto",
+      "cardA": "0,N",
+      "cardB": "1,N",
+      "chen": [
+        -604.8,
+        -1965.6
+      ],
+      "id": "finanzia",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Finanzia",
+      "owner": "",
+      "roleA": "finanziatore",
+      "roleB": "progetto",
+      "uml": [
+        -400,
+        -1300
+      ]
+    },
+    {
+      "a": "progetto",
+      "b": "riga",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        963.9,
+        71.8
+      ],
+      "id": "soddisfa",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Soddisfa",
+      "owner": "",
+      "roleA": "progetto",
+      "roleB": "riga",
+      "uml": [
+        1004.7,
+        -130
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "pagamento",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -151.2,
+        75.6
+      ],
+      "id": "incassa",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Incassa",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "pagamento",
+      "uml": [
+        -100,
+        50
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "fattura",
+      "cardA": "0,1",
+      "cardB": "1,1",
+      "chen": [
+        756,
+        -226.8
+      ],
+      "id": "fatturazione",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Fatturazione",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "fattura",
+      "uml": [
+        500,
+        -150
+      ]
+    },
+    {
+      "a": "pagamento",
+      "b": "fattura",
+      "cardA": "0,1",
+      "cardB": "0,N",
+      "chen": [
+        453.6,
+        -718.2
+      ],
+      "id": "riferisce",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Riferisce",
+      "owner": "",
+      "roleA": "pagamento",
+      "roleB": "fattura",
+      "uml": [
+        300,
+        -475
+      ]
+    }
+  ],
+  "version": 5,
+  "notes": [
+    {
+      "id": "note-example-limit",
+      "text": "Un’azienda: esempio per il test limite\nQuesto esempio riunisce numerose entità e associazioni per verificare il comportamento dell’applicazione con un diagramma ampio. È adatto a chi ha già esplorato gli esempi più piccoli.\nComincia da un’entità, osserva il suo identificatore e segui le associazioni che la collegano alle altre. Passa poi al modello logico e usa Mostra origine per capire da quali elementi concettuali provengono le colonne.\nSalva una copia prima di modificare il progetto. Dopo aver cambiato il concettuale, leggi il riepilogo di Aggiorna logico: alcune modifiche possono richiedere la sostituzione o la rimozione di tabelle e colonne.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        -113.40000000000009,
+        4680.8
+      ],
+      "uml": [
+        -75.0,
+        3084.0
+      ],
+      "logical": [
+        -1.25,
+        3679.0
+      ]
+    }
+  ]
+}

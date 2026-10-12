@@ -1,0 +1,160 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "ricetta",
+      "kind": "entity",
+      "name": "Ricetta",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        420,
+        300
+      ],
+      "uml": [
+        420,
+        300
+      ]
+    },
+    {
+      "id": "ricetta_id",
+      "kind": "attribute",
+      "name": "IdRicetta",
+      "owner": "ricetta",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        220,
+        80
+      ],
+      "uml": [
+        220,
+        80
+      ]
+    },
+    {
+      "id": "ingrediente",
+      "kind": "entity",
+      "name": "Ingrediente",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        -380,
+        300
+      ],
+      "uml": [
+        -380,
+        300
+      ]
+    },
+    {
+      "id": "ingrediente_id",
+      "kind": "attribute",
+      "name": "IdIngrediente",
+      "owner": "ingrediente",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        -380,
+        150
+      ],
+      "uml": [
+        -380,
+        150
+      ]
+    },
+    {
+      "id": "utilizza",
+      "kind": "relation",
+      "name": "Utilizza",
+      "owner": "",
+      "a": "ricetta",
+      "b": "ingrediente",
+      "roleA": "ricetta",
+      "roleB": "ingrediente",
+      "cardA": "1,N",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        20,
+        300
+      ],
+      "uml": [
+        20,
+        300
+      ]
+    },
+    {
+      "id": "richiama",
+      "kind": "relation",
+      "name": "Richiama",
+      "owner": "",
+      "a": "ricetta",
+      "b": "ricetta",
+      "roleA": "principale",
+      "roleB": "richiamata",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        830,
+        300
+      ],
+      "uml": [
+        830,
+        300
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Ricette_e_ingredienti",
+      "text": "Ricette e ingredienti\nUna ricetta utilizza ingredienti e può richiamare altre ricette. Per esempio, la preparazione di un piatto di pasta può richiedere un pesto descritto in una ricetta separata.\nIl diagramma contiene un’associazione molti a molti fra ricette e ingredienti e un’associazione di Ricetta con se stessa, per i richiami ad altre preparazioni. Una ricetta può non richiamarne altre e può non essere richiamata da nessuna.\nNel logico troverai due tabelle di collegamento. Se ammetti ricette formate soltanto da altre ricette, rendi facoltativo l’uso di ingredienti diretti. Per aggiungere quantità e unità di misura puoi introdurre un’entità associativa; controlla anche che i richiami non formino cicli.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        20.0,
+        560
+      ],
+      "uml": [
+        20.0,
+        569.0
+      ],
+      "logical": [
+        215,
+        860
+      ]
+    }
+  ]
+}

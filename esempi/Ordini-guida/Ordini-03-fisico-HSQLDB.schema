@@ -1,0 +1,405 @@
+{
+  "format": "SchemaStudio",
+  "logical": {
+    "isaStrategy": "joined",
+    "messages": [
+      {
+        "en": "Ordine → table; identifier → PK.",
+        "it": "Ordine → tabella; identificatore → PK.",
+        "source": "ordine",
+        "warning": false
+      },
+      {
+        "en": "RigaOrdine → table; identifier → PK.",
+        "it": "RigaOrdine → tabella; identificatore → PK.",
+        "source": "riga",
+        "warning": false
+      },
+      {
+        "en": "Weak entity RigaOrdine: PK = partial keys + Ordine PK; the inherited part is also an FK.",
+        "it": "Entità debole RigaOrdine: PK = componenti della chiave parziale + PK di Ordine; la parte ereditata è anche FK.",
+        "source": "contiene",
+        "warning": false
+      }
+    ],
+    "oneToOne": {},
+    "sourceDigest": "690b1ca45486535669b08423c762781a613529e515d82bec1bc0a159f53ac5d2",
+    "tables": [
+      {
+        "autoName": "Ordine",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroOrdine",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:e9658f873962339c31deef6859eb7154",
+            "name": "NumeroOrdine",
+            "nullable": false,
+            "pk": true,
+            "source": "numordine",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "Data",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:4a9fe67b5b4a809ed5bdbd5aa545f1e3",
+            "name": "Data",
+            "nullable": true,
+            "pk": false,
+            "source": "data",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:67a72da2de34aed8ed92d65782d1ac52",
+        "name": "Ordine",
+        "position": [
+          0,
+          0
+        ],
+        "source": "ordine",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "RigaOrdine",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroRiga",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:16d63760e5fbdd6813a0c1008aae3f9e",
+            "name": "NumeroRiga",
+            "nullable": false,
+            "pk": true,
+            "source": "numriga",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Quantita",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:588ba07b121c78f2953ca90b2aa43157",
+            "name": "Quantita",
+            "nullable": true,
+            "pk": false,
+            "source": "quantita",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "ordine_NumeroOrdine",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:bfb552c79a4a507dcf4d82dd251a7031",
+            "name": "ordine_NumeroOrdine",
+            "nullable": false,
+            "pk": true,
+            "source": "contiene",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:bfb552c79a4a507dcf4d82dd251a7031"
+            ],
+            "id": "fk:6492d5b2a6a5356b1fd126c0b5eb50ff",
+            "source": "contiene",
+            "target": "table:67a72da2de34aed8ed92d65782d1ac52",
+            "targetColumns": [
+              "column:e9658f873962339c31deef6859eb7154"
+            ]
+          }
+        ],
+        "id": "table:8c9d32a9eb24490e90b2521109246030",
+        "name": "RigaOrdine",
+        "position": [
+          430,
+          0
+        ],
+        "source": "riga",
+        "uniqueKeys": []
+      }
+    ],
+    "version": 2
+  },
+  "objects": [
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        180,
+        220
+      ],
+      "id": "ordine",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Ordine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        150,
+        200
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        720,
+        220
+      ],
+      "id": "riga",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "RigaOrdine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        690,
+        200
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        120,
+        70
+      ],
+      "dataType": "integer",
+      "id": "numordine",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroOrdine",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        120,
+        70
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        300,
+        80
+      ],
+      "dataType": "date",
+      "id": "data",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Data",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        300,
+        80
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        650,
+        70
+      ],
+      "dataType": "integer",
+      "id": "numriga",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroRiga",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        650,
+        70
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        860,
+        80
+      ],
+      "dataType": "integer",
+      "id": "quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        860,
+        80
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "riga",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        450,
+        220
+      ],
+      "id": "contiene",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Contiene",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "riga",
+      "uml": [
+        420,
+        210
+      ]
+    }
+  ],
+  "physical": {
+    "columns": {
+      "column:16d63760e5fbdd6813a0c1008aae3f9e": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "NumeroRiga",
+        "name": "NumeroRiga",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:4a9fe67b5b4a809ed5bdbd5aa545f1e3": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Data",
+        "name": "Data",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "date",
+        "start": 1,
+        "type": "DATE"
+      },
+      "column:588ba07b121c78f2953ca90b2aa43157": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Quantita",
+        "name": "Quantita",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:bfb552c79a4a507dcf4d82dd251a7031": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "ordine_NumeroOrdine",
+        "name": "ordine_NumeroOrdine",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:e9658f873962339c31deef6859eb7154": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": true,
+        "length": 100,
+        "logicalName": "NumeroOrdine",
+        "name": "NumeroOrdine",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 10,
+        "type": "INTEGER"
+      }
+    },
+    "draft": "-- Database Schema Studio 0.9.1 | HSQLDB 1.8 / LibreOffice Base\n-- Controlli statici superati; questo script non è stato eseguito dall'app.\n-- Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.\n\nSET PROPERTY \"sql.enforce_strict_size\" TRUE;\n\nCREATE TABLE \"PUBLIC\".\"Ordine\" (\n    \"NumeroOrdine\" INTEGER GENERATED BY DEFAULT AS IDENTITY (START WITH 10),\n    \"Data\" DATE\n);\n\nCREATE TABLE \"PUBLIC\".\"RigaOrdine\" (\n    \"NumeroRiga\" INTEGER NOT NULL,\n    \"Quantita\" INTEGER,\n    \"ordine_NumeroOrdine\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_dfc6863533066f3cdbf76eb1\" PRIMARY KEY (\"NumeroRiga\", \"ordine_NumeroOrdine\")\n);\n\nALTER TABLE \"PUBLIC\".\"RigaOrdine\" ADD CONSTRAINT \"FK_18ee5e61c535696ab4910299\" FOREIGN KEY (\"ordine_NumeroOrdine\") REFERENCES \"PUBLIC\".\"Ordine\" (\"NumeroOrdine\");\n",
+    "foreignKeys": {
+      "fk:6492d5b2a6a5356b1fd126c0b5eb50ff": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      }
+    },
+    "generatedDigest": "3152fe4d298e5427a37a8ea1e81fc19400dbf6c17d9fe70d634273f09bccc755",
+    "generatedText": "-- Database Schema Studio 0.9.1 | HSQLDB 1.8 / LibreOffice Base\n-- Controlli statici superati; questo script non è stato eseguito dall'app.\n-- Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.\n\nSET PROPERTY \"sql.enforce_strict_size\" TRUE;\n\nCREATE TABLE \"PUBLIC\".\"Ordine\" (\n    \"NumeroOrdine\" INTEGER GENERATED BY DEFAULT AS IDENTITY (START WITH 10),\n    \"Data\" DATE\n);\n\nCREATE TABLE \"PUBLIC\".\"RigaOrdine\" (\n    \"NumeroRiga\" INTEGER NOT NULL,\n    \"Quantita\" INTEGER,\n    \"ordine_NumeroOrdine\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_dfc6863533066f3cdbf76eb1\" PRIMARY KEY (\"NumeroRiga\", \"ordine_NumeroOrdine\")\n);\n\nALTER TABLE \"PUBLIC\".\"RigaOrdine\" ADD CONSTRAINT \"FK_18ee5e61c535696ab4910299\" FOREIGN KEY (\"ordine_NumeroOrdine\") REFERENCES \"PUBLIC\".\"Ordine\" (\"NumeroOrdine\");\n",
+    "profile": "hsqldb-1.8",
+    "schema": "PUBLIC",
+    "strictSize": true,
+    "tables": {
+      "table:67a72da2de34aed8ed92d65782d1ac52": "Ordine",
+      "table:8c9d32a9eb24490e90b2521109246030": "RigaOrdine"
+    },
+    "version": 1
+  },
+  "version": 5,
+  "notes": [
+    {
+      "id": "note-example-orders",
+      "text": "Ordini e righe dell’ordine\nUn ordine raccoglie le righe che descrivono ciò che viene richiesto. Può essere ancora vuoto, per esempio mentre lo stiamo compilando. Ogni riga appartiene invece a un solo ordine.\nNumeroOrdine distingue un ordine dagli altri. NumeroRiga distingue le righe dello stesso ordine: la riga 1 dell’ordine 15 è diversa dalla riga 1 dell’ordine 28. Per questo RigaOrdine è un’entità debole.\nGenerando il logico, osserva la chiave di RigaOrdine: contiene sia NumeroRiga sia il riferimento a Ordine. Prova poi a rendere obbligatoria la presenza di almeno una riga per ordine e leggi il controllo aggiuntivo indicato nel riepilogo.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        450.0,
+        480
+      ],
+      "uml": [
+        420.0,
+        484.0
+      ],
+      "logical": [
+        215.0,
+        269.0
+      ]
+    }
+  ]
+}

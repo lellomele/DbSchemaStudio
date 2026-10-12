@@ -1,0 +1,94 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "persona",
+      "kind": "entity",
+      "name": "Persona",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        400,
+        300
+      ],
+      "uml": [
+        400,
+        300
+      ]
+    },
+    {
+      "id": "persona_id",
+      "kind": "attribute",
+      "name": "IdPersona",
+      "owner": "persona",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        175,
+        300
+      ],
+      "uml": [
+        175,
+        300
+      ]
+    },
+    {
+      "id": "maternita",
+      "kind": "relation",
+      "name": "Maternità",
+      "owner": "",
+      "a": "persona",
+      "b": "persona",
+      "roleA": "figlio",
+      "roleB": "madre",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        780,
+        300
+      ],
+      "uml": [
+        780,
+        300
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Persone_e_madri",
+      "text": "Persone e madri\nOgni persona ha una madre; una stessa madre può avere più figli. L’associazione collega Persona a se stessa, una volta nel ruolo di figlio e una volta nel ruolo di madre.\nOgni persona ha un solo collegamento verso la propria madre (1,1), mentre può non avere figli oppure averne più di uno (0,N). Il ruolo madre indica quindi come viene usato quel lato dell’associazione, non un’entità separata.\nNel logico, una colonna della tabella Persona rimanda alla stessa tabella. Discuti come registrare una persona quando sua madre non è presente nell’archivio e come impedire riferimenti a se stessa o catene di parentela circolari.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        400.0,
+        560
+      ],
+      "uml": [
+        400.0,
+        569.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

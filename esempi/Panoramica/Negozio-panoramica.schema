@@ -1,0 +1,1877 @@
+{
+  "format": "SchemaStudio",
+  "logical": {
+    "isaStrategy": "joined",
+    "messages": [
+      {
+        "en": "Privato → table; identifier → PK.",
+        "it": "Privato → tabella; identificatore → PK.",
+        "source": "privato",
+        "warning": false
+      },
+      {
+        "en": "Azienda → table; identifier → PK.",
+        "it": "Azienda → tabella; identificatore → PK.",
+        "source": "azienda",
+        "warning": false
+      },
+      {
+        "en": "Cliente → table; identifier → PK.",
+        "it": "Cliente → tabella; identificatore → PK.",
+        "source": "cliente",
+        "warning": false
+      },
+      {
+        "en": "Ordine → table; identifier → PK.",
+        "it": "Ordine → tabella; identificatore → PK.",
+        "source": "ordine",
+        "warning": false
+      },
+      {
+        "en": "Fattura → table; identifier → PK.",
+        "it": "Fattura → tabella; identificatore → PK.",
+        "source": "fattura",
+        "warning": false
+      },
+      {
+        "en": "RigaOrdine → table; identifier → PK.",
+        "it": "RigaOrdine → tabella; identificatore → PK.",
+        "source": "riga",
+        "warning": false
+      },
+      {
+        "en": "Prodotto → table; identifier → PK.",
+        "it": "Prodotto → tabella; identificatore → PK.",
+        "source": "prodotto",
+        "warning": false
+      },
+      {
+        "en": "Categoria → table; identifier → PK.",
+        "it": "Categoria → tabella; identificatore → PK.",
+        "source": "categoria",
+        "warning": false
+      },
+      {
+        "en": "Local identifiers of Privato become an alternate UNIQUE key; the PK is inherited.",
+        "it": "Gli identificatori locali di Privato diventano una chiave alternativa UNIQUE; la PK è ereditata.",
+        "source": "isa_privato",
+        "warning": false
+      },
+      {
+        "en": "ISA: Privato keeps its table with a PK that is also an FK to Cliente.",
+        "it": "ISA: Privato mantiene la propria tabella con PK anche FK verso Cliente.",
+        "source": "isa_privato",
+        "warning": false
+      },
+      {
+        "en": "Local identifiers of Azienda become an alternate UNIQUE key; the PK is inherited.",
+        "it": "Gli identificatori locali di Azienda diventano una chiave alternativa UNIQUE; la PK è ereditata.",
+        "source": "isa_azienda",
+        "warning": false
+      },
+      {
+        "en": "ISA: Azienda keeps its table with a PK that is also an FK to Cliente.",
+        "it": "ISA: Azienda mantiene la propria tabella con PK anche FK verso Cliente.",
+        "source": "isa_azienda",
+        "warning": false
+      },
+      {
+        "en": "Weak entity RigaOrdine: PK = partial keys + Ordine PK; the inherited part is also an FK.",
+        "it": "Entità debole RigaOrdine: PK = componenti della chiave parziale + PK di Ordine; la parte ereditata è anche FK.",
+        "source": "contiene",
+        "warning": false
+      },
+      {
+        "en": "Minimum owner participation in Contiene requires an additional check beyond PK/FK.",
+        "it": "La partecipazione minima del proprietario in Contiene richiede un controllo aggiuntivo oltre a PK/FK.",
+        "source": "contiene",
+        "warning": true
+      },
+      {
+        "en": "Effettua: FK in Ordine referencing Cliente (1:N).",
+        "it": "Effettua: FK in Ordine verso Cliente (1:N).",
+        "source": "effettua",
+        "warning": false
+      },
+      {
+        "en": "DocumentatoDa: FK in Fattura referencing Ordine (1:1, FK with UNIQUE constraint).",
+        "it": "DocumentatoDa: FK in Fattura verso Ordine (1:1, FK con vincolo UNIQUE).",
+        "source": "documenta",
+        "warning": false
+      },
+      {
+        "en": "Riguarda: FK in RigaOrdine referencing Prodotto (1:N).",
+        "it": "Riguarda: FK in RigaOrdine verso Prodotto (1:N).",
+        "source": "riferisce",
+        "warning": false
+      },
+      {
+        "en": "Classificazione: M:N → junction table with two FKs and their union as the composite PK.",
+        "it": "Classificazione: N:M → tabella di collegamento con le due FK e PK composta dalla loro unione.",
+        "source": "classifica",
+        "warning": false
+      },
+      {
+        "en": "Comprende: FK in Categoria referencing Categoria (1:N).",
+        "it": "Comprende: FK in Categoria verso Categoria (1:N).",
+        "source": "gerarchia",
+        "warning": false
+      }
+    ],
+    "oneToOne": {
+      "documenta": "B"
+    },
+    "sourceDigest": "6aeff712a567f904da0c31f1bb0d75b903289c5b044aaa79d9ae43274d5dc73a",
+    "tables": [
+      {
+        "autoName": "Privato",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceFiscale",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:1d8b9f4b89b49ba045d28e32614fe9c0",
+            "name": "CodiceFiscale",
+            "nullable": false,
+            "pk": false,
+            "source": "cf",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Cliente_IdCliente",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:0e89a44faa42d4de89909c90b17c3d76",
+            "name": "Cliente_IdCliente",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_privato",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:0e89a44faa42d4de89909c90b17c3d76"
+            ],
+            "id": "fk:06652b90c1d713a2d6990c383f5f0aab",
+            "source": "isa_privato",
+            "target": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+            "targetColumns": [
+              "column:7e99ad8682cb36238a838d71bb978ecc"
+            ]
+          }
+        ],
+        "id": "table:073636289f486a0b138bbd3ad2ac0314",
+        "name": "Privato",
+        "position": [
+          0,
+          0
+        ],
+        "source": "privato",
+        "uniqueKeys": [
+          [
+            "column:1d8b9f4b89b49ba045d28e32614fe9c0"
+          ]
+        ]
+      },
+      {
+        "autoName": "Azienda",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "PartitaIVA",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:14b7863d60644387316462b89f5a43b8",
+            "name": "PartitaIVA",
+            "nullable": false,
+            "pk": false,
+            "source": "iva",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Cliente_IdCliente",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:ed1dcfdd9cdae546bf131e79296396f1",
+            "name": "Cliente_IdCliente",
+            "nullable": false,
+            "pk": true,
+            "source": "isa_azienda",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:ed1dcfdd9cdae546bf131e79296396f1"
+            ],
+            "id": "fk:f437a614c0cca4ed4971a776148dc119",
+            "source": "isa_azienda",
+            "target": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+            "targetColumns": [
+              "column:7e99ad8682cb36238a838d71bb978ecc"
+            ]
+          }
+        ],
+        "id": "table:fc83d33198e21ab6839cb2ffc107ce30",
+        "name": "Azienda",
+        "position": [
+          960,
+          0
+        ],
+        "source": "azienda",
+        "uniqueKeys": [
+          [
+            "column:14b7863d60644387316462b89f5a43b8"
+          ]
+        ]
+      },
+      {
+        "autoName": "Cliente",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "IdCliente",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:7e99ad8682cb36238a838d71bb978ecc",
+            "name": "IdCliente",
+            "nullable": false,
+            "pk": true,
+            "source": "idcliente",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Nome",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:acd4240e8f2d56e8ae8f8a0660b36087",
+            "name": "Nome",
+            "nullable": true,
+            "pk": false,
+            "source": "nome",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "boolean",
+            "autoName": "Attivo",
+            "autoNullable": true,
+            "dataType": "boolean",
+            "generated": false,
+            "id": "column:463ba30c44fa901c96c3b51c5c3ef543",
+            "name": "Attivo",
+            "nullable": true,
+            "pk": false,
+            "source": "attivo",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+        "name": "Cliente",
+        "position": [
+          480,
+          576
+        ],
+        "source": "cliente",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Ordine",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "IdOrdine",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:1f9181d0a1ddb5327e946e1c143df2c6",
+            "name": "IdOrdine",
+            "nullable": false,
+            "pk": true,
+            "source": "idordine",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "DataOrdine",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:a488aa0fc8638e80956669148943ccc5",
+            "name": "DataOrdine",
+            "nullable": true,
+            "pk": false,
+            "source": "dataordine",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Cliente_IdCliente",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:44cd7a7901058ea9416278a9c32c0c82",
+            "name": "Cliente_IdCliente",
+            "nullable": false,
+            "pk": false,
+            "source": "effettua",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:44cd7a7901058ea9416278a9c32c0c82"
+            ],
+            "id": "fk:7d9b1e9e117f480e37474b8a6cadc6c3",
+            "source": "effettua",
+            "target": "table:a472ef2e2f5ffb15ec9664f59c99bd64",
+            "targetColumns": [
+              "column:7e99ad8682cb36238a838d71bb978ecc"
+            ]
+          }
+        ],
+        "id": "table:67a72da2de34aed8ed92d65782d1ac52",
+        "name": "Ordine",
+        "position": [
+          1600,
+          576
+        ],
+        "source": "ordine",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Fattura",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "NumeroFattura",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:96d45d5dbb9bc10b8ccc682213a8a523",
+            "name": "NumeroFattura",
+            "nullable": false,
+            "pk": true,
+            "source": "numero",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "DataEmissione",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:486ff5775383047cec458f09e303d4f3",
+            "name": "DataEmissione",
+            "nullable": true,
+            "pk": false,
+            "source": "emissione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Ordine_IdOrdine",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:7be43a4a7bd37625886a45645749c480",
+            "name": "Ordine_IdOrdine",
+            "nullable": false,
+            "pk": false,
+            "source": "documenta",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:7be43a4a7bd37625886a45645749c480"
+            ],
+            "id": "fk:79cf7b88c4b28190c551a1bde9420d5e",
+            "source": "documenta",
+            "target": "table:67a72da2de34aed8ed92d65782d1ac52",
+            "targetColumns": [
+              "column:1f9181d0a1ddb5327e946e1c143df2c6"
+            ]
+          }
+        ],
+        "id": "table:d43b6f32ca76865d7eedb51aca47f0ff",
+        "name": "Fattura",
+        "position": [
+          1600,
+          0
+        ],
+        "source": "fattura",
+        "uniqueKeys": [
+          [
+            "column:7be43a4a7bd37625886a45645749c480"
+          ]
+        ]
+      },
+      {
+        "autoName": "RigaOrdine",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "NumeroRiga",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:5fd4a9face66603e0fe42d1985d99db4",
+            "name": "NumeroRiga",
+            "nullable": false,
+            "pk": true,
+            "source": "numeroriga",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Quantita",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:588ba07b121c78f2953ca90b2aa43157",
+            "name": "Quantita",
+            "nullable": true,
+            "pk": false,
+            "source": "quantita",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "money",
+            "autoName": "PrezzoUnitario",
+            "autoNullable": true,
+            "dataType": "money",
+            "generated": false,
+            "id": "column:ebbe6276a1f1f0de9b1f5816b2cd52a4",
+            "name": "PrezzoUnitario",
+            "nullable": true,
+            "pk": false,
+            "source": "prezzo",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Ordine_IdOrdine",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:d0b17101a940acbb60588af9804a9e2b",
+            "name": "Ordine_IdOrdine",
+            "nullable": false,
+            "pk": true,
+            "source": "contiene",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Prodotto_IdProdotto",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:a965fbd4f06fbc6d21d0a0cb56079766",
+            "name": "Prodotto_IdProdotto",
+            "nullable": false,
+            "pk": false,
+            "source": "riferisce",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:d0b17101a940acbb60588af9804a9e2b"
+            ],
+            "id": "fk:6492d5b2a6a5356b1fd126c0b5eb50ff",
+            "source": "contiene",
+            "target": "table:67a72da2de34aed8ed92d65782d1ac52",
+            "targetColumns": [
+              "column:1f9181d0a1ddb5327e946e1c143df2c6"
+            ]
+          },
+          {
+            "columns": [
+              "column:a965fbd4f06fbc6d21d0a0cb56079766"
+            ],
+            "id": "fk:cb40b17fce6862850efea1b15ec142ce",
+            "source": "riferisce",
+            "target": "table:63fff987fb75c7bd2eddce81c9a03179",
+            "targetColumns": [
+              "column:0a936c6a4d6ab93f0635072406ae0131"
+            ]
+          }
+        ],
+        "id": "table:8c9d32a9eb24490e90b2521109246030",
+        "name": "RigaOrdine",
+        "position": [
+          1600,
+          1360
+        ],
+        "source": "riga",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Prodotto",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "IdProdotto",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:0a936c6a4d6ab93f0635072406ae0131",
+            "name": "IdProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "idprodotto",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Descrizione",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:474b818afdd7082c87c7bd04c41f6e8e",
+            "name": "Descrizione",
+            "nullable": true,
+            "pk": false,
+            "source": "descrizione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "real",
+            "autoName": "PesoKg",
+            "autoNullable": true,
+            "dataType": "real",
+            "generated": false,
+            "id": "column:bc6d2170af93c82cfd4e3af77afd471f",
+            "name": "PesoKg",
+            "nullable": true,
+            "pk": false,
+            "source": "peso",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:63fff987fb75c7bd2eddce81c9a03179",
+        "name": "Prodotto",
+        "position": [
+          480,
+          1360
+        ],
+        "source": "prodotto",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Categoria",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "IdCategoria",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:377a364beebd43b690a87068d9551ec9",
+            "name": "IdCategoria",
+            "nullable": false,
+            "pk": true,
+            "source": "idcategoria",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Denominazione",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:788293d0258d1ddd78c34e2deed938b6",
+            "name": "Denominazione",
+            "nullable": true,
+            "pk": false,
+            "source": "denominazione",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "superiore_IdCategoria",
+            "autoNullable": true,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:ec157d11181791e9821d05589c0f8bf8",
+            "name": "superiore_IdCategoria",
+            "nullable": true,
+            "pk": false,
+            "source": "gerarchia",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:ec157d11181791e9821d05589c0f8bf8"
+            ],
+            "id": "fk:dbba94ef157b228db436a48f381b3009",
+            "source": "gerarchia",
+            "target": "table:bb584316d80ff07f058b75eda955cf86",
+            "targetColumns": [
+              "column:377a364beebd43b690a87068d9551ec9"
+            ]
+          }
+        ],
+        "id": "table:bb584316d80ff07f058b75eda955cf86",
+        "name": "Categoria",
+        "position": [
+          -400,
+          1360
+        ],
+        "source": "categoria",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Classificazione",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "Prodotto_IdProdotto",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:0c4870ebb96398ae52cb66b3e1027aa3",
+            "name": "Prodotto_IdProdotto",
+            "nullable": false,
+            "pk": true,
+            "source": "classifica",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "integer",
+            "autoName": "Categoria_IdCategoria",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": true,
+            "id": "column:bbe2bad0f2ad3ec0d034cfb5f45b1931",
+            "name": "Categoria_IdCategoria",
+            "nullable": false,
+            "pk": true,
+            "source": "classifica",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:0c4870ebb96398ae52cb66b3e1027aa3"
+            ],
+            "id": "fk:b4f08b748fb5e5560cc2812ed767ab11",
+            "source": "classifica",
+            "target": "table:63fff987fb75c7bd2eddce81c9a03179",
+            "targetColumns": [
+              "column:0a936c6a4d6ab93f0635072406ae0131"
+            ]
+          },
+          {
+            "columns": [
+              "column:bbe2bad0f2ad3ec0d034cfb5f45b1931"
+            ],
+            "id": "fk:d1082e0301e4f3de1a75dfb73e9aad93",
+            "source": "classifica",
+            "target": "table:bb584316d80ff07f058b75eda955cf86",
+            "targetColumns": [
+              "column:377a364beebd43b690a87068d9551ec9"
+            ]
+          }
+        ],
+        "id": "table:d34ad779e2859a40e9ab7a11b3257952",
+        "name": "Classificazione",
+        "position": [
+          40,
+          1360
+        ],
+        "source": "classifica",
+        "uniqueKeys": []
+      }
+    ],
+    "version": 2
+  },
+  "objects": [
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        0
+      ],
+      "id": "privato",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Privato",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -235,
+        -175
+      ],
+      "dataType": "string",
+      "id": "cf",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceFiscale",
+      "owner": "privato",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        960,
+        0
+      ],
+      "id": "azienda",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Azienda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        600,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        725,
+        -175
+      ],
+      "dataType": "string",
+      "id": "iva",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "PartitaIVA",
+      "owner": "azienda",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        480,
+        576
+      ],
+      "id": "cliente",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Cliente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        300,
+        360
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        245,
+        401
+      ],
+      "dataType": "integer",
+      "id": "idcliente",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "IdCliente",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        480,
+        401
+      ],
+      "dataType": "string",
+      "id": "nome",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nome",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        715,
+        401
+      ],
+      "dataType": "boolean",
+      "id": "attivo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Attivo",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        576
+      ],
+      "id": "ordine",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Ordine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1000,
+        360
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1365,
+        401
+      ],
+      "dataType": "integer",
+      "id": "idordine",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "IdOrdine",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        401
+      ],
+      "dataType": "date",
+      "id": "dataordine",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "DataOrdine",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        0
+      ],
+      "id": "fattura",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Fattura",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1000,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1365,
+        -175
+      ],
+      "dataType": "string",
+      "id": "numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroFattura",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        -175
+      ],
+      "dataType": "date",
+      "id": "emissione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "DataEmissione",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        1360
+      ],
+      "id": "riga",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "RigaOrdine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1000,
+        850
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1365,
+        1185
+      ],
+      "dataType": "integer",
+      "id": "numeroriga",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroRiga",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        1185
+      ],
+      "dataType": "integer",
+      "id": "quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1835,
+        1185
+      ],
+      "dataType": "money",
+      "id": "prezzo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "PrezzoUnitario",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        480,
+        1360
+      ],
+      "id": "prodotto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Prodotto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        300,
+        850
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        245,
+        1185
+      ],
+      "dataType": "integer",
+      "id": "idprodotto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "IdProdotto",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        480,
+        1185
+      ],
+      "dataType": "string",
+      "id": "descrizione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Descrizione",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        715,
+        1185
+      ],
+      "dataType": "real",
+      "id": "peso",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "PesoKg",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -400,
+        1360
+      ],
+      "id": "categoria",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Categoria",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -250,
+        850
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -635,
+        1185
+      ],
+      "dataType": "integer",
+      "id": "idcategoria",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "IdCategoria",
+      "owner": "categoria",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -400,
+        1185
+      ],
+      "dataType": "string",
+      "id": "denominazione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Denominazione",
+      "owner": "categoria",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "privato",
+      "b": "cliente",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "chen": [
+        160,
+        280
+      ],
+      "id": "isa_privato",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        100,
+        175
+      ]
+    },
+    {
+      "a": "azienda",
+      "b": "cliente",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "chen": [
+        800,
+        280
+      ],
+      "id": "isa_azienda",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        500,
+        175
+      ]
+    },
+    {
+      "a": "cliente",
+      "b": "ordine",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1040,
+        576
+      ],
+      "id": "effettua",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Effettua",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        650,
+        360
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "fattura",
+      "cardA": "0,1",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        280
+      ],
+      "id": "documenta",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "DocumentatoDa",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1000,
+        175
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "riga",
+      "cardA": "1,N",
+      "cardB": "1,1",
+      "chen": [
+        1600,
+        968
+      ],
+      "id": "contiene",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Contiene",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1000,
+        605
+      ]
+    },
+    {
+      "a": "riga",
+      "b": "prodotto",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "chen": [
+        1040,
+        1360
+      ],
+      "id": "riferisce",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Riguarda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        650,
+        850
+      ]
+    },
+    {
+      "a": "prodotto",
+      "b": "categoria",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        40,
+        1360
+      ],
+      "id": "classifica",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Classificazione",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        25,
+        850
+      ]
+    },
+    {
+      "a": "categoria",
+      "b": "categoria",
+      "cardA": "0,N",
+      "cardB": "0,1",
+      "chen": [
+        -928,
+        1360
+      ],
+      "id": "gerarchia",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Comprende",
+      "owner": "",
+      "roleA": "superiore",
+      "roleB": "sottocategoria",
+      "uml": [
+        -580,
+        850
+      ]
+    }
+  ],
+  "physical": {
+    "columns": {
+      "column:0a936c6a4d6ab93f0635072406ae0131": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "IdProdotto",
+        "name": "IdProdotto",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:0c4870ebb96398ae52cb66b3e1027aa3": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Prodotto_IdProdotto",
+        "name": "Prodotto_IdProdotto",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:0e89a44faa42d4de89909c90b17c3d76": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Cliente_IdCliente",
+        "name": "Cliente_IdCliente",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:14b7863d60644387316462b89f5a43b8": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "PartitaIVA",
+        "name": "PartitaIVA",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:1d8b9f4b89b49ba045d28e32614fe9c0": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "CodiceFiscale",
+        "name": "CodiceFiscale",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:1f9181d0a1ddb5327e946e1c143df2c6": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "IdOrdine",
+        "name": "IdOrdine",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:377a364beebd43b690a87068d9551ec9": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "IdCategoria",
+        "name": "IdCategoria",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:44cd7a7901058ea9416278a9c32c0c82": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Cliente_IdCliente",
+        "name": "Cliente_IdCliente",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:463ba30c44fa901c96c3b51c5c3ef543": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Attivo",
+        "name": "Attivo",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "boolean",
+        "start": 1,
+        "type": "BOOLEAN"
+      },
+      "column:474b818afdd7082c87c7bd04c41f6e8e": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Descrizione",
+        "name": "Descrizione",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:486ff5775383047cec458f09e303d4f3": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "DataEmissione",
+        "name": "DataEmissione",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "date",
+        "start": 1,
+        "type": "DATE"
+      },
+      "column:588ba07b121c78f2953ca90b2aa43157": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Quantita",
+        "name": "Quantita",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:5fd4a9face66603e0fe42d1985d99db4": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "NumeroRiga",
+        "name": "NumeroRiga",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:788293d0258d1ddd78c34e2deed938b6": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Denominazione",
+        "name": "Denominazione",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:7be43a4a7bd37625886a45645749c480": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Ordine_IdOrdine",
+        "name": "Ordine_IdOrdine",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:7e99ad8682cb36238a838d71bb978ecc": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "IdCliente",
+        "name": "IdCliente",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:96d45d5dbb9bc10b8ccc682213a8a523": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "NumeroFattura",
+        "name": "NumeroFattura",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:a488aa0fc8638e80956669148943ccc5": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "DataOrdine",
+        "name": "DataOrdine",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "date",
+        "start": 1,
+        "type": "DATE"
+      },
+      "column:a965fbd4f06fbc6d21d0a0cb56079766": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Prodotto_IdProdotto",
+        "name": "Prodotto_IdProdotto",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:acd4240e8f2d56e8ae8f8a0660b36087": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Nome",
+        "name": "Nome",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:bbe2bad0f2ad3ec0d034cfb5f45b1931": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Categoria_IdCategoria",
+        "name": "Categoria_IdCategoria",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:bc6d2170af93c82cfd4e3af77afd471f": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "PesoKg",
+        "name": "PesoKg",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "real",
+        "start": 1,
+        "type": "DOUBLE"
+      },
+      "column:d0b17101a940acbb60588af9804a9e2b": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Ordine_IdOrdine",
+        "name": "Ordine_IdOrdine",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:ebbe6276a1f1f0de9b1f5816b2cd52a4": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "PrezzoUnitario",
+        "name": "PrezzoUnitario",
+        "precision": 19,
+        "scale": 4,
+        "sourceType": "money",
+        "start": 1,
+        "type": "DECIMAL"
+      },
+      "column:ec157d11181791e9821d05589c0f8bf8": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "superiore_IdCategoria",
+        "name": "superiore_IdCategoria",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:ed1dcfdd9cdae546bf131e79296396f1": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Cliente_IdCliente",
+        "name": "Cliente_IdCliente",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      }
+    },
+    "draft": "-- Database Schema Studio 0.9.2 | HSQLDB 1.8 / LibreOffice Base\n-- Controlli statici superati; questo script non è stato eseguito dall'app.\n-- Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.\n-- La partecipazione minima del proprietario in Contiene richiede un controllo aggiuntivo oltre a PK/FK.\n\nSET PROPERTY \"sql.enforce_strict_size\" TRUE;\n\nCREATE TABLE \"PUBLIC\".\"Privato\" (\n    \"CodiceFiscale\" VARCHAR(100) NOT NULL,\n    \"Cliente_IdCliente\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_b56fe2bcc0ed9774b30c3027\" PRIMARY KEY (\"Cliente_IdCliente\"),\n    CONSTRAINT \"UQ_1886ebf9157ffbc1b21b6618\" UNIQUE (\"CodiceFiscale\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Azienda\" (\n    \"PartitaIVA\" VARCHAR(100) NOT NULL,\n    \"Cliente_IdCliente\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_91970229ce5c0c93e1580e2a\" PRIMARY KEY (\"Cliente_IdCliente\"),\n    CONSTRAINT \"UQ_132cf3bd8cffe4d3d846ed4c\" UNIQUE (\"PartitaIVA\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Cliente\" (\n    \"IdCliente\" INTEGER NOT NULL,\n    \"Nome\" VARCHAR(100),\n    \"Attivo\" BOOLEAN,\n    CONSTRAINT \"PK_cb9153c67e056af65cad00a6\" PRIMARY KEY (\"IdCliente\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Ordine\" (\n    \"IdOrdine\" INTEGER NOT NULL,\n    \"DataOrdine\" DATE,\n    \"Cliente_IdCliente\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_aafb0463a7cdccbe2c377fa0\" PRIMARY KEY (\"IdOrdine\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Fattura\" (\n    \"NumeroFattura\" VARCHAR(100) NOT NULL,\n    \"DataEmissione\" DATE,\n    \"Ordine_IdOrdine\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_b7f1067a99adfddef490f2a4\" PRIMARY KEY (\"NumeroFattura\"),\n    CONSTRAINT \"UQ_91c1e5714a96c2df71292ff7\" UNIQUE (\"Ordine_IdOrdine\")\n);\n\nCREATE TABLE \"PUBLIC\".\"RigaOrdine\" (\n    \"NumeroRiga\" INTEGER NOT NULL,\n    \"Quantita\" INTEGER,\n    \"PrezzoUnitario\" DECIMAL(19,4),\n    \"Ordine_IdOrdine\" INTEGER NOT NULL,\n    \"Prodotto_IdProdotto\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_dfc6863533066f3cdbf76eb1\" PRIMARY KEY (\"NumeroRiga\", \"Ordine_IdOrdine\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Prodotto\" (\n    \"IdProdotto\" INTEGER NOT NULL,\n    \"Descrizione\" VARCHAR(100),\n    \"PesoKg\" DOUBLE,\n    CONSTRAINT \"PK_46266a4f62595197f7dbfd43\" PRIMARY KEY (\"IdProdotto\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Categoria\" (\n    \"IdCategoria\" INTEGER NOT NULL,\n    \"Denominazione\" VARCHAR(100),\n    \"superiore_IdCategoria\" INTEGER,\n    CONSTRAINT \"PK_65e72fe2392c0bcc84fb1a28\" PRIMARY KEY (\"IdCategoria\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Classificazione\" (\n    \"Prodotto_IdProdotto\" INTEGER NOT NULL,\n    \"Categoria_IdCategoria\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_63bff59b450b42e607e97b03\" PRIMARY KEY (\"Prodotto_IdProdotto\", \"Categoria_IdCategoria\")\n);\n\nALTER TABLE \"PUBLIC\".\"Privato\" ADD CONSTRAINT \"FK_b312c69a4a2eb8dd30b00e7f\" FOREIGN KEY (\"Cliente_IdCliente\") REFERENCES \"PUBLIC\".\"Cliente\" (\"IdCliente\");\n\nALTER TABLE \"PUBLIC\".\"Azienda\" ADD CONSTRAINT \"FK_ed9c86ed07ada9280a0c72b9\" FOREIGN KEY (\"Cliente_IdCliente\") REFERENCES \"PUBLIC\".\"Cliente\" (\"IdCliente\");\n\nALTER TABLE \"PUBLIC\".\"Ordine\" ADD CONSTRAINT \"FK_239d990ff80e9ac64c0fbc01\" FOREIGN KEY (\"Cliente_IdCliente\") REFERENCES \"PUBLIC\".\"Cliente\" (\"IdCliente\");\n\nALTER TABLE \"PUBLIC\".\"Fattura\" ADD CONSTRAINT \"FK_577f53b8eb39bc9483f47cbc\" FOREIGN KEY (\"Ordine_IdOrdine\") REFERENCES \"PUBLIC\".\"Ordine\" (\"IdOrdine\");\n\nALTER TABLE \"PUBLIC\".\"RigaOrdine\" ADD CONSTRAINT \"FK_18ee5e61c535696ab4910299\" FOREIGN KEY (\"Ordine_IdOrdine\") REFERENCES \"PUBLIC\".\"Ordine\" (\"IdOrdine\");\n\nALTER TABLE \"PUBLIC\".\"RigaOrdine\" ADD CONSTRAINT \"FK_64bf5908410e5b63c8b26d3f\" FOREIGN KEY (\"Prodotto_IdProdotto\") REFERENCES \"PUBLIC\".\"Prodotto\" (\"IdProdotto\");\n\nALTER TABLE \"PUBLIC\".\"Categoria\" ADD CONSTRAINT \"FK_b94657d59727eabf9f242be9\" FOREIGN KEY (\"superiore_IdCategoria\") REFERENCES \"PUBLIC\".\"Categoria\" (\"IdCategoria\");\n\nALTER TABLE \"PUBLIC\".\"Classificazione\" ADD CONSTRAINT \"FK_8092761fa66c211f43d0e954\" FOREIGN KEY (\"Prodotto_IdProdotto\") REFERENCES \"PUBLIC\".\"Prodotto\" (\"IdProdotto\");\n\nALTER TABLE \"PUBLIC\".\"Classificazione\" ADD CONSTRAINT \"FK_28a4ec14022a0e48009b5875\" FOREIGN KEY (\"Categoria_IdCategoria\") REFERENCES \"PUBLIC\".\"Categoria\" (\"IdCategoria\");\n",
+    "foreignKeys": {
+      "fk:06652b90c1d713a2d6990c383f5f0aab": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:6492d5b2a6a5356b1fd126c0b5eb50ff": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:79cf7b88c4b28190c551a1bde9420d5e": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:7d9b1e9e117f480e37474b8a6cadc6c3": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:b4f08b748fb5e5560cc2812ed767ab11": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:cb40b17fce6862850efea1b15ec142ce": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:d1082e0301e4f3de1a75dfb73e9aad93": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:dbba94ef157b228db436a48f381b3009": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:f437a614c0cca4ed4971a776148dc119": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      }
+    },
+    "generatedDigest": "d21410a9b3d78a3eec091f223cbd9bd569db1893179b1a4376f1ef6c7bd44485",
+    "generatedText": "-- Database Schema Studio 0.9.2 | HSQLDB 1.8 / LibreOffice Base\n-- Controlli statici superati; questo script non è stato eseguito dall'app.\n-- Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.\n-- La partecipazione minima del proprietario in Contiene richiede un controllo aggiuntivo oltre a PK/FK.\n\nSET PROPERTY \"sql.enforce_strict_size\" TRUE;\n\nCREATE TABLE \"PUBLIC\".\"Privato\" (\n    \"CodiceFiscale\" VARCHAR(100) NOT NULL,\n    \"Cliente_IdCliente\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_b56fe2bcc0ed9774b30c3027\" PRIMARY KEY (\"Cliente_IdCliente\"),\n    CONSTRAINT \"UQ_1886ebf9157ffbc1b21b6618\" UNIQUE (\"CodiceFiscale\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Azienda\" (\n    \"PartitaIVA\" VARCHAR(100) NOT NULL,\n    \"Cliente_IdCliente\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_91970229ce5c0c93e1580e2a\" PRIMARY KEY (\"Cliente_IdCliente\"),\n    CONSTRAINT \"UQ_132cf3bd8cffe4d3d846ed4c\" UNIQUE (\"PartitaIVA\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Cliente\" (\n    \"IdCliente\" INTEGER NOT NULL,\n    \"Nome\" VARCHAR(100),\n    \"Attivo\" BOOLEAN,\n    CONSTRAINT \"PK_cb9153c67e056af65cad00a6\" PRIMARY KEY (\"IdCliente\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Ordine\" (\n    \"IdOrdine\" INTEGER NOT NULL,\n    \"DataOrdine\" DATE,\n    \"Cliente_IdCliente\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_aafb0463a7cdccbe2c377fa0\" PRIMARY KEY (\"IdOrdine\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Fattura\" (\n    \"NumeroFattura\" VARCHAR(100) NOT NULL,\n    \"DataEmissione\" DATE,\n    \"Ordine_IdOrdine\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_b7f1067a99adfddef490f2a4\" PRIMARY KEY (\"NumeroFattura\"),\n    CONSTRAINT \"UQ_91c1e5714a96c2df71292ff7\" UNIQUE (\"Ordine_IdOrdine\")\n);\n\nCREATE TABLE \"PUBLIC\".\"RigaOrdine\" (\n    \"NumeroRiga\" INTEGER NOT NULL,\n    \"Quantita\" INTEGER,\n    \"PrezzoUnitario\" DECIMAL(19,4),\n    \"Ordine_IdOrdine\" INTEGER NOT NULL,\n    \"Prodotto_IdProdotto\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_dfc6863533066f3cdbf76eb1\" PRIMARY KEY (\"NumeroRiga\", \"Ordine_IdOrdine\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Prodotto\" (\n    \"IdProdotto\" INTEGER NOT NULL,\n    \"Descrizione\" VARCHAR(100),\n    \"PesoKg\" DOUBLE,\n    CONSTRAINT \"PK_46266a4f62595197f7dbfd43\" PRIMARY KEY (\"IdProdotto\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Categoria\" (\n    \"IdCategoria\" INTEGER NOT NULL,\n    \"Denominazione\" VARCHAR(100),\n    \"superiore_IdCategoria\" INTEGER,\n    CONSTRAINT \"PK_65e72fe2392c0bcc84fb1a28\" PRIMARY KEY (\"IdCategoria\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Classificazione\" (\n    \"Prodotto_IdProdotto\" INTEGER NOT NULL,\n    \"Categoria_IdCategoria\" INTEGER NOT NULL,\n    CONSTRAINT \"PK_63bff59b450b42e607e97b03\" PRIMARY KEY (\"Prodotto_IdProdotto\", \"Categoria_IdCategoria\")\n);\n\nALTER TABLE \"PUBLIC\".\"Privato\" ADD CONSTRAINT \"FK_b312c69a4a2eb8dd30b00e7f\" FOREIGN KEY (\"Cliente_IdCliente\") REFERENCES \"PUBLIC\".\"Cliente\" (\"IdCliente\");\n\nALTER TABLE \"PUBLIC\".\"Azienda\" ADD CONSTRAINT \"FK_ed9c86ed07ada9280a0c72b9\" FOREIGN KEY (\"Cliente_IdCliente\") REFERENCES \"PUBLIC\".\"Cliente\" (\"IdCliente\");\n\nALTER TABLE \"PUBLIC\".\"Ordine\" ADD CONSTRAINT \"FK_239d990ff80e9ac64c0fbc01\" FOREIGN KEY (\"Cliente_IdCliente\") REFERENCES \"PUBLIC\".\"Cliente\" (\"IdCliente\");\n\nALTER TABLE \"PUBLIC\".\"Fattura\" ADD CONSTRAINT \"FK_577f53b8eb39bc9483f47cbc\" FOREIGN KEY (\"Ordine_IdOrdine\") REFERENCES \"PUBLIC\".\"Ordine\" (\"IdOrdine\");\n\nALTER TABLE \"PUBLIC\".\"RigaOrdine\" ADD CONSTRAINT \"FK_18ee5e61c535696ab4910299\" FOREIGN KEY (\"Ordine_IdOrdine\") REFERENCES \"PUBLIC\".\"Ordine\" (\"IdOrdine\");\n\nALTER TABLE \"PUBLIC\".\"RigaOrdine\" ADD CONSTRAINT \"FK_64bf5908410e5b63c8b26d3f\" FOREIGN KEY (\"Prodotto_IdProdotto\") REFERENCES \"PUBLIC\".\"Prodotto\" (\"IdProdotto\");\n\nALTER TABLE \"PUBLIC\".\"Categoria\" ADD CONSTRAINT \"FK_b94657d59727eabf9f242be9\" FOREIGN KEY (\"superiore_IdCategoria\") REFERENCES \"PUBLIC\".\"Categoria\" (\"IdCategoria\");\n\nALTER TABLE \"PUBLIC\".\"Classificazione\" ADD CONSTRAINT \"FK_8092761fa66c211f43d0e954\" FOREIGN KEY (\"Prodotto_IdProdotto\") REFERENCES \"PUBLIC\".\"Prodotto\" (\"IdProdotto\");\n\nALTER TABLE \"PUBLIC\".\"Classificazione\" ADD CONSTRAINT \"FK_28a4ec14022a0e48009b5875\" FOREIGN KEY (\"Categoria_IdCategoria\") REFERENCES \"PUBLIC\".\"Categoria\" (\"IdCategoria\");\n",
+    "profile": "hsqldb-1.8",
+    "schema": "PUBLIC",
+    "strictSize": true,
+    "tables": {
+      "table:073636289f486a0b138bbd3ad2ac0314": "Privato",
+      "table:63fff987fb75c7bd2eddce81c9a03179": "Prodotto",
+      "table:67a72da2de34aed8ed92d65782d1ac52": "Ordine",
+      "table:8c9d32a9eb24490e90b2521109246030": "RigaOrdine",
+      "table:a472ef2e2f5ffb15ec9664f59c99bd64": "Cliente",
+      "table:bb584316d80ff07f058b75eda955cf86": "Categoria",
+      "table:d34ad779e2859a40e9ab7a11b3257952": "Classificazione",
+      "table:d43b6f32ca76865d7eedb51aca47f0ff": "Fattura",
+      "table:fc83d33198e21ab6839cb2ffc107ce30": "Azienda"
+    },
+    "version": 1
+  },
+  "version": 5,
+  "notes": [
+    {
+      "id": "note-example-shop",
+      "text": "Un negozio e i suoi clienti\nIl negozio vende prodotti a clienti privati e aziende. I clienti effettuano ordini; ogni riga di un ordine riguarda un prodotto. Un ordine può avere una fattura. I prodotti sono raggruppati in categorie, che possono contenere altre categorie.\nOsserva Cliente e le sue sottoclassi Privato e Azienda, poi confronta l’associazione fra ordine e fattura con quella fra prodotti e categorie. RigaOrdine dipende dall’ordine anche per essere identificata.\nPassando al logico puoi seguire la trasformazione di queste strutture in tabelle e collegamenti. Il codice SQL è configurato per HSQLDB. Il riepilogo segnala le regole che richiedono altri controlli, come la presenza di righe negli ordini.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        600.0,
+        1620
+      ],
+      "uml": [
+        375.0,
+        1149.0
+      ],
+      "logical": [
+        600.0,
+        1659.0
+      ]
+    }
+  ]
+}

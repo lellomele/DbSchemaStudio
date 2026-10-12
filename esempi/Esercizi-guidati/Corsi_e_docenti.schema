@@ -1,0 +1,138 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "corso",
+      "kind": "entity",
+      "name": "Corso",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        200,
+        280
+      ],
+      "uml": [
+        200,
+        280
+      ]
+    },
+    {
+      "id": "corso_id",
+      "kind": "attribute",
+      "name": "CodiceCorso",
+      "owner": "corso",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        200,
+        130
+      ],
+      "uml": [
+        200,
+        130
+      ]
+    },
+    {
+      "id": "docente",
+      "kind": "entity",
+      "name": "Docente",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        950,
+        280
+      ],
+      "uml": [
+        950,
+        280
+      ]
+    },
+    {
+      "id": "docente_id",
+      "kind": "attribute",
+      "name": "IdDocente",
+      "owner": "docente",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        950,
+        130
+      ],
+      "uml": [
+        950,
+        130
+      ]
+    },
+    {
+      "id": "associazione",
+      "kind": "relation",
+      "name": "Insegnamento",
+      "owner": "",
+      "a": "corso",
+      "b": "docente",
+      "roleA": "corso",
+      "roleB": "docente",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        575,
+        280
+      ],
+      "uml": [
+        575,
+        280
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Corsi_e_docenti",
+      "text": "Corsi e docenti\nOgni corso universitario è tenuto da un solo docente. Un docente può insegnare in più corsi; ammettiamo anche di registrare docenti ai quali non è stato ancora assegnato un corso.\nLa partecipazione di Corso è obbligatoria e singola (1,1). Quella di Docente è facoltativa e può ripetersi (0,N).\nPassando al logico, osserva il riferimento al docente nella tabella Corso. Deve essere compilato per ogni corso. Se consideri soltanto docenti già incaricati, imposta (1,N) per Docente: il riepilogo ti ricorda che la presenza di almeno un corso per ciascun docente richiede un altro controllo.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        575.0,
+        540
+      ],
+      "uml": [
+        575.0,
+        549.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

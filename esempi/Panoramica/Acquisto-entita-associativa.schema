@@ -1,0 +1,713 @@
+{
+  "format": "SchemaStudio",
+  "logical": {
+    "isaStrategy": "joined",
+    "messages": [
+      {
+        "en": "Persona → table; identifier → PK.",
+        "it": "Persona → tabella; identificatore → PK.",
+        "source": "persona",
+        "warning": false
+      },
+      {
+        "en": "Acquisto → table; identifier → PK.",
+        "it": "Acquisto → tabella; identificatore → PK.",
+        "source": "acquisto",
+        "warning": false
+      },
+      {
+        "en": "ModelloAuto → table; identifier → PK.",
+        "it": "ModelloAuto → tabella; identificatore → PK.",
+        "source": "modello",
+        "warning": false
+      },
+      {
+        "en": "Effettua: FK in Acquisto referencing Persona (1:N).",
+        "it": "Effettua: FK in Acquisto verso Persona (1:N).",
+        "source": "effettua",
+        "warning": false
+      },
+      {
+        "en": "Riguarda: FK in Acquisto referencing ModelloAuto (1:N).",
+        "it": "Riguarda: FK in Acquisto verso ModelloAuto (1:N).",
+        "source": "riguarda",
+        "warning": false
+      }
+    ],
+    "oneToOne": {},
+    "sourceDigest": "7089caae1d19b85f33ee7ebf5c08bd0322c1250c07a86550c86904ba09b87382",
+    "tables": [
+      {
+        "autoName": "Persona",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceFiscale",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:1d8b9f4b89b49ba045d28e32614fe9c0",
+            "name": "CodiceFiscale",
+            "nullable": false,
+            "pk": true,
+            "source": "cf",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Nome",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:acd4240e8f2d56e8ae8f8a0660b36087",
+            "name": "Nome",
+            "nullable": true,
+            "pk": false,
+            "source": "nome",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:3d6968576462a2a4d3c70422841fe073",
+        "name": "Persona",
+        "position": [
+          0,
+          320
+        ],
+        "source": "persona",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "Acquisto",
+        "columns": [
+          {
+            "autoDataType": "integer",
+            "autoName": "IdAcquisto",
+            "autoNullable": false,
+            "dataType": "integer",
+            "generated": false,
+            "id": "column:7cb151dc3015cb985c234af7af5cd9b9",
+            "name": "IdAcquisto",
+            "nullable": false,
+            "pk": true,
+            "source": "idacquisto",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "date",
+            "autoName": "DataAcquisto",
+            "autoNullable": true,
+            "dataType": "date",
+            "generated": false,
+            "id": "column:4a9fe67b5b4a809ed5bdbd5aa545f1e3",
+            "name": "DataAcquisto",
+            "nullable": true,
+            "pk": false,
+            "source": "data",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "money",
+            "autoName": "PrezzoAcquisto",
+            "autoNullable": true,
+            "dataType": "money",
+            "generated": false,
+            "id": "column:ebbe6276a1f1f0de9b1f5816b2cd52a4",
+            "name": "PrezzoAcquisto",
+            "nullable": true,
+            "pk": false,
+            "source": "prezzo",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Targa",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:4979ef5c96db11879de2a14aafdb0458",
+            "name": "Targa",
+            "nullable": true,
+            "pk": false,
+            "source": "targa",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Persona_CodiceFiscale",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:811663b07d921836daf4a98b3cb15167",
+            "name": "Persona_CodiceFiscale",
+            "nullable": false,
+            "pk": false,
+            "source": "effettua",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "ModelloAuto_CodiceModello",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": true,
+            "id": "column:d8db620acdbba6525823aa526a36cec8",
+            "name": "ModelloAuto_CodiceModello",
+            "nullable": false,
+            "pk": false,
+            "source": "riguarda",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columns": [
+              "column:811663b07d921836daf4a98b3cb15167"
+            ],
+            "id": "fk:7d9b1e9e117f480e37474b8a6cadc6c3",
+            "source": "effettua",
+            "target": "table:3d6968576462a2a4d3c70422841fe073",
+            "targetColumns": [
+              "column:1d8b9f4b89b49ba045d28e32614fe9c0"
+            ]
+          },
+          {
+            "columns": [
+              "column:d8db620acdbba6525823aa526a36cec8"
+            ],
+            "id": "fk:fec8d48d86598715264f651f7f70dd6c",
+            "source": "riguarda",
+            "target": "table:f07e0b6fcfce60182bb1b9052251ce64",
+            "targetColumns": [
+              "column:93ab332a5548a4729babc972901122e7"
+            ]
+          }
+        ],
+        "id": "table:e902153c68f2736678bc1d8980be6f96",
+        "name": "Acquisto",
+        "position": [
+          1120,
+          320
+        ],
+        "source": "acquisto",
+        "uniqueKeys": []
+      },
+      {
+        "autoName": "ModelloAuto",
+        "columns": [
+          {
+            "autoDataType": "string",
+            "autoName": "CodiceModello",
+            "autoNullable": false,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:93ab332a5548a4729babc972901122e7",
+            "name": "CodiceModello",
+            "nullable": false,
+            "pk": true,
+            "source": "codice",
+            "typeOverride": false
+          },
+          {
+            "autoDataType": "string",
+            "autoName": "Descrizione",
+            "autoNullable": true,
+            "dataType": "string",
+            "generated": false,
+            "id": "column:474b818afdd7082c87c7bd04c41f6e8e",
+            "name": "Descrizione",
+            "nullable": true,
+            "pk": false,
+            "source": "descrizione",
+            "typeOverride": false
+          }
+        ],
+        "foreignKeys": [],
+        "id": "table:f07e0b6fcfce60182bb1b9052251ce64",
+        "name": "ModelloAuto",
+        "position": [
+          2320,
+          320
+        ],
+        "source": "modello",
+        "uniqueKeys": []
+      }
+    ],
+    "version": 2
+  },
+  "objects": [
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        320
+      ],
+      "id": "persona",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Persona",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        200
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -235,
+        145
+      ],
+      "dataType": "string",
+      "id": "cf",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceFiscale",
+      "owner": "persona",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        145
+      ],
+      "dataType": "string",
+      "id": "nome",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nome",
+      "owner": "persona",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1120,
+        320
+      ],
+      "id": "acquisto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Acquisto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        700,
+        200
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        885,
+        145
+      ],
+      "dataType": "integer",
+      "id": "idacquisto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "IdAcquisto",
+      "owner": "acquisto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1120,
+        145
+      ],
+      "dataType": "date",
+      "id": "data",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "DataAcquisto",
+      "owner": "acquisto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1355,
+        145
+      ],
+      "dataType": "money",
+      "id": "prezzo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "PrezzoAcquisto",
+      "owner": "acquisto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1590,
+        145
+      ],
+      "dataType": "string",
+      "id": "targa",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Targa",
+      "owner": "acquisto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2320,
+        320
+      ],
+      "id": "modello",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "ModelloAuto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1450,
+        200
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2085,
+        145
+      ],
+      "dataType": "string",
+      "id": "codice",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceModello",
+      "owner": "modello",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2320,
+        145
+      ],
+      "dataType": "string",
+      "id": "descrizione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Descrizione",
+      "owner": "modello",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "persona",
+      "b": "acquisto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        544,
+        320
+      ],
+      "id": "effettua",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Effettua",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        340,
+        200
+      ]
+    },
+    {
+      "a": "acquisto",
+      "b": "modello",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "chen": [
+        1728,
+        320
+      ],
+      "id": "riguarda",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Riguarda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1080,
+        200
+      ]
+    }
+  ],
+  "physical": {
+    "columns": {
+      "column:1d8b9f4b89b49ba045d28e32614fe9c0": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "CodiceFiscale",
+        "name": "CodiceFiscale",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:474b818afdd7082c87c7bd04c41f6e8e": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Descrizione",
+        "name": "Descrizione",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:4979ef5c96db11879de2a14aafdb0458": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Targa",
+        "name": "Targa",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:4a9fe67b5b4a809ed5bdbd5aa545f1e3": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "DataAcquisto",
+        "name": "DataAcquisto",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "date",
+        "start": 1,
+        "type": "DATE"
+      },
+      "column:7cb151dc3015cb985c234af7af5cd9b9": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "IdAcquisto",
+        "name": "IdAcquisto",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "integer",
+        "start": 1,
+        "type": "INTEGER"
+      },
+      "column:811663b07d921836daf4a98b3cb15167": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Persona_CodiceFiscale",
+        "name": "Persona_CodiceFiscale",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:93ab332a5548a4729babc972901122e7": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "CodiceModello",
+        "name": "CodiceModello",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:acd4240e8f2d56e8ae8f8a0660b36087": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "Nome",
+        "name": "Nome",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:d8db620acdbba6525823aa526a36cec8": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "ModelloAuto_CodiceModello",
+        "name": "ModelloAuto_CodiceModello",
+        "precision": 12,
+        "scale": 2,
+        "sourceType": "string",
+        "start": 1,
+        "type": "VARCHAR"
+      },
+      "column:ebbe6276a1f1f0de9b1f5816b2cd52a4": {
+        "defaultMode": "none",
+        "defaultValue": "",
+        "identity": false,
+        "length": 100,
+        "logicalName": "PrezzoAcquisto",
+        "name": "PrezzoAcquisto",
+        "precision": 19,
+        "scale": 4,
+        "sourceType": "money",
+        "start": 1,
+        "type": "DECIMAL"
+      }
+    },
+    "draft": "-- Database Schema Studio 0.9.2 | HSQLDB 1.8 / LibreOffice Base\n-- Controlli statici superati; questo script non è stato eseguito dall'app.\n-- Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.\n\nSET PROPERTY \"sql.enforce_strict_size\" TRUE;\n\nCREATE TABLE \"PUBLIC\".\"Persona\" (\n    \"CodiceFiscale\" VARCHAR(100) NOT NULL,\n    \"Nome\" VARCHAR(100),\n    CONSTRAINT \"PK_3920a7a08519d7a14df8bdda\" PRIMARY KEY (\"CodiceFiscale\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Acquisto\" (\n    \"IdAcquisto\" INTEGER NOT NULL,\n    \"DataAcquisto\" DATE,\n    \"PrezzoAcquisto\" DECIMAL(19,4),\n    \"Targa\" VARCHAR(100),\n    \"Persona_CodiceFiscale\" VARCHAR(100) NOT NULL,\n    \"ModelloAuto_CodiceModello\" VARCHAR(100) NOT NULL,\n    CONSTRAINT \"PK_127344c1c9d7edd3cb4bc74c\" PRIMARY KEY (\"IdAcquisto\")\n);\n\nCREATE TABLE \"PUBLIC\".\"ModelloAuto\" (\n    \"CodiceModello\" VARCHAR(100) NOT NULL,\n    \"Descrizione\" VARCHAR(100),\n    CONSTRAINT \"PK_422e2853ca2d706ec166ee35\" PRIMARY KEY (\"CodiceModello\")\n);\n\nALTER TABLE \"PUBLIC\".\"Acquisto\" ADD CONSTRAINT \"FK_239d990ff80e9ac64c0fbc01\" FOREIGN KEY (\"Persona_CodiceFiscale\") REFERENCES \"PUBLIC\".\"Persona\" (\"CodiceFiscale\");\n\nALTER TABLE \"PUBLIC\".\"Acquisto\" ADD CONSTRAINT \"FK_30939578e3c1c878c9252427\" FOREIGN KEY (\"ModelloAuto_CodiceModello\") REFERENCES \"PUBLIC\".\"ModelloAuto\" (\"CodiceModello\");\n",
+    "foreignKeys": {
+      "fk:7d9b1e9e117f480e37474b8a6cadc6c3": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      },
+      "fk:fec8d48d86598715264f651f7f70dd6c": {
+        "delete": "NO ACTION",
+        "update": "NO ACTION"
+      }
+    },
+    "generatedDigest": "06c4270ba6fbc82f18bcb7fbd8ce52442399a240f95dadc83029c679d32c342f",
+    "generatedText": "-- Database Schema Studio 0.9.2 | HSQLDB 1.8 / LibreOffice Base\n-- Controlli statici superati; questo script non è stato eseguito dall'app.\n-- Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.\n\nSET PROPERTY \"sql.enforce_strict_size\" TRUE;\n\nCREATE TABLE \"PUBLIC\".\"Persona\" (\n    \"CodiceFiscale\" VARCHAR(100) NOT NULL,\n    \"Nome\" VARCHAR(100),\n    CONSTRAINT \"PK_3920a7a08519d7a14df8bdda\" PRIMARY KEY (\"CodiceFiscale\")\n);\n\nCREATE TABLE \"PUBLIC\".\"Acquisto\" (\n    \"IdAcquisto\" INTEGER NOT NULL,\n    \"DataAcquisto\" DATE,\n    \"PrezzoAcquisto\" DECIMAL(19,4),\n    \"Targa\" VARCHAR(100),\n    \"Persona_CodiceFiscale\" VARCHAR(100) NOT NULL,\n    \"ModelloAuto_CodiceModello\" VARCHAR(100) NOT NULL,\n    CONSTRAINT \"PK_127344c1c9d7edd3cb4bc74c\" PRIMARY KEY (\"IdAcquisto\")\n);\n\nCREATE TABLE \"PUBLIC\".\"ModelloAuto\" (\n    \"CodiceModello\" VARCHAR(100) NOT NULL,\n    \"Descrizione\" VARCHAR(100),\n    CONSTRAINT \"PK_422e2853ca2d706ec166ee35\" PRIMARY KEY (\"CodiceModello\")\n);\n\nALTER TABLE \"PUBLIC\".\"Acquisto\" ADD CONSTRAINT \"FK_239d990ff80e9ac64c0fbc01\" FOREIGN KEY (\"Persona_CodiceFiscale\") REFERENCES \"PUBLIC\".\"Persona\" (\"CodiceFiscale\");\n\nALTER TABLE \"PUBLIC\".\"Acquisto\" ADD CONSTRAINT \"FK_30939578e3c1c878c9252427\" FOREIGN KEY (\"ModelloAuto_CodiceModello\") REFERENCES \"PUBLIC\".\"ModelloAuto\" (\"CodiceModello\");\n",
+    "profile": "hsqldb-1.8",
+    "schema": "PUBLIC",
+    "strictSize": true,
+    "tables": {
+      "table:3d6968576462a2a4d3c70422841fe073": "Persona",
+      "table:e902153c68f2736678bc1d8980be6f96": "Acquisto",
+      "table:f07e0b6fcfce60182bb1b9052251ce64": "ModelloAuto"
+    },
+    "version": 1
+  },
+  "version": 5,
+  "notes": [
+    {
+      "id": "note-example-purchase",
+      "text": "Gli acquisti di automobili\nUna persona può acquistare più automobili, anche dello stesso modello in momenti diversi. Ogni acquisto riguarda una persona e un modello di automobile. DataAcquisto, PrezzoAcquisto e Targa descrivono quel particolare acquisto.\nQueste informazioni appartengono all’entità Acquisto: il prezzo pagato, per esempio, può cambiare da una vendita all’altra anche quando il modello è lo stesso. IdAcquisto permette di distinguere ogni operazione.\nNel logico, la tabella Acquisto contiene i riferimenti alla persona e al modello. PrezzoAcquisto ha tipo Valuta: nel codice SQL diventa DECIMAL(19,4), adatto a conservare importi con quattro cifre decimali.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        1160.0,
+        580
+      ],
+      "uml": [
+        725.0,
+        514.0
+      ],
+      "logical": [
+        1160.0,
+        634.0
+      ]
+    }
+  ]
+}

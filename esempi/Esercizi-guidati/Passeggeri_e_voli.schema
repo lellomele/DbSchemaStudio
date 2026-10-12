@@ -1,0 +1,138 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "passeggero",
+      "kind": "entity",
+      "name": "Passeggero",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        200,
+        280
+      ],
+      "uml": [
+        200,
+        280
+      ]
+    },
+    {
+      "id": "passeggero_id",
+      "kind": "attribute",
+      "name": "IdPasseggero",
+      "owner": "passeggero",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        200,
+        130
+      ],
+      "uml": [
+        200,
+        130
+      ]
+    },
+    {
+      "id": "volo",
+      "kind": "entity",
+      "name": "Volo",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        950,
+        280
+      ],
+      "uml": [
+        950,
+        280
+      ]
+    },
+    {
+      "id": "volo_id",
+      "kind": "attribute",
+      "name": "IdVolo",
+      "owner": "volo",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        950,
+        130
+      ],
+      "uml": [
+        950,
+        130
+      ]
+    },
+    {
+      "id": "associazione",
+      "kind": "relation",
+      "name": "Viaggia",
+      "owner": "",
+      "a": "passeggero",
+      "b": "volo",
+      "roleA": "passeggero",
+      "roleB": "volo",
+      "cardA": "1,N",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        575,
+        280
+      ],
+      "uml": [
+        575,
+        280
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Passeggeri_e_voli",
+      "text": "Passeggeri e voli\nUn passeggero viaggia su uno o più voli. Uno stesso volo può essere scelto da più passeggeri, ma può anche non avere ancora prenotazioni. In questo esempio, un volo è una singola partenza, con una propria data, e non una rotta generica.\nIl passeggero partecipa ad almeno un volo (1,N); il volo può avere zero o più passeggeri (0,N). L’associazione è quindi molti a molti.\nGenera il logico e osserva la tabella che raccoglie gli abbinamenti fra passeggeri e voli. Le chiavi esterne controllano che i riferimenti siano validi; per verificare che ogni passeggero abbia almeno un volo occorre un controllo ulteriore.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        575.0,
+        540
+      ],
+      "uml": [
+        575.0,
+        549.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

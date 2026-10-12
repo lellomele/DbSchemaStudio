@@ -1,0 +1,94 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "persona",
+      "kind": "entity",
+      "name": "Persona",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        400,
+        300
+      ],
+      "uml": [
+        400,
+        300
+      ]
+    },
+    {
+      "id": "persona_id",
+      "kind": "attribute",
+      "name": "IdPersona",
+      "owner": "persona",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        175,
+        300
+      ],
+      "uml": [
+        175,
+        300
+      ]
+    },
+    {
+      "id": "filiazione",
+      "kind": "relation",
+      "name": "Filiazione",
+      "owner": "",
+      "a": "persona",
+      "b": "persona",
+      "roleA": "figlio",
+      "roleB": "genitore",
+      "cardA": "1,N",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        780,
+        300
+      ],
+      "uml": [
+        780,
+        300
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Persone_e_genitori",
+      "text": "Persone e genitori\nUna persona può essere figlia di altre persone e, a sua volta, avere figli. Per descrivere questi legami colleghiamo Persona a se stessa, distinguendo i ruoli figlio e genitore.\nNel ruolo di figlio ogni persona ha uno o più genitori (1,N); nel ruolo di genitore può avere zero o più figli (0,N). Il diagramma non fissa il numero esatto dei genitori.\nNel logico compare una tabella che registra le coppie figlio-genitore. Per usare il modello con dati reali bisogna decidere come trattare i genitori non presenti nell’archivio. Servono inoltre controlli per impedire che una persona sia genitore di se stessa o che una catena di legami torni alla persona di partenza.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        400.0,
+        560
+      ],
+      "uml": [
+        400.0,
+        569.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

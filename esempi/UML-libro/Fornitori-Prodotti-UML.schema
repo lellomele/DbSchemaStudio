@@ -1,0 +1,271 @@
+{
+  "format": "SchemaStudio",
+  "objects": [
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        150,
+        300
+      ],
+      "id": "fornitore",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Fornitore",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        170,
+        168
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        850,
+        300
+      ],
+      "id": "prodotto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Prodotto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        740,
+        138
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -90,
+        110
+      ],
+      "id": "codfornitore",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodFornitore",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        150,
+        100
+      ],
+      "id": "nominativo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nominativo",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        380,
+        100
+      ],
+      "id": "via",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Via",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -80,
+        490
+      ],
+      "id": "citta",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Citta",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        160,
+        500
+      ],
+      "id": "cap",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "CAP",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        670,
+        100
+      ],
+      "id": "codprodotto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodProdotto",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        900,
+        100
+      ],
+      "id": "descrizione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Descrizione",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1120,
+        260
+      ],
+      "dataType": "money",
+      "id": "prezzo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Prezzo",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        0
+      ]
+    },
+    {
+      "a": "fornitore",
+      "b": "prodotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        500,
+        300
+      ],
+      "id": "fornire",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Fornire",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        450,
+        90
+      ]
+    }
+  ],
+  "version": 5,
+  "notes": [
+    {
+      "id": "note-example-suppliers",
+      "text": "Fornitori e prodotti\nUn fornitore può fornire più prodotti, mentre ogni prodotto viene fornito da un solo fornitore. Ammettiamo di registrare un fornitore anche prima di aver inserito i suoi prodotti: la sua partecipazione è quindi facoltativa.\nNella vista UML-like, la zampa di gallina accanto a Prodotto indica che i prodotti possono essere molti. Il tratteggio vicino a Fornitore indica che un fornitore può non avere ancora prodotti collegati.\nGenera il logico e cerca nella tabella Prodotto la colonna che rimanda al fornitore. Se vuoi ammettere soltanto fornitori con almeno un prodotto, modifica la cardinalità e leggi nel riepilogo quale ulteriore controllo serve.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        500.0,
+        760
+      ],
+      "uml": [
+        455.0,
+        497.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

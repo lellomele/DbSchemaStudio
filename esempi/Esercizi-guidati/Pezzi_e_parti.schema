@@ -1,0 +1,94 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "pezzo",
+      "kind": "entity",
+      "name": "Pezzo",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        400,
+        300
+      ],
+      "uml": [
+        400,
+        300
+      ]
+    },
+    {
+      "id": "pezzo_id",
+      "kind": "attribute",
+      "name": "CodicePezzo",
+      "owner": "pezzo",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        175,
+        300
+      ],
+      "uml": [
+        175,
+        300
+      ]
+    },
+    {
+      "id": "composizione",
+      "kind": "relation",
+      "name": "Composizione",
+      "owner": "",
+      "a": "pezzo",
+      "b": "pezzo",
+      "roleA": "composto",
+      "roleB": "componente",
+      "cardA": "1,N",
+      "cardB": "1,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        780,
+        300
+      ],
+      "uml": [
+        780,
+        300
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Pezzi_e_parti",
+      "text": "I pezzi e le parti di un prodotto\nUn pezzo è composto da altri pezzi, usati come parti. La stessa entità Pezzo compare quindi nei ruoli composto e componente. Seguendo la frase dell’esercizio, entrambi i ruoli hanno cardinalità (1,N).\nQuesta lettura comporta una conseguenza: ogni pezzo deve avere componenti ed essere componente di un altro pezzo. In un archivio finito si finisce così per tornare a un pezzo già incontrato.\nPer descrivere un prodotto reale occorre ammettere anche pezzi elementari, senza componenti, e prodotti finali, non contenuti in altri pezzi. Prova a usare (0,N) e discuti come evitare i cicli. Per registrare la quantità di ogni componente, puoi introdurre un’entità associativa.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        400.0,
+        560
+      ],
+      "uml": [
+        400.0,
+        569.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

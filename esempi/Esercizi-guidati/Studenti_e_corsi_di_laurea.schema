@@ -1,0 +1,138 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "studente",
+      "kind": "entity",
+      "name": "Studente",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        200,
+        280
+      ],
+      "uml": [
+        200,
+        280
+      ]
+    },
+    {
+      "id": "studente_id",
+      "kind": "attribute",
+      "name": "Matricola",
+      "owner": "studente",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        200,
+        130
+      ],
+      "uml": [
+        200,
+        130
+      ]
+    },
+    {
+      "id": "laurea",
+      "kind": "entity",
+      "name": "CorsoLaurea",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        950,
+        280
+      ],
+      "uml": [
+        950,
+        280
+      ]
+    },
+    {
+      "id": "laurea_id",
+      "kind": "attribute",
+      "name": "CodiceCorsoLaurea",
+      "owner": "laurea",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        950,
+        130
+      ],
+      "uml": [
+        950,
+        130
+      ]
+    },
+    {
+      "id": "associazione",
+      "kind": "relation",
+      "name": "Iscrizione",
+      "owner": "",
+      "a": "studente",
+      "b": "laurea",
+      "roleA": "studente",
+      "roleB": "corso di laurea",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        575,
+        280
+      ],
+      "uml": [
+        575,
+        280
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Studenti_e_corsi_di_laurea",
+      "text": "Studenti e corsi di laurea\nOgni studente deve essere iscritto a un solo corso di laurea. Un corso può accogliere più studenti; in questo esempio può anche essere registrato prima di ricevere iscrizioni.\nLo studente partecipa all’associazione una sola volta e obbligatoriamente (1,1). Il corso di laurea può partecipare zero o più volte (0,N).\nQuando generi il logico, cerca nella tabella Studente il riferimento al corso di laurea: per ogni studente quel valore è obbligatorio. Se vuoi descrivere soltanto corsi che hanno già iscritti, puoi cambiare il minimo del corso da zero a uno e discutere come verificare questa regola.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        575.0,
+        540
+      ],
+      "uml": [
+        575.0,
+        549.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2366 @@
+{
+  "format": "SchemaStudio",
+  "objects": [
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        -1663.2
+      ],
+      "id": "soggetto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Soggetto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -1100
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        -1850.4
+      ],
+      "dataType": "string",
+      "id": "soggetto_Paese",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Paese",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2120,
+        -1100
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3508.8,
+        -1501.1
+      ],
+      "dataType": "integer",
+      "id": "soggetto_Numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Numero",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -890
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3748.8,
+        -1501.1
+      ],
+      "dataType": "string",
+      "id": "soggetto_Denominazione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Denominazione",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2680,
+        -1100
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3798.5,
+        -1795.6
+      ],
+      "dataType": "string",
+      "id": "soggetto_Email",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Email",
+      "owner": "soggetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -1310
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1965.6,
+        -2268
+      ],
+      "id": "cliente",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Cliente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1300,
+        -1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1965.6,
+        -2455.2
+      ],
+      "dataType": "string",
+      "id": "cliente_CodiceCliente",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceCliente",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1020,
+        -1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1965.6,
+        -2080.8
+      ],
+      "dataType": "date",
+      "id": "cliente_IscrittoDal",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "IscrittoDal",
+      "owner": "cliente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1580,
+        -1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -453.6,
+        -2872.8
+      ],
+      "id": "azienda",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "ClienteAzienda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -300,
+        -1900
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -453.6,
+        -3060
+      ],
+      "dataType": "string",
+      "id": "azienda_PartitaIVA",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "PartitaIVA",
+      "owner": "azienda",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -20,
+        -1900
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        0
+      ],
+      "id": "dipendente",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Dipendente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        187.2
+      ],
+      "dataType": "string",
+      "id": "dipendente_Matricola",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Matricola",
+      "owner": "dipendente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2120,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3748.8,
+        -162.1
+      ],
+      "dataType": "date",
+      "id": "dipendente_AssuntoDal",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "AssuntoDal",
+      "owner": "dipendente",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2680,
+        2.5716733430269922e-14
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3024,
+        2268
+      ],
+      "id": "fornitore",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Fornitore",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2000,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3024,
+        2455.2
+      ],
+      "dataType": "string",
+      "id": "fornitore_CodiceFornitore",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceFornitore",
+      "owner": "fornitore",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1720,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -5140.8,
+        0
+      ],
+      "id": "badge",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Badge",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3400,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -5140.8,
+        187.2
+      ],
+      "dataType": "string",
+      "id": "badge_NumeroBadge",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroBadge",
+      "owner": "badge",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3120,
+        0
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -5140.8,
+        -187.2
+      ],
+      "dataType": "boolean",
+      "id": "badge_Attivo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Attivo",
+      "owner": "badge",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3540,
+        181.86533479473212
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -4971.1,
+        -132.4
+      ],
+      "dataType": "date",
+      "id": "badge_Scadenza",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Scadenza",
+      "owner": "badge",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -3540,
+        -181.86533479473206
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1814.4,
+        2268
+      ],
+      "id": "prodotto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Prodotto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1200,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1694.4,
+        2430.1
+      ],
+      "dataType": "string",
+      "id": "prodotto_CodiceProdotto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceProdotto",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1480,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1934.4,
+        2430.1
+      ],
+      "dataType": "string",
+      "id": "prodotto_Descrizione",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Descrizione",
+      "owner": "prodotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        920,
+        1500
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        378,
+        2721.6
+      ],
+      "id": "bene",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Bene",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        250,
+        1800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        378,
+        2534.4
+      ],
+      "dataType": "real",
+      "id": "bene_Peso",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Peso",
+      "owner": "bene",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        530,
+        1800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3175.2,
+        2419.2
+      ],
+      "id": "servizio",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Servizio",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2100,
+        1600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3175.2,
+        2606.4
+      ],
+      "dataType": "real",
+      "id": "servizio_DurataOre",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "DurataOre",
+      "owner": "servizio",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2380,
+        1600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        3402
+      ],
+      "id": "categoria",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Categoria",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1250,
+        2250
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        3589.2
+      ],
+      "dataType": "string",
+      "id": "categoria_CodiceCategoria",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceCategoria",
+      "owner": "categoria",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1530,
+        2250
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2010,
+        3239.9
+      ],
+      "dataType": "string",
+      "id": "categoria_Nome",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nome",
+      "owner": "categoria",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        970,
+        2250
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        680.4
+      ],
+      "id": "ordine",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Ordine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        0,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        0,
+        867.6
+      ],
+      "dataType": "integer",
+      "id": "ordine_Anno",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Anno",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        280,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -169.7,
+        812.8
+      ],
+      "dataType": "integer",
+      "id": "ordine_Numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Numero",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1.7144488953513282e-14,
+        660
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        169.7,
+        812.8
+      ],
+      "dataType": "date",
+      "id": "ordine_Data",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Data",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -280,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -231.8,
+        728.9
+      ],
+      "dataType": "boolean",
+      "id": "ordine_Confermato",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Confermato",
+      "owner": "ordine",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -5.1433466860539845e-14,
+        240
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        680.4
+      ],
+      "id": "riga",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "RigaOrdine",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1250,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        493.2
+      ],
+      "dataType": "integer",
+      "id": "riga_NumeroRiga",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroRiga",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1530,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2010,
+        842.5
+      ],
+      "dataType": "real",
+      "id": "riga_Quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1110,
+        631.8653347947321
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1770,
+        842.5
+      ],
+      "dataType": "real",
+      "id": "riga_PrezzoUnitario",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "PrezzoUnitario",
+      "owner": "riga",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1110,
+        268.13466520526794
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        680.4
+      ],
+      "id": "tranche",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "TrancheRiga",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2400,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        867.6
+      ],
+      "dataType": "integer",
+      "id": "tranche_NumeroTranche",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroTranche",
+      "owner": "tranche",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2680,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        493.2
+      ],
+      "dataType": "real",
+      "id": "tranche_Quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "tranche",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2120,
+        450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        2041.2
+      ],
+      "id": "spedizione",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Spedizione",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3250,
+        1350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        1854
+      ],
+      "dataType": "string",
+      "id": "spedizione_CodiceSpedizione",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceSpedizione",
+      "owner": "spedizione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3530,
+        1350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        5034,
+        2203.3
+      ],
+      "dataType": "datetime",
+      "id": "spedizione_Partenza",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Partenza",
+      "owner": "spedizione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2970,
+        1350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        3704.4
+      ],
+      "id": "magazzino",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Magazzino",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3250,
+        2450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        3891.6
+      ],
+      "dataType": "string",
+      "id": "magazzino_CodiceMagazzino",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceMagazzino",
+      "owner": "magazzino",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3530,
+        2450
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4794,
+        3542.3
+      ],
+      "dataType": "string",
+      "id": "magazzino_Nome",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Nome",
+      "owner": "magazzino",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3110,
+        2631.865334794732
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        5034,
+        3542.3
+      ],
+      "dataType": "time",
+      "id": "magazzino_Apertura",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Apertura",
+      "owner": "magazzino",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        3110,
+        2268.134665205268
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        4082.4
+      ],
+      "id": "ubicazione",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Ubicazione",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2400,
+        2700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        3895.2
+      ],
+      "dataType": "string",
+      "id": "ubicazione_CodiceUbicazione",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceUbicazione",
+      "owner": "ubicazione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2680,
+        2700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        3628.8,
+        4269.6
+      ],
+      "dataType": "real",
+      "id": "ubicazione_Capacita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Capacita",
+      "owner": "ubicazione",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        2120,
+        2700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        453.6,
+        4233.6
+      ],
+      "id": "lotto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Lotto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        300,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        453.6,
+        4420.8
+      ],
+      "dataType": "string",
+      "id": "lotto_NumeroLotto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroLotto",
+      "owner": "lotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        580,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        573.6,
+        4071.5
+      ],
+      "dataType": "date",
+      "id": "lotto_Scadenza",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Scadenza",
+      "owner": "lotto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        20,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        4233.6
+      ],
+      "id": "scorta",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Scorta",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1250,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1890,
+        4420.8
+      ],
+      "dataType": "real",
+      "id": "scorta_Quantita",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Quantita",
+      "owner": "scorta",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1530,
+        2800
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        2570.4
+      ],
+      "id": "offerta",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Offerta",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -900,
+        1700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        2757.6
+      ],
+      "dataType": "date",
+      "id": "offerta_Dal",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Dal",
+      "owner": "offerta",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -620,
+        1700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        2383.2
+      ],
+      "dataType": "real",
+      "id": "offerta_Prezzo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Prezzo",
+      "owner": "offerta",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1180,
+        1700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -756,
+        -1058.4
+      ],
+      "id": "progetto",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Progetto",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -500,
+        -700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -756,
+        -871.2
+      ],
+      "dataType": "string",
+      "id": "progetto_CodiceProgetto",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "CodiceProgetto",
+      "owner": "progetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -220,
+        -700
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -818.1,
+        -1239.2
+      ],
+      "dataType": "string",
+      "id": "progetto_Titolo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Titolo",
+      "owner": "progetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -640,
+        -518.1346652052679
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -636,
+        -1220.5
+      ],
+      "id": "progetto_Note",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Note",
+      "owner": "progetto",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -640.0000000000001,
+        -881.865334794732
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2041.2,
+        -226.8
+      ],
+      "id": "incarico",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Incarico",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1350,
+        -150
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2041.2,
+        -414
+      ],
+      "dataType": "integer",
+      "id": "incarico_NumeroIncarico",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroIncarico",
+      "owner": "incarico",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1070,
+        -150
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2041.2,
+        -39.6
+      ],
+      "dataType": "real",
+      "id": "incarico_OrePreviste",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "OrePreviste",
+      "owner": "incarico",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1630,
+        -149.99999999999997
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -302.4,
+        -529.2
+      ],
+      "id": "pagamento",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Pagamento",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -200,
+        -350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -422.4,
+        -367.1
+      ],
+      "dataType": "integer",
+      "id": "pagamento_NumeroPagamento",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "NumeroPagamento",
+      "owner": "pagamento",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        80,
+        -350
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -364.5,
+        -710
+      ],
+      "dataType": "real",
+      "id": "pagamento_Importo",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Importo",
+      "owner": "pagamento",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -339.99999999999994,
+        -168.13466520526788
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -132.7,
+        -396.8
+      ],
+      "dataType": "datetime",
+      "id": "pagamento_Registrato",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Registrato",
+      "owner": "pagamento",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -340.0000000000001,
+        -531.865334794732
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1209.6,
+        -907.2
+      ],
+      "id": "fattura",
+      "identifying": false,
+      "key": false,
+      "kind": "entity",
+      "name": "Fattura",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        800,
+        -600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1209.6,
+        -720
+      ],
+      "dataType": "integer",
+      "id": "fattura_Anno",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Anno",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1080,
+        -600
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1209.6,
+        -1094.4
+      ],
+      "dataType": "integer",
+      "id": "fattura_Numero",
+      "identifying": false,
+      "key": true,
+      "kind": "attribute",
+      "name": "Numero",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        660,
+        -418.1346652052679
+      ]
+    },
+    {
+      "a": "",
+      "b": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1379.3,
+        -774.8
+      ],
+      "dataType": "date",
+      "id": "fattura_Data",
+      "identifying": false,
+      "key": false,
+      "kind": "attribute",
+      "name": "Data",
+      "owner": "fattura",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        659.9999999999999,
+        -781.865334794732
+      ]
+    },
+    {
+      "a": "cliente",
+      "b": "soggetto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2797.2,
+        -1965.6
+      ],
+      "id": "isa_cliente",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA cliente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1850,
+        -1300
+      ]
+    },
+    {
+      "a": "azienda",
+      "b": "cliente",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1209.6,
+        -2570.4
+      ],
+      "id": "isa_azienda",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA azienda",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -800,
+        -1700
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "soggetto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3628.8,
+        -907.2
+      ],
+      "id": "isa_dipendente",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA dipendente",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -2400,
+        -600
+      ]
+    },
+    {
+      "a": "fornitore",
+      "b": "soggetto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -3235.7,
+        892.1
+      ],
+      "id": "isa_fornitore",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA fornitore",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        -1962.1,
+        562.6
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "prodotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1096.2,
+        2494.8
+      ],
+      "id": "isa_bene",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA bene",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        725,
+        1650
+      ]
+    },
+    {
+      "a": "servizio",
+      "b": "prodotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2494.8,
+        2343.6
+      ],
+      "id": "isa_servizio",
+      "identifying": false,
+      "key": false,
+      "kind": "isa",
+      "name": "ISA servizio",
+      "owner": "",
+      "roleA": "",
+      "roleB": "",
+      "uml": [
+        1650,
+        1550
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "badge",
+      "cardA": "0,1",
+      "cardB": "1,1",
+      "chen": [
+        -4384.8,
+        180
+      ],
+      "id": "assegna",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "AssegnaBadge",
+      "owner": "",
+      "roleA": "titolare",
+      "roleB": "badge",
+      "uml": [
+        -2900,
+        0
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "dipendente",
+      "cardA": "0,1",
+      "cardB": "0,N",
+      "chen": [
+        -4108.8,
+        0
+      ],
+      "id": "supervisione",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Supervisione",
+      "owner": "",
+      "roleA": "subalterno",
+      "roleB": "responsabile",
+      "uml": [
+        -3050,
+        -120
+      ]
+    },
+    {
+      "a": "prodotto",
+      "b": "categoria",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        1852.2,
+        2835
+      ],
+      "id": "classifica",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Classifica",
+      "owner": "",
+      "roleA": "prodotto",
+      "roleB": "categoria",
+      "uml": [
+        1225,
+        1875
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "bene",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        -102,
+        2721.6
+      ],
+      "id": "composizione",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Composizione",
+      "owner": "",
+      "roleA": "assieme",
+      "roleB": "componente",
+      "uml": [
+        -230,
+        1920
+      ]
+    },
+    {
+      "a": "cliente",
+      "b": "ordine",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -491.4,
+        -56.7
+      ],
+      "id": "emette",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Emette",
+      "owner": "",
+      "roleA": "cliente",
+      "roleB": "ordine",
+      "uml": [
+        -325,
+        -37.5
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "ordine",
+      "cardA": "0,N",
+      "cardB": "0,1",
+      "chen": [
+        -1814.4,
+        340.2
+      ],
+      "id": "gestisce",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Gestisce",
+      "owner": "",
+      "roleA": "gestore",
+      "roleB": "ordine",
+      "uml": [
+        -1200,
+        225
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "riga",
+      "cardA": "1,N",
+      "cardB": "1,1",
+      "chen": [
+        907.2,
+        680.4
+      ],
+      "id": "contiene",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Contiene",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "riga",
+      "uml": [
+        600,
+        450
+      ]
+    },
+    {
+      "a": "riga",
+      "b": "tranche",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2721.6,
+        680.4
+      ],
+      "id": "ripartisce",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Ripartisce",
+      "owner": "",
+      "roleA": "riga",
+      "roleB": "tranche",
+      "uml": [
+        1800,
+        450
+      ]
+    },
+    {
+      "a": "riga",
+      "b": "prodotto",
+      "cardA": "1,1",
+      "cardB": "0,N",
+      "chen": [
+        1890,
+        1481.8
+      ],
+      "id": "riguarda",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Riguarda",
+      "owner": "",
+      "roleA": "riga",
+      "roleB": "prodotto",
+      "uml": [
+        1250,
+        980
+      ]
+    },
+    {
+      "a": "spedizione",
+      "b": "tranche",
+      "cardA": "1,N",
+      "cardB": "0,1",
+      "chen": [
+        4271.4,
+        1360.8
+      ],
+      "id": "evade",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Evade",
+      "owner": "",
+      "roleA": "spedizione",
+      "roleB": "tranche",
+      "uml": [
+        2825,
+        900
+      ]
+    },
+    {
+      "a": "magazzino",
+      "b": "spedizione",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4914,
+        2872.8
+      ],
+      "id": "parte_da",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "ParteDa",
+      "owner": "",
+      "roleA": "magazzino",
+      "roleB": "spedizione",
+      "uml": [
+        3250,
+        1900
+      ]
+    },
+    {
+      "a": "magazzino",
+      "b": "ubicazione",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        4271.4,
+        3893.4
+      ],
+      "id": "ha_ubicazioni",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "HaUbicazioni",
+      "owner": "",
+      "roleA": "magazzino",
+      "roleB": "ubicazione",
+      "uml": [
+        2825,
+        2575
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "lotto",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        415.8,
+        3477.6
+      ],
+      "id": "ha_lotti",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "HaLotti",
+      "owner": "",
+      "roleA": "bene",
+      "roleB": "lotto",
+      "uml": [
+        275,
+        2300
+      ]
+    },
+    {
+      "a": "lotto",
+      "b": "scorta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        1134,
+        4233.6
+      ],
+      "id": "lotto_scorta",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "LottoScorta",
+      "owner": "",
+      "roleA": "lotto",
+      "roleB": "scorta",
+      "uml": [
+        750,
+        2800
+      ]
+    },
+    {
+      "a": "ubicazione",
+      "b": "scorta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        2759.4,
+        4158
+      ],
+      "id": "posto_scorta",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "PostoScorta",
+      "owner": "",
+      "roleA": "posto",
+      "roleB": "scorta",
+      "uml": [
+        1825,
+        2750
+      ]
+    },
+    {
+      "a": "fornitore",
+      "b": "offerta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2192.4,
+        2419.2
+      ],
+      "id": "propone",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Propone",
+      "owner": "",
+      "roleA": "fornitore",
+      "roleB": "offerta",
+      "uml": [
+        -1450,
+        1600
+      ]
+    },
+    {
+      "a": "bene",
+      "b": "offerta",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -529.2,
+        2494.8
+      ],
+      "id": "oggetto_offerta",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "OggettoOfferta",
+      "owner": "",
+      "roleA": "bene",
+      "roleB": "offerta",
+      "uml": [
+        -325,
+        1750
+      ]
+    },
+    {
+      "a": "dipendente",
+      "b": "incarico",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -2835,
+        -151.2
+      ],
+      "id": "incarica",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Incarica",
+      "owner": "",
+      "roleA": "dipendente",
+      "roleB": "incarico",
+      "uml": [
+        -1875,
+        -100
+      ]
+    },
+    {
+      "a": "progetto",
+      "b": "incarico",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -1360.8,
+        -680.4
+      ],
+      "id": "nel_progetto",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "NelProgetto",
+      "owner": "",
+      "roleA": "progetto",
+      "roleB": "incarico",
+      "uml": [
+        -900,
+        -450
+      ]
+    },
+    {
+      "a": "azienda",
+      "b": "progetto",
+      "cardA": "0,N",
+      "cardB": "1,N",
+      "chen": [
+        -604.8,
+        -1965.6
+      ],
+      "id": "finanzia",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Finanzia",
+      "owner": "",
+      "roleA": "finanziatore",
+      "roleB": "progetto",
+      "uml": [
+        -400,
+        -1300
+      ]
+    },
+    {
+      "a": "progetto",
+      "b": "riga",
+      "cardA": "0,N",
+      "cardB": "0,N",
+      "chen": [
+        963.9,
+        71.8
+      ],
+      "id": "soddisfa",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Soddisfa",
+      "owner": "",
+      "roleA": "progetto",
+      "roleB": "riga",
+      "uml": [
+        1004.7,
+        -130
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "pagamento",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "chen": [
+        -151.2,
+        75.6
+      ],
+      "id": "incassa",
+      "identifying": true,
+      "key": false,
+      "kind": "relation",
+      "name": "Incassa",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "pagamento",
+      "uml": [
+        -100,
+        50
+      ]
+    },
+    {
+      "a": "ordine",
+      "b": "fattura",
+      "cardA": "0,1",
+      "cardB": "1,1",
+      "chen": [
+        756,
+        -226.8
+      ],
+      "id": "fatturazione",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Fatturazione",
+      "owner": "",
+      "roleA": "ordine",
+      "roleB": "fattura",
+      "uml": [
+        500,
+        -150
+      ]
+    },
+    {
+      "a": "pagamento",
+      "b": "fattura",
+      "cardA": "0,1",
+      "cardB": "0,N",
+      "chen": [
+        453.6,
+        -718.2
+      ],
+      "id": "riferisce",
+      "identifying": false,
+      "key": false,
+      "kind": "relation",
+      "name": "Riferisce",
+      "owner": "",
+      "roleA": "pagamento",
+      "roleB": "fattura",
+      "uml": [
+        300,
+        -475
+      ]
+    }
+  ],
+  "version": 5,
+  "notes": [
+    {
+      "id": "note-example-limit",
+      "text": "Un’azienda: esempio per il test limite\nQuesto esempio riunisce numerose entità e associazioni per verificare il comportamento dell’applicazione con un diagramma ampio. È adatto a chi ha già esplorato gli esempi più piccoli.\nComincia da un’entità, osserva il suo identificatore e segui le associazioni che la collegano alle altre. Passa poi al modello logico e usa Mostra origine per capire da quali elementi concettuali provengono le colonne.\nSalva una copia prima di modificare il progetto. Dopo aver cambiato il concettuale, leggi il riepilogo di Aggiorna logico: alcune modifiche possono richiedere la sostituzione o la rimozione di tabelle e colonne.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        -113.40000000000009,
+        4680.8
+      ],
+      "uml": [
+        -75.0,
+        3084.0
+      ],
+      "logical": [
+        215,
+        3380
+      ]
+    }
+  ]
+}

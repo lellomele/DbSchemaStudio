@@ -1,0 +1,138 @@
+{
+  "format": "SchemaStudio",
+  "version": 5,
+  "objects": [
+    {
+      "id": "studente",
+      "kind": "entity",
+      "name": "Studente",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        200,
+        280
+      ],
+      "uml": [
+        200,
+        280
+      ]
+    },
+    {
+      "id": "studente_id",
+      "kind": "attribute",
+      "name": "Matricola",
+      "owner": "studente",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        200,
+        130
+      ],
+      "uml": [
+        200,
+        130
+      ]
+    },
+    {
+      "id": "corso",
+      "kind": "entity",
+      "name": "Corso",
+      "owner": "",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        950,
+        280
+      ],
+      "uml": [
+        950,
+        280
+      ]
+    },
+    {
+      "id": "corso_id",
+      "kind": "attribute",
+      "name": "CodiceCorso",
+      "owner": "corso",
+      "a": "",
+      "b": "",
+      "roleA": "",
+      "roleB": "",
+      "cardA": "0,N",
+      "cardB": "1,1",
+      "key": true,
+      "identifying": false,
+      "chen": [
+        950,
+        130
+      ],
+      "uml": [
+        950,
+        130
+      ]
+    },
+    {
+      "id": "associazione",
+      "kind": "relation",
+      "name": "Sceglie (minimo 4)",
+      "owner": "",
+      "a": "studente",
+      "b": "corso",
+      "roleA": "studente",
+      "roleB": "corso",
+      "cardA": "1,N",
+      "cardB": "0,N",
+      "key": false,
+      "identifying": false,
+      "chen": [
+        575,
+        280
+      ],
+      "uml": [
+        575,
+        280
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-example-Scelta_dei_corsi",
+      "text": "La scelta dei corsi universitari\nOgni studente deve scegliere almeno quattro corsi. Uno stesso corso può essere scelto da più studenti, oppure non avere ancora iscritti. Uno studente e un corso possono quindi partecipare a più abbinamenti.\nIl diagramma rappresenta l’associazione molti a molti con (1,N) per Studente e (0,N) per Corso. Il minimo esatto di quattro non è rappresentato da queste cardinalità: la frase nella nota e il nome dell’associazione ricordano la richiesta, ma non la fanno rispettare.\nNel logico viene creata una tabella con le scelte degli studenti. Per controllare il requisito completo bisogna anche contare i corsi scelti da ciascuno studente e verificare che siano almeno quattro.",
+      "size": [
+        720,
+        300
+      ],
+      "chen": [
+        575.0,
+        540
+      ],
+      "uml": [
+        575.0,
+        549.0
+      ],
+      "logical": [
+        215,
+        500
+      ]
+    }
+  ]
+}
