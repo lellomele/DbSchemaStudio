@@ -1,5 +1,5 @@
 // Examples are parsed before replacing the current project; assets load on demand.
- void installExample(const Model &example,bool notation){++documentEpoch;model=example;logicalView=false;uml=notation;selection.clear();selectionIds.clear();filePath.clear();history.clear();buildMenus();refresh();fit();}
+ void installExample(const Model &example,bool notation){beginDocument();model=example;logicalView=false;uml=notation;selection.clear();selectionIds.clear();filePath.clear();history.clear();buildMenus();refresh();fit();}
  bool openBundledExample(const QString &relative){
   Model candidate;QString error;const auto path=QCoreApplication::applicationDirPath()+"/esempi/"+relative;
   if(!loadModel(path,candidate,error)){QMessageBox::warning(this,t("Esempio non disponibile","Example unavailable"),t("Non è stato possibile aprire l’esempio. Estrai il pacchetto completo. Il progetto attuale è conservato.\n","Could not open the example. Extract the complete package. Your current project is preserved.\n")+localizedError(error,en));return false;}

@@ -3,6 +3,7 @@
  QString profileUrl()const{return "https://infotechlab.altervista.org";}
  QString richTip(QString text)const{return "<div style='max-width:360px;white-space:normal'>"+text.toHtmlEscaped().replace("\n","<br>")+"</div>";}
  void updateCredit(){
+  credit->setFont(QFont("Segoe UI",qMin(fontSize,12)));
   const qreal ratio=devicePixelRatioF();QPixmap image(qRound(24*ratio),qRound(16*ratio));image.setDevicePixelRatio(ratio);image.fill(Qt::transparent);QPainter painter(&image);painter.fillRect(QRectF(0,0,8,16),QColor("#009246"));painter.fillRect(QRectF(8,0,8,16),Qt::white);painter.fillRect(QRectF(16,0,8,16),QColor("#ce2b37"));painter.setPen(theme.line);painter.drawRect(QRectF(.5,.5,23,15));painter.end();flag->setPixmap(image);flag->setAccessibleName(t("Bandiera italiana","Italian flag"));flag->setToolTip(t("Italia · autore del software didattico","Italy · educational software author"));
   credit->setText("<a style='color:"+theme.accent.name()+"' href='"+profileUrl()+"'>"+copyrightText()+"</a>");credit->setToolTip(richTip(t("Apri il sito InfoTechLab del Prof. ing. Raffaele Mele nel browser predefinito.\nÈ necessaria una connessione Internet.","Open Prof. ing. Raffaele Mele’s InfoTechLab website in your default browser.\nAn Internet connection is required.")));credit->setAccessibleName(copyrightText()+" · InfoTechLab");
  }

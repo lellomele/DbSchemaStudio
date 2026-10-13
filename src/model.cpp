@@ -29,7 +29,7 @@ bool Model::parse(const QByteArray &bytes,Model &out,QString &error){
  auto fail=[&](const QString &s){error=s;return false;};
  if(pe.error!=QJsonParseError::NoError||!doc.isObject())return fail("Invalid JSON / JSON non valido");
  auto root=doc.object();
- int version=root.value("version").toInt();if(root.value("format")!="SchemaStudio"||(version!=1&&version!=2&&version!=3&&version!=4&&version!=5)||!root.value("objects").isArray())return fail("Unsupported format / Formato non supportato");
+ int version=root.value("version").toInt();if(root.value("format")!="SchemaStudio"||root.value("version")!=version||(version!=1&&version!=2&&version!=3&&version!=4&&version!=5)||!root.value("objects").isArray()||(version==1&&root.contains("logical")))return fail("Unsupported format / Formato non supportato");
  auto array=root.value("objects").toArray();if(array.size()>20000)return fail("Too many objects / Troppi oggetti");
  Model candidate;QSet<QString> ids;const QStringList kinds={"entity","attribute","relation","isa"},cards={"0,1","1,1","0,N","1,N"};
  for(const auto &v:array){
@@ -40,6 +40,9 @@ bool Model::parse(const QByteArray &bytes,Model &out,QString &error){
   if(!readGenericType(j,"dataType",o.dataType))return fail("Invalid generic data type");
   o.id=j["id"].toString();o.kind=j["kind"].toString();o.name=j["name"].toString();o.owner=j["owner"].toString();o.a=j["a"].toString();o.b=j["b"].toString();o.roleA=j["roleA"].toString();o.roleB=j["roleB"].toString();o.cardA=j["cardA"].toString();o.cardB=j["cardB"].toString();o.key=j["key"].toBool();o.identifying=j["identifying"].toBool();
   if((o.kind!="attribute"&&!o.dataType.isEmpty()))return fail("Only attributes have a generic data type");
+  if((o.kind!="attribute"&&(!o.owner.isEmpty()||o.key))||
+     (o.kind!="relation"&&o.identifying)||
+     ((o.kind=="entity"||o.kind=="attribute")&&(!o.a.isEmpty()||!o.b.isEmpty())))return fail("Invalid object references or flags / Riferimenti o opzioni non validi");
   if(o.id.isEmpty()||o.id.size()>100||ids.contains(o.id)||!kinds.contains(o.kind)||o.name.size()>200||o.roleA.size()>100||o.roleB.size()>100||!cards.contains(o.cardA)||!cards.contains(o.cardB))return fail("Invalid object identity or values");
   for(const QString k:{"chen","uml"}){
    auto a=j[k].toArray();if(a.size()!=2||!a[0].isDouble()||!a[1].isDouble())return fail("Invalid position");

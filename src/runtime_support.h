@@ -2,6 +2,30 @@
 #include "model.h"
 #include <cstdio>
 
+// A widget may still be delivering the click that requested its replacement.
+// Remove it from searches/layouts now, but release it after event delivery.
+static void retireWidget(QWidget *widget){
+ if(!widget)return;
+ widget->hide();widget->setEnabled(false);widget->setParent(nullptr);widget->deleteLater();
+}
+
+// Identifiers may have no spaces. Wrap them without changing the stored text.
+class WrappedLabel:public QLabel {
+ void layoutText(QTextDocument &document,int width)const{
+  document.setDocumentMargin(0);document.setDefaultFont(font());
+  QTextOption option;option.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+  document.setDefaultTextOption(option);document.setPlainText(text());document.setTextWidth(qMax(1,width));
+ }
+public:
+ explicit WrappedLabel(const QString &text):QLabel(text){setWordWrap(true);setTextFormat(Qt::PlainText);}
+ QSize minimumSizeHint()const override{return {0,fontMetrics().height()};}
+ int heightForWidth(int width)const override{QTextDocument document;layoutText(document,width);return qCeil(document.size().height());}
+ void paintEvent(QPaintEvent *)override{
+  QTextDocument document;layoutText(document,contentsRect().width());QPainter painter(this);painter.translate(contentsRect().topLeft());
+  QAbstractTextDocumentLayout::PaintContext context;context.palette=palette();context.palette.setColor(QPalette::Text,palette().color(QPalette::WindowText));document.documentLayout()->draw(&painter,context);
+ }
+};
+
 // Atomic copies keep the previous file intact when writing or committing fails.
 static bool atomicCopy(const QString &source,const QString &target,QString &error){
  QFile input(source);if(!input.open(QIODevice::ReadOnly)){error=input.errorString();return false;}

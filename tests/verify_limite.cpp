@@ -4,14 +4,14 @@
 #include <iostream>
 
 int main(int argc,char **argv){
- QApplication app(argc,argv);app.setStyle("Fusion");QCoreApplication::setApplicationVersion("0.9.2");
+ QApplication app(argc,argv);app.setStyle("Fusion");QCoreApplication::setApplicationVersion(DBSCHEMA_VERSION);
  if(app.arguments().size()<2)return 2;
  const QString dir=app.arguments().at(1);const bool final=app.arguments().contains("--final");QDir().mkpath(dir+"/immagini");
  QJsonArray tests;int failures=0;auto check=[&](QString name,bool ok){tests<<QJsonObject{{"check",name},{"ok",ok}};if(!ok){++failures;std::cerr<<name.toStdString()<<" FAILED\n";}};
  QString error;Model conceptual;QElapsedTimer timer;timer.start();check("Apertura concettuale",loadModel(dir+"/01-Test-limite-Azienda-concettuale.schema",conceptual,error));auto loadMs=timer.nsecsElapsed()/1e6;
  check("Concettuale privo di errori",conceptual.issues().isEmpty());check("File concettuale senza logico",conceptual.logical.isEmpty());
  if(failures)return 3;
- Window w(true);w.en=false;w.mode=1;w.showTypes=true;w.uml=true;w.model=conceptual;w.applyTheme();w.buildMenus();w.resize(1500,940);w.show();qApp->processEvents();w.resizeDocks({w.outline,w.properties},{210,350},Qt::Horizontal);
+ QTemporaryDir profile;storageOverride=profile.path();Window w(true);w.en=false;w.mode=1;w.showTypes=true;w.uml=true;w.model=conceptual;w.applyTheme();w.buildMenus();w.resize(1500,940);w.show();qApp->processEvents();w.resizeDocks({w.outline,w.properties},{210,350},Qt::Horizontal);
  timer.restart();w.refresh();w.fit();qApp->processEvents();double conceptualRenderMs=timer.nsecsElapsed()/1e6;
  if(final){check("Apertura file con logico",loadModel(dir+"/02-Test-limite-Azienda-logico.schema",w.model,error));}
  else{
@@ -64,7 +64,7 @@ int main(int argc,char **argv){
  }
  QJsonObject counts{{"entities",23},{"attributes",53},{"relationships",24},{"isa",6},{"weakEntities",weak},{"tables",int(schema.tables.size())},{"columns",columns},{"foreignKeys",fks},{"compositeForeignKeys",compositeFks},{"optionalCompositeForeignKeys",nullableComposite},{"uniqueGroups",uniqueCount},{"generatedColumns",generated},{"provenanceVerified",origins},{"maxOriginHops",maxDepth},{"remainingConstraints",warnings}};
  int attrs=0;for(const auto&o:conceptual.objects)attrs+=o.kind=="attribute";counts["attributes"]=attrs;counts["objects"]=int(conceptual.objects.size());
- QJsonObject report{{"applicationVersion","0.9.2"},{"qt",qVersion()},{"failures",failures},{"checks",tests},{"counts",counts},{"remainingConstraints",remaining},{"tables",tableSummary},{"provenance",provenance},{"timingsMs",QJsonObject{{"loadConceptual",loadMs},{"generateLogical",generationMs},{"refreshConceptualAndFit",conceptualRenderMs},{"refreshLogicalAndFit",logicalRenderMs}}}};
+ QJsonObject report{{"applicationVersion",DBSCHEMA_VERSION},{"qt",qVersion()},{"failures",failures},{"checks",tests},{"counts",counts},{"remainingConstraints",remaining},{"tables",tableSummary},{"provenance",provenance},{"timingsMs",QJsonObject{{"loadConceptual",loadMs},{"generateLogical",generationMs},{"refreshConceptualAndFit",conceptualRenderMs},{"refreshLogicalAndFit",logicalRenderMs}}}};
  QFile output(dir+"/verifica.json");if(!output.open(QIODevice::WriteOnly))return 5;output.write(QJsonDocument(report).toJson());std::cout<<QJsonDocument(counts).toJson().toStdString()<<"Checks: "<<tests.size()<<" Failures: "<<failures<<"\n";
  w.hide();return failures?1:0;
 }

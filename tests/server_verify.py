@@ -14,12 +14,15 @@ parser.add_argument('corpus', type=Path)
 parser.add_argument('--port', type=int, required=True)
 parser.add_argument('--profile', choices=['mysql-8.4', 'mariadb-10.11'], required=True)
 parser.add_argument('--case', help='Run one corpus case by name')
+parser.add_argument('--expected-datadir', type=Path, help='Require the exact isolated server directory')
 args = parser.parse_args()
 db = pymysql.connect(host='127.0.0.1', port=args.port, user='root', charset='utf8mb4', autocommit=True)
 cur = db.cursor()
 cur.execute('SELECT VERSION(), @@datadir, @@innodb_page_size')
 version, datadir, pagesize = cur.fetchone()
-assert 'DbSchemaStudio-091-' in datadir, f'Not a dedicated test server: {datadir}'
+assert ('DbSchemaStudio-091-' in datadir or 'DbSchemaStudio-beta1-' in datadir), f'Not a dedicated test server: {datadir}'
+if args.expected_datadir:
+    assert Path(datadir).resolve() == args.expected_datadir.resolve(), f'Unexpected data directory: {datadir}'
 assert (version.startswith('8.4.') if args.profile == 'mysql-8.4' else '10.11.' in version)
 assert pagesize == 16384
 print(f'{args.profile}: {version}; InnoDB page size {pagesize}', flush=True)

@@ -102,6 +102,7 @@ public:
   QGraphicsView::mouseMoveEvent(e);
  }
  void finishDrag(){if(resizing){resizing=false;if(resizeFinished)resizeFinished();}bool commit=dragging;pressedObject=false;dragging=false;dragAlt=false;if(commit&&dragFinished)dragFinished();}
+ void cancelInteraction(){resizing=false;pressedObject=false;dragging=false;dragAlt=false;spacePan=false;setInteractive(true);setDragMode(RubberBandDrag);}
  void mouseReleaseEvent(QMouseEvent *e)override{
   if(e->button()==Qt::LeftButton&&(pressedObject||resizing)){finishDrag();e->accept();return;}
   if(e->button()==Qt::RightButton){e->accept();return;}

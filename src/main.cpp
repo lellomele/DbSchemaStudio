@@ -1,6 +1,7 @@
 #include <QtWidgets>
 #include <QtPrintSupport>
 #include "model.h"
+#include "app_version.h"
 #include "runtime_support.h"
 #include <exception>
 #include "logical.h"
@@ -14,7 +15,8 @@
 #include "title_bar.h"
 #include <functional>
 
-static QString storageDirectory(){return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/SchemaStudio/DbSchemaStudio-Qt6";}
+static QString storageOverride;
+static QString storageDirectory(){return storageOverride.isEmpty()?QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/SchemaStudio/DbSchemaStudio-Qt6":storageOverride;}
 
 struct Theme {
  QColor paper,surface,ink,muted,line,accent,selected;
@@ -25,7 +27,7 @@ struct Theme {
   Theme t;if(dark){t.paper="#171c24";t.surface="#242c38";t.ink="#f0f3f8";t.muted="#bac6d6";t.line="#b4c1d2";t.selected="#34445c";t.accent=preset==2?"#76dfc1":preset==0?"#e0e6ef":"#a9cbff";}
   else{t.paper="#f5f7fb";t.surface="#ffffff";t.ink="#172334";t.muted="#47576c";t.line="#50647a";t.selected="#dce8fc";t.accent=preset==2?"#08674e":preset==0?"#34465d":"#234fa2";}
   if(preset==3){t.paper=dark?Qt::black:Qt::white;t.surface=t.paper;t.ink=dark?Qt::white:Qt::black;t.muted=t.ink;t.line=t.ink;t.accent=dark?QColor("#ffff00"):QColor("#002080");t.selected=dark?QColor("#333333"):QColor("#dddddd");}
-  if(custom.isValid()&&contrast(custom,t.paper)>=3&&contrast(custom,t.surface)>=3)t.accent=custom;
+  if(custom.isValid()&&custom.alpha()==255&&contrast(custom,t.paper)>=3&&contrast(custom,t.surface)>=3)t.accent=custom;
   return t;
  }
 };
@@ -93,7 +95,7 @@ public:
  std::function<bool(const QUrl&)> openExternal=[](const QUrl &url){return QDesktopServices::openUrl(url);};
  QHash<QString,Node*> nodes;QVector<QGraphicsItem*> connectors;Model dragBefore;QComboBox *notationBox;QString recoveryPath;
  explicit Window(bool testing=false):testMode(testing),prefs(storageDirectory()+"/preferences.ini",QSettings::IniFormat){
-  if(!testing){umlPkLabels=prefs.value("umlPkLabels",false).toBool();showNotes=prefs.value("showNotes",true).toBool();showTypes=prefs.value("showTypes",true).toBool();en=prefs.value("language","it")=="en";mode=prefs.value("mode",0).toInt();preset=prefs.value("palette",1).toInt();fontSize=qBound(9,prefs.value("fontSize",10).toInt(),20);custom=QColor(prefs.value("accent").toString());}
+  if(!testing){umlPkLabels=prefs.value("umlPkLabels",false).toBool();showNotes=prefs.value("showNotes",true).toBool();showTypes=prefs.value("showTypes",true).toBool();en=prefs.value("language","it")=="en";mode=qBound(0,prefs.value("mode",0).toInt(),2);preset=qBound(0,prefs.value("palette",1).toInt(),3);fontSize=qBound(9,prefs.value("fontSize",10).toInt(),20);custom=QColor(prefs.value("accent").toString());}
   setMinimumSize(800,520);history.setUndoLimit(100);
   menus=menuBar();auto signature=new QWidget;auto signatureLayout=new QHBoxLayout(signature);signatureLayout->setContentsMargins(8,0,12,0);flag=new QLabel;credit=new QLabel;credit->setObjectName("copyrightLink");credit->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::LinksAccessibleByKeyboard);signatureLayout->addWidget(flag);signatureLayout->addWidget(credit);menus->setCornerWidget(signature,Qt::TopRightCorner);
   recoveryPath=storageDirectory()+"/recovery.schema";
@@ -160,14 +162,14 @@ public:
  }
  QString attributeLabel(const Object &o)const{return o.name+(showTypes&&!o.dataType.isEmpty()?": "+genericTypeName(o.dataType,en):QString());}
  QComboBox *typeCombo(QString value){auto combo=new QComboBox;combo->setObjectName("genericType");combo->setAccessibleName(t("Tipo di dato","Data type"));for(const auto &id:genericTypeIds())combo->addItem(genericTypeName(id,en),id);combo->setCurrentIndex(combo->findData(value));helpWidget(combo,t("Tipo generico facoltativo, indipendente da SQL. Reale include numeri con parte frazionaria: DECIMAL o DOUBLE saranno scelti nel fisico. Telefono e CAP sono normalmente stringhe. Conferma con Applica modifiche.","Optional generic type, independent of SQL. Real includes fractional numbers: DECIMAL or DOUBLE will be chosen in the physical model. Phone numbers and postal codes are normally strings. Confirm with Apply changes."));return combo;}
- void title(){QString text=QString("%1%2 — Database Schema Studio 0.9.7").arg(history.isClean()?"":"* ",filePath.isEmpty()?t("Senza titolo","Untitled"):QFileInfo(filePath).fileName());setWindowTitle(text);}
+ void title(){QString text=QString("%1%2 — Database Schema Studio " DBSCHEMA_VERSION "").arg(history.isClean()?"":"* ",filePath.isEmpty()?t("Senza titolo","Untitled"):QFileInfo(filePath).fileName());setWindowTitle(text);}
 
  QAction *action(QMenu *menu,QString name,QKeySequence shortcut,std::function<void()> fn){auto a=menu->addAction(name);if(!shortcut.isEmpty())a->setShortcut(shortcut);connect(a,&QAction::triggered,this,std::move(fn));return a;}
  void buildMenus(){
   setUiLanguage(en);localizeHistory();if(levelStatus){statusBar()->removeWidget(levelStatus);delete levelStatus;}levelStatus=nullptr;generateAction=nullptr;levelBox=nullptr;
-  auto oldMenus=menus->findChildren<QMenu*>(QString(),Qt::FindDirectChildrenOnly);menus->clear();qDeleteAll(oldMenus);auto bars=findChildren<QToolBar*>(QString(),Qt::FindDirectChildrenOnly);for(auto bar:bars){removeToolBar(bar);delete bar;}
+  auto oldMenus=menus->findChildren<QMenu*>(QString(),Qt::FindDirectChildrenOnly);menus->clear();for(auto menu:oldMenus)retireWidget(menu);auto bars=findChildren<QToolBar*>(QString(),Qt::FindDirectChildrenOnly);for(auto bar:bars){removeToolBar(bar);retireWidget(bar);}
   auto file=menus->addMenu(t("&File","&File"));
-  auto n=action(file,t("Nuovo","New"),QKeySequence::New,[this]{if(maybeSave()){++documentEpoch;model={};filePath.clear();selection.clear();selectionIds.clear();history.clear();refresh();}});
+  auto n=action(file,t("Nuovo","New"),QKeySequence::New,[this]{if(maybeSave()){beginDocument();model={};filePath.clear();selection.clear();selectionIds.clear();history.clear();refresh();}});
   auto o=action(file,t("Apri…","Open…"),QKeySequence::Open,[this]{openDialog();});
   action(file,t("Importa RISE…","Import RISE…"),{},[this]{importRiseDialog();})->setObjectName("importRiseAction");
   auto s=action(file,t("Salva","Save"),QKeySequence::Save,[this]{save(false);});
@@ -204,7 +206,8 @@ public:
   action(help,t("Informazioni su Database Schema Studio…","About Database Schema Studio…"),{},[this]{about();})->setObjectName("aboutAction");
   outline->setWindowTitle(logicalView?t("Tabelle e colonne","Tables and columns"):t("Modello","Model"));properties->setWindowTitle(t("Proprietà","Properties"));phase->setText(logicalView?t("Logico · nessun tipo SQL","Logical · no SQL types"):t("Concettuale","Conceptual"));decorateInterface();
  }
- void change(const QString &name,std::function<void(Model&)> fn){Model next=model;try{fn(next);}catch(const std::exception &){status->setText(t("Operazione non completata. Il modello precedente è stato conservato.","Operation failed. The previous model has been preserved."));return;}if(next.json()==model.json())return;Model verified;QString error;if(!Model::parse(QJsonDocument(next.json()).toJson(QJsonDocument::Compact),verified,error)){status->setText(t("Modifica non applicata: ","Edit not applied: ")+localizedError(error,en));return;}history.push(new Snapshot(model,next,[this](const Model&m){model=m;refresh();},name));}
+ bool change(const QString &name,std::function<void(Model&)> fn){Model next=model;try{fn(next);}catch(const std::exception &){status->setText(t("Operazione non completata. Il modello precedente è stato conservato.","Operation failed. The previous model has been preserved."));return false;}auto data=next.json();if(data==model.json())return true;Model verified;QString error;if(!Model::parse(QJsonDocument(data).toJson(QJsonDocument::Compact),verified,error)){status->setText(t("Modifica non applicata: ","Edit not applied: ")+localizedError(error,en));return false;}history.push(new Snapshot(model,next,[this](const Model&m){model=m;refresh();},name));return true;}
+ void beginDocument(){++documentEpoch;view->cancelInteraction();clearRecovery();}
  void normalizeSelection(){
   if(!showNotes)for(const auto &n:model.notes)selectionIds.remove(n.id);
   if(!selectionIds.contains(selection))for(const auto &n:model.notes)if(selectionIds.contains(n.id)){selection=n.id;break;}
@@ -227,7 +230,7 @@ public:
  void alignSelection(bool horizontal){arrangeSelection(horizontal?0:1);}
 
  void fitSelection(){QRectF bounds;for(auto id:selectionIds)if(nodes.contains(id))bounds=bounds.united(nodes[id]->sceneBoundingRect());if(bounds.isEmpty()){fit();return;}view->fitInView(bounds.adjusted(-50,-50,50,50),Qt::KeepAspectRatio);if(view->transform().m11()>2){view->resetTransform();view->scale(2,2);view->centerOn(bounds.center());}updateStatus();}
- void renameObject(QString id){if(model.note(id)){editNote(id);return;}if(logicalView){renameLogical(id);return;}auto o=model.get(id);if(!o)return;bool ok=false;QString value=QInputDialog::getText(this,t("Rinomina","Rename"),t("Nome","Name"),QLineEdit::Normal,o->name,&ok).trimmed().left(120);if(ok&&!value.isEmpty())change(t("Rinomina","Rename"),[=](Model&m){m.get(id)->name=value;});}
+ void renameObject(QString id){if(model.note(id)){editNote(id);return;}if(logicalView){renameLogical(id);return;}auto o=model.get(id);if(!o)return;bool ok=false;QString value=QInputDialog::getText(this,t("Rinomina","Rename"),t("Nome","Name"),QLineEdit::Normal,o->name,&ok).trimmed().left(200);if(ok&&!value.isEmpty())change(t("Rinomina","Rename"),[=](Model&m){m.get(id)->name=value;});}
  QMenu *contextMenu(QString hit,QPointF point){if(!hit.isEmpty()&&(model.note(hit)||(!selectionIds.isEmpty()&&model.note(selection))))return noteContext(point);if(logicalView){auto menu=logicalContextMenu(hit);if(hit.isEmpty()){action(menu,t("Nuova nota qui","New note here"),{},[this,point]{addNoteAt(point);});pasteNoteAction(menu,point);}return menu;}
   auto menu=new QMenu(this);menu->setToolTipsVisible(true);
   auto add=[&](QMenu*parent,QString code,QString label,std::function<void()> fn){auto a=parent->addAction(label);a->setObjectName(code);connect(a,&QAction::triggered,menu,std::move(fn));return a;};
@@ -273,18 +276,18 @@ public:
    scene->addItem(node);node->setPos(uml?o.uml:o.chen);nodes[o.id]=node;
    node->begin=[this](Node*){dragBefore=model;};
    node->moving=[this](Node*n){if(rebuilding)return;if(auto o=model.get(n->id)){QPointF old=uml?o->uml:o->chen;QPointF delta=n->pos()-old;(uml?o->uml:o->chen)=n->pos();if(!uml&&o->kind=="entity"){for(auto &a:model.objects)if(a.kind=="attribute"&&a.owner==o->id){a.chen+=delta;if(auto an=nodes.value(a.id)){rebuilding=true;an->setPos(a.chen);rebuilding=false;}}}links();}};
-   node->end=[this](Node*){if(model.json()==dragBefore.json())return;Model before=dragBefore,after=model;QTimer::singleShot(0,this,[this,before,after]{history.push(new Snapshot(before,after,[this](const Model&m){model=m;refresh();},t("Sposta oggetti","Move objects")));});};
+   node->end=[this](Node*){if(model.json()==dragBefore.json())return;const auto epoch=documentEpoch;Model before=dragBefore,after=model;QTimer::singleShot(0,this,[this,before,after,epoch]{if(epoch!=documentEpoch||model.json()!=after.json())return;dragBefore=before;finishGroupDrag();});};
    if(o.kind=="entity"&&uml){int i=0;for(const auto &a:model.attributes(o.id)){auto row=new Node;row->setToolTip(objectHelp(a));row->kind="attribute";row->id=a.id;row->setData(0,a.id);row->uml=true;row->theme=theme;configureAttributeLabel(row,a,false);row->setParentItem(node);row->setFlag(QGraphicsItem::ItemIsMovable,false);row->size={width-16,28};row->setPos(0,-node->size.height()/2+57+i*30);nodes[a.id]=row;++i;}for(const auto &a:model.inheritedAttributes(o.id)){auto row=new Node;row->setFlags(QGraphicsItem::GraphicsItemFlags());row->inherited=true;row->uml=true;row->kind="attribute";row->theme=theme;configureAttributeLabel(row,a,true);row->setToolTip(inheritedTip(a));row->setParentItem(node);row->size={width-16,28};row->setPos(0,-node->size.height()/2+57+i++*30);}}
   }
   renderNotes();links();scene->setSceneRect(-200000,-200000,400000,400000);normalizeSelection();for(auto id:selectionIds)if(nodes.contains(id))nodes[id]->setSelected(true);tree->expandAll();rebuilding=false;syncTree();inspector();updateStatus();title();
  }
 #include "conceptual_links.h"
  void fit(){auto r=scene->itemsBoundingRect().adjusted(-50,-50,50,50);if(!r.isEmpty()){view->fitInView(r,Qt::KeepAspectRatio);if(view->transform().m11()>1.5){view->resetTransform();view->scale(1.5,1.5);view->centerOn(r.center());}}updateStatus();}
- void note(QString text){auto l=new QLabel(text);l->setWordWrap(true);l->setTextFormat(Qt::PlainText);form->addRow(l);}
- QLineEdit *field(QString label,QString value){auto e=new QLineEdit(value);e->setMaxLength(120);e->setAccessibleName(label);helpWidget(e,helpText(label));form->addRow(label,e);return e;}
+ void note(QString text){form->addRow(new WrappedLabel(text));}
+ QLineEdit *field(QString label,QString value){auto e=new QLineEdit(value);e->setMaxLength(200);e->setAccessibleName(label);helpWidget(e,helpText(label));form->addRow(label,e);return e;}
  void inspector(){
   updateRoleBadges();
-  while(form->rowCount())form->removeRow(0);
+  while(form->rowCount()){auto row=form->takeRow(0);for(auto item:{row.labelItem,row.fieldItem})if(item){if(auto widget=item->widget())retireWidget(widget);delete item;}}
   if(selectionIds.size()==1&&model.note(selection)){noteInspector();return;}
   if(logicalView){logicalInspector();return;}
   if(selectionIds.size()>1){note(t("SELEZIONE MULTIPLA","MULTIPLE SELECTION"));note(QString::number(selectionIds.size())+t(" oggetti selezionati. Trascina un elemento del gruppo per spostarli insieme.\n\nCtrl+clic sinistro aggiunge o rimuove. Ctrl+clic destro aggiunge e mostra le azioni.\n\nL’allineamento usa come riferimento l’ultimo elemento cliccato."," selected objects. Drag a group member to move them together.\n\nCtrl+left-click adds or removes. Ctrl+right-click adds and shows actions.\n\nAlignment uses the last clicked element as its reference."));return;}
@@ -304,7 +307,7 @@ public:
   }else{
    auto a=model.get(o->a),b=model.get(o->b);note((kind=="isa"?t("Sottoclasse: ","Subclass: "):"A: ")+(a?a->name:QString())+"\n"+(kind=="isa"?t("Superclasse: ","Superclass: "):"B: ")+(b?b->name:QString()));
    if(kind=="relation"){
-    ra=field(t("Nome ruolo A","Role A name"),o->roleA);rb=field(t("Nome ruolo B","Role B name"),o->roleB);
+    ra=field(t("Nome ruolo A","Role A name"),o->roleA);rb=field(t("Nome ruolo B","Role B name"),o->roleB);ra->setMaxLength(100);rb->setMaxLength(100);
     ca=new QComboBox;cb=new QComboBox;QStringList cards={"0,1","1,1","0,N","1,N"};for(const auto &c:cards){ca->addItem("("+c+")",c);cb->addItem("("+c+")",c);}helpWidget(ca,t("Per ogni istanza di A: numero minimo e massimo di istanze B collegate. (0,1): al massimo una; (1,1): esattamente una; (0,N): zero o più; (1,N): una o più.","For each A instance: minimum and maximum linked B instances. (0,1): at most one; (1,1): exactly one; (0,N): zero or more; (1,N): one or more."));helpWidget(cb,t("Per ogni istanza di B: numero minimo e massimo di istanze A collegate. Se A identifica B, questa partecipazione è obbligatoriamente (1,1).","For each B instance: minimum and maximum linked A instances. When A identifies B, this participation must be (1,1)."));ca->setCurrentIndex(cards.indexOf(o->cardA));cb->setCurrentIndex(cards.indexOf(o->cardB));form->addRow(t("Per ogni A, quante B?","For each A, how many B?"),ca);form->addRow(t("Per ogni B, quante A?","For each B, how many A?"),cb);
     identifying=new QCheckBox(t("A identifica B (entità debole)","A identifies B (weak entity)"));helpWidget(identifying,t("L’identificatore di B include quello di A insieme ai componenti della chiave parziale di B. Ogni B deve appartenere a un solo A. Conferma con Applica modifiche.","B’s identifier includes A’s identifier together with B’s partial keys. Each B must belong to exactly one A. Confirm with Apply changes."));identifying->setChecked(o->identifying);form->addRow(identifying);if(o->identifying)cb->setEnabled(false);connect(identifying,&QCheckBox::toggled,this,[cb](bool value){cb->setEnabled(!value);if(value)cb->setCurrentIndex(1);});
     note(t("Le cardinalità descrivono la partecipazione. Nella vista UML-like sono collocate all’estremità opposta.","Multiplicities describe participation. UML-like displays them at the opposite endpoint."));
@@ -339,7 +342,7 @@ public:
  void validate(){if(logicalView){auto issues=logicalCache.issues(en);QMessageBox::information(this,t("Verifica logica","Logical validation"),issues.isEmpty()?(logicalStale(model)?t("Schema logico coerente, ma il concettuale è cambiato: aggiorna la traduzione.","Logical schema is consistent, but the conceptual model has changed: update the mapping."):t("Tabelle, chiavi e riferimenti FK sono coerenti. Consulta il rapporto per i vincoli concettuali che richiedono controlli aggiuntivi.","Tables, keys and FK references are consistent. Consult the report for conceptual constraints requiring additional checks.")):issues.join("\n"));return;}auto issues=model.issues(en);QMessageBox::information(this,t("Verifica concettuale","Conceptual validation"),issues.isEmpty()?t("Nessun problema rilevato.\n\nPuoi salvare il modello, esportare il diagramma o generare il modello logico.","No issues found.\n\nYou can save the model, export the diagram or generate the logical model."):issues.join("\n"));}
  bool maybeSave(){if(history.isClean())return true;auto answer=QMessageBox::question(this,t("Modifiche non salvate","Unsaved changes"),t("Salvare il progetto prima di continuare?","Save the project before continuing?"),QMessageBox::Save|QMessageBox::Discard|QMessageBox::Cancel,QMessageBox::Save);if(answer!=QMessageBox::Save&&answer!=QMessageBox::Discard)return false;if(answer==QMessageBox::Save)return save(false);return true;}
  bool save(bool as){QString path=filePath;if(as||path.isEmpty())path=QFileDialog::getSaveFileName(this,t("Salva progetto","Save project"),path.isEmpty()?storageDirectory()+"/Progetti/"+t("Progetto.schema","Project.schema"):path,"Database Schema Studio (*.schema)");if(path.isEmpty())return false;if(!path.endsWith(".schema",Qt::CaseInsensitive))path+=".schema";QString error;if(!saveWithBackup(path,model,error)){QMessageBox::critical(this,t("Salvataggio non riuscito","Save failed"),error+"\n\n"+t("Il progetto rimane aperto. Prova una cartella in cui l’applicazione può scrivere, ad esempio la cartella Progetti predefinita.","The project remains open. Try a folder this application can write to, such as the default Projects folder."));return false;}filePath=path;history.setClean();clearRecovery();title();return true;}
- bool openPath(QString path){Model m;QString error;if(!loadModel(path,m,error)){QMessageBox::critical(this,t("Apertura non riuscita","Open failed"),localizedError(error,en));return false;}++documentEpoch;model=m;filePath=path;selection.clear();selectionIds.clear();history.clear();refresh();fit();return true;}
+ bool openPath(QString path){Model m;QString error;if(!loadModel(path,m,error)){QMessageBox::critical(this,t("Apertura non riuscita","Open failed"),localizedError(error,en));return false;}beginDocument();model=m;filePath=path;selection.clear();selectionIds.clear();history.clear();refresh();fit();return true;}
  void openDialog(){if(!maybeSave())return;auto path=QFileDialog::getOpenFileName(this,t("Apri progetto","Open project"),filePath,"Database Schema Studio (*.schema)");if(!path.isEmpty())openPath(path);}
 
  void appearance(){
@@ -354,7 +357,7 @@ public:
   if(scene->items().isEmpty()){error=t("Il diagramma è vuoto.","The diagram is empty.");return false;}
   QSaveFile file(path);if(!file.open(QIODevice::WriteOnly)){error=file.errorString();return false;}
   bool painted=false;
-  {QPdfWriter pdf(&file);pdf.setTitle("Database Schema Studio — "+(filePath.isEmpty()?t("Modello concettuale","Conceptual model"):QFileInfo(filePath).baseName()));pdf.setCreator("Database Schema Studio 0.9.7");pdf.setPageSize(QPageSize(paper));pdf.setPageOrientation(landscape?QPageLayout::Landscape:QPageLayout::Portrait);pdf.setPageMargins(QMarginsF(12,12,12,12),QPageLayout::Millimeter);pdf.setResolution(144);
+  {QPdfWriter pdf(&file);pdf.setTitle("Database Schema Studio — "+(filePath.isEmpty()?(logicalView?t("Modello logico","Logical model"):t("Modello concettuale","Conceptual model")):QFileInfo(filePath).baseName()));pdf.setCreator("Database Schema Studio " DBSCHEMA_VERSION "");pdf.setPageSize(QPageSize(paper));pdf.setPageOrientation(landscape?QPageLayout::Landscape:QPageLayout::Portrait);pdf.setPageMargins(QMarginsF(12,12,12,12),QPageLayout::Millimeter);pdf.setResolution(144);
    printing=true;updateRoleBadges();Theme original=theme;theme=Theme::make(false,mono?3:preset);rebuilding=true;scene->clearSelection();setSceneNodeTheme();links();rebuilding=false;QPainter painter;if(painter.begin(&pdf)){painter.setRenderHints(QPainter::Antialiasing|QPainter::TextAntialiasing);auto source=scene->itemsBoundingRect().adjusted(-15,-15,15,15);scene->render(&painter,QRectF(0,0,pdf.width(),pdf.height()),source,Qt::KeepAspectRatio);painted=painter.end();}theme=original;setSceneNodeTheme();links();rebuilding=true;for(auto id:selectionIds)if(nodes.contains(id))nodes[id]->setSelected(true);rebuilding=false;printing=false;updateRoleBadges();scene->update();
   }
   if(!painted){file.cancelWriting();error=t("Creazione PDF non riuscita.","PDF rendering failed.");return false;}if(!file.commit()){error=file.errorString();return false;}return true;
@@ -383,6 +386,10 @@ public:
 #include "../tests/ui/learning_tests.h"
 #include "../tests/ui/notes_tests.h"
 #include "../tests/ui/example_documentation_tests.h"
+#include "../tests/ui/audit_tests.h"
+#include "../tests/ui/session_probe.h"
+#include "../tests/ui/benchmark_tests.h"
+#include "../tests/ui/parser_mutation_tests.h"
 int selfTest(Window &w,QString output){
  fprintf(stdout,"Output: %s, current: %s\n",qPrintable(output),qPrintable(QDir::currentPath()));
  QDir().mkpath(output);QJsonArray tests;int failures=0;
@@ -418,19 +425,37 @@ int selfTest(Window &w,QString output){
  learningTests(w,output,check);
  notesTests(w,output,check);
  exampleDocumentationTests(w,output,check);
+ auditTests(w,output,check);
+ parserMutationTests(check);
  QFile report(output+"/test-results.json");if(!report.open(QIODevice::WriteOnly)){fprintf(stderr,"Report: %s\n",qPrintable(report.errorString()));return 2;}report.write(QJsonDocument(QJsonObject{{"failures",failures},{"tests",tests},{"qt",qVersion()}}).toJson());return failures?1:0;
 }
 int main(int argc,char **argv){
+ // Test profiles are created before any QSettings object. Even a failed test
+ // cannot touch the user's recovery file, preferences or session lock.
+ bool automation=false;QString requestedDirectory;
+ for(int i=1;i<argc;++i){const auto arg=QString::fromLocal8Bit(argv[i]);
+  automation|=QStringList{"--self-test","--display-test","--sql-display-test","--guide-assets","--benchmark"}.contains(arg);
+  if(arg=="--data-dir"){
+   if(i+1>=argc){fprintf(stderr,"--data-dir requires an absolute directory path\n");return 2;}
+   requestedDirectory=QString::fromLocal8Bit(argv[++i]);
+   if(!QDir::isAbsolutePath(requestedDirectory)){fprintf(stderr,"--data-dir requires an absolute directory path\n");return 2;}
+  }
+ }
+ for(int i=1;i<argc;++i)if(QString::fromLocal8Bit(argv[i])=="--session-probe"&&(requestedDirectory.isEmpty()||!QFileInfo(requestedDirectory).fileName().startsWith("DbSchemaStudio-session-"))){fprintf(stderr,"Session probe requires its own isolated --data-dir\n");return 2;}
+ QTemporaryDir isolatedProfile;
+ if(automation){if(!isolatedProfile.isValid())return 2;storageOverride=isolatedProfile.path();}
+ else storageOverride=requestedDirectory;
+
 #if QT_VERSION < QT_VERSION_CHECK(6,0,0)
  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
  QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
  QApplication::setAttribute(Qt::AA_DontUseNativeDialogs);
- QApplication app(argc,argv);app.setApplicationName("DbSchemaStudio");app.setApplicationDisplayName("Database Schema Studio");app.setApplicationVersion("0.9.7");QIcon applicationIcon;for(int size:{16,20,24,32,40,48,64,128,256})applicationIcon.addFile(QString(":/icons/app-%1.png").arg(size),QSize(size,size));app.setWindowIcon(applicationIcon);app.setOrganizationName("SchemaStudio");app.setStyle(new EducationalStyle);app.installEventFilter(new DialogSizer(&app));QSettings initial(storageDirectory()+"/preferences.ini",QSettings::IniFormat);bool startupEnglish=initial.value("language","it")=="en";setUiLanguage(startupEnglish);
- bool sqlTesting=app.arguments().contains("--sql-display-test");bool guideTesting=app.arguments().contains("--guide-assets");bool visualTesting=app.arguments().contains("--display-test");bool testing=sqlTesting||guideTesting||app.arguments().contains("--self-test")||visualTesting;if(!testing&&!QDir().mkpath(storageDirectory()+"/Progetti")){QMessageBox::critical(nullptr,"Database Schema Studio",(startupEnglish?"Cannot create data folder:\n":"Impossibile creare la cartella dati:\n")+storageDirectory());return 2;}
- QLockFile lock(storageDirectory()+"/session.lock");if(!testing&&!lock.tryLock(100)){QMessageBox::information(nullptr,"Database Schema Studio",lock.error()==QLockFile::LockFailedError?(startupEnglish?"Database Schema Studio is already running.":"Database Schema Studio è già aperto."):(startupEnglish?"Cannot write to the data folder.":"La cartella dati non è scrivibile."));return 2;}
+ QApplication app(argc,argv);app.setApplicationName("DbSchemaStudio");app.setApplicationDisplayName("Database Schema Studio");app.setApplicationVersion(DBSCHEMA_VERSION);QIcon applicationIcon;for(int size:{16,20,24,32,40,48,64,128,256})applicationIcon.addFile(QString(":/icons/app-%1.png").arg(size),QSize(size,size));app.setWindowIcon(applicationIcon);app.setOrganizationName("SchemaStudio");app.setStyle(new EducationalStyle);app.installEventFilter(new DialogSizer(&app));QSettings initial(storageDirectory()+"/preferences.ini",QSettings::IniFormat);bool startupEnglish=initial.value("language","it")=="en";setUiLanguage(startupEnglish);
+ bool sqlTesting=app.arguments().contains("--sql-display-test");bool guideTesting=app.arguments().contains("--guide-assets");bool visualTesting=app.arguments().contains("--display-test");bool testing=app.arguments().contains("--benchmark")||sqlTesting||guideTesting||app.arguments().contains("--self-test")||visualTesting;if(!testing&&!QDir().mkpath(storageDirectory()+"/Progetti")){QMessageBox::critical(nullptr,"Database Schema Studio",(startupEnglish?"Cannot create data folder:\n":"Impossibile creare la cartella dati:\n")+storageDirectory());return 2;}
+ QLockFile lock(storageDirectory()+"/session.lock");if(!testing&&!lock.tryLock(100)){if(app.arguments().contains("--session-probe"))return 2;QMessageBox::information(nullptr,"Database Schema Studio",lock.error()==QLockFile::LockFailedError?(startupEnglish?"Database Schema Studio is already running.":"Database Schema Studio è già aperto."):(startupEnglish?"Cannot write to the data folder.":"La cartella dati non è scrivibile."));return 2;}
  if(!testing)initializeDiagnostics(storageDirectory());
- Window w(testing);if(sqlTesting)return sqlDisplayTest(w,app.arguments().value(app.arguments().indexOf("--sql-display-test")+1));if(guideTesting)return guideAssets(w,app.arguments().value(app.arguments().indexOf("--guide-assets")+1));if(visualTesting)return displayTest(w,app.arguments().value(app.arguments().indexOf("--display-test")+1));if(testing){QString out=app.arguments().value(app.arguments().indexOf("--self-test")+1,QDir::currentPath()+"/test-results");return selfTest(w,out);}
+ Window w(testing);if(app.arguments().contains("--benchmark"))return benchmarkTests(w,app.arguments().value(app.arguments().indexOf("--benchmark")+1));if(app.arguments().contains("--session-probe"))return sessionProbe(w,app.arguments().value(app.arguments().indexOf("--session-probe")+1));if(sqlTesting)return sqlDisplayTest(w,app.arguments().value(app.arguments().indexOf("--sql-display-test")+1));if(guideTesting)return guideAssets(w,app.arguments().value(app.arguments().indexOf("--guide-assets")+1));if(visualTesting)return displayTest(w,app.arguments().value(app.arguments().indexOf("--display-test")+1));if(testing){QString out=app.arguments().value(app.arguments().indexOf("--self-test")+1,QDir::currentPath()+"/test-results");return selfTest(w,out);}
  w.show();if(app.arguments().contains("--smoke-test"))QTimer::singleShot(1800,&w,[&]{w.close();});else if(app.arguments().size()>1&&app.arguments()[1].endsWith(".schema",Qt::CaseInsensitive))w.openPath(app.arguments()[1]);else QTimer::singleShot(100,&w,[&]{w.recover();});
  QObject::connect(app.styleHints(),&QStyleHints::colorSchemeChanged,&w,[&]{if(w.mode==0){w.applyTheme();w.setSceneNodeTheme();w.buildMenus();w.links();w.updateStatus();w.scene->update();}});
  return app.exec();

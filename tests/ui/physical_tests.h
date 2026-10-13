@@ -20,6 +20,12 @@ template<class Check>void physicalTests(Window &w,const QString &output,Check ch
   for(auto command:commands){xml.writeStartElement("execute");xml.writeAttribute("reject",command.second?"true":"false");xml.writeCharacters(QString::fromLatin1(command.first.toUtf8().toBase64()));xml.writeEndElement();}xml.writeEndElement();xml.writeEndDocument();
  };
  {auto shop=shopExample();saveCase("shop-overview",shop,shop.physical);auto purchase=purchaseExample();saveCase("purchase-association",purchase,purchase.physical);}
+ for(bool recursive:{false,true})for(QString a:{"0,1","1,1","0,N","1,N"})for(QString b:{"0,1","1,1","0,N","1,N"})for(QString side:{"A","B"}){
+  if(side=="B"&&(a.endsWith('N')||b.endsWith('N')))continue;
+  auto sample=m;auto rel=sample.get("contiene");rel->identifying=false;rel->cardA=a;rel->cardB=b;rel->roleA="origine";rel->roleB="destinazione";if(recursive)rel->b=rel->a;
+  auto mapped=generateLogical(sample,{{rel->id,side}},errors,true);sample.logical=mapped.json();check("Multiplicity matrix maps without errors",errors.isEmpty());
+  saveCase(QString("matrix-%1-%2-%3-%4").arg(recursive?"recursive":"binary",a,b,side),sample,physicalDefaults(mapped));
+ }
  saveCase("ordini",m,p,{{"INSERT INTO \"Ordine\" (\"Data\") VALUES ('2026-09-20')",false},{"INSERT INTO \"RigaOrdine\" VALUES (1,2,10)",false},{"INSERT INTO \"RigaOrdine\" VALUES (2,1,999)",true},{"INSERT INTO \"RigaOrdine\" VALUES (1,2,10)",true},{"INSERT INTO \"RigaOrdine\" VALUES (NULL,2,10)",true},{"DELETE FROM \"Ordine\" WHERE \"NumeroOrdine\"=10",true}});
  // Money retains its exact domain through mapping, FK propagation and SQL profiles.
  {Model cash=m;cash.get("quantita")->dataType="money";auto logical=generateLogical(cash,{},errors);cash.logical=logical.json();auto settings=physicalDefaults(logical,p);QString amount=sourceColumn("quantita");set(settings,amount,"defaultMode","literal");set(settings,amount,"defaultValue","-12.3456");

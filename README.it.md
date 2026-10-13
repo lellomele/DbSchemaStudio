@@ -16,7 +16,7 @@ Un’applicazione desktop per imparare a progettare un database: disegna il mode
 
 Il repository contiene il codice sorgente; per usare l’app è sufficiente scaricare lo ZIP Windows indicato qui sotto.
 
-1. Scarica **DbSchemaStudio-0.9.7-Qt6-Windows-x64.zip** dalla pagina [Release](https://github.com/lellomele/DbSchemaStudio/releases/latest).
+1. Scarica **DbSchemaStudio-1.0.0-beta.1-Windows-x64.zip** dalla pagina [Release](https://github.com/lellomele/DbSchemaStudio/releases/tag/v1.0.0-beta.1).
 2. Estrai tutto l’archivio in una cartella.
 3. Apri **DbSchemaStudio.exe** all’interno della cartella.
 
@@ -29,6 +29,8 @@ Parti dall’esempio Ordini oppure scegli **File → Nuovo**. Aggiungi entità e
 Salva il progetto in un file `.schema`. Il menu **Esempi** apre altri modelli e **Aiuto** permette di consultare la guida illustrata. Puoi cambiare la lingua dell’interfaccia in **Aspetto e lingua**; quella iniziale è l’italiano. I nomi inseriti nel modello non vengono tradotti.
 
 Per approfondire, consulta la [guida utente](GUIDA-UTENTE.md) e la [guida illustrata Ordini](guide/Guida-rapida-Ordini.pdf).
+
+La versione **1.0.0-beta.1** è una beta. Conserva una copia di sicurezza dei tuoi progetti.
 
 ## Requisiti e limiti
 

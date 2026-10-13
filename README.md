@@ -16,7 +16,7 @@ A desktop application for learning database design: draw a conceptual entity–r
 
 The repository contains the source code; to use the app, download only the Windows ZIP below.
 
-1. Download **DbSchemaStudio-0.9.7-Qt6-Windows-x64.zip** from [Releases](https://github.com/lellomele/DbSchemaStudio/releases/latest).
+1. Download **DbSchemaStudio-1.0.0-beta.1-Windows-x64.zip** from [Releases](https://github.com/lellomele/DbSchemaStudio/releases/tag/v1.0.0-beta.1).
 2. Extract the entire archive into a folder.
 3. Open **DbSchemaStudio.exe** inside that folder.
 
@@ -29,6 +29,8 @@ Start with the Orders example or choose **File → New**. Add entities and attri
 Save your project as a `.schema` file. Use **Examples** to open other models and **Help** for the illustrated guide. Change the interface language in **Appearance and language**; the initial language is Italian. Names entered in a model are not translated.
 
 The [user guide](GUIDA-UTENTE.md) and [illustrated Orders guide](guide/Guida-rapida-Ordini.pdf) are in Italian.
+
+Version **1.0.0-beta.1** is a beta release. Keep backups of your projects.
 
 ## Requirements and limits
 

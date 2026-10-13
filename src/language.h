@@ -28,6 +28,7 @@ static QString localizedError(QString error,bool english){
   {"Too many objects / Troppi oggetti","Troppi oggetti"},
   {"File too large / File troppo grande (20 MB)","File troppo grande (limite 20 MB)"},
   {"Invalid object identity or values","Identità o valori dell’oggetto non validi"},
+  {"Invalid object references or flags / Riferimenti o opzioni non validi","Riferimenti o opzioni dell’oggetto non validi"},
   {"Missing or invalid field: ","Campo mancante o non valido: "},
   {"Invalid object","Oggetto non valido"},{"Invalid flags","Indicatori non validi"},
   {"Invalid position","Posizione non valida"},{"Position out of range","Posizione fuori dai limiti"},
@@ -35,5 +36,6 @@ static QString localizedError(QString error,bool english){
   {"Relationship endpoint missing","Entità di un estremo dell’associazione mancante"}
  };
  for(const auto &m:messages)if(error.startsWith(m.first))return (english?m.first.section(" / ",0,0):m.second)+error.mid(m.first.size());
+ if(error.contains(" / "))return english?error.section(" / ",0,0):error.section(" / ",1);
  return error; // QFile diagnostics are translated by the Qt catalogue.
 }

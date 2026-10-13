@@ -1,5 +1,6 @@
 ﻿#include "physical.h"
 
+#include "app_version.h"
 QStringList physicalProfiles(){return {"hsqldb-1.8","mysql-8.4","mariadb-10.11"};}
 QString physicalProfileName(QString p){return QMap<QString,QString>{{"hsqldb-1.8","HSQLDB 1.8 / LibreOffice Base"},{"mysql-8.4","MySQL 8.4"},{"mariadb-10.11","MariaDB 10.11"}}.value(p,p);}
 QStringList physicalTypes(QString profile){QStringList types={"","INTEGER","BIGINT","SMALLINT","DECIMAL","DOUBLE","VARCHAR","CHAR","LONGVARCHAR","BOOLEAN","DATE","TIME","TIMESTAMP"};if(profile!="hsqldb-1.8"){types.replace(types.indexOf("LONGVARCHAR"),"LONGTEXT");types<<"DATETIME";}return types;}
@@ -17,8 +18,8 @@ QString physicalTypeOwner(const LogicalSchema &s,QString id){
 QJsonObject physicalDefaults(const LogicalSchema &s,const QJsonObject &old){
  QJsonObject result{{"version",1},{"profile","hsqldb-1.8"},{"schema","PUBLIC"},{"strictSize",true},{"draft",""},{"generatedDigest",""},{"generatedText",""}};
  for(auto key:{"profile","schema","strictSize","draft","generatedDigest","generatedText","createDatabase","collation"})if(old.contains(key))result[key]=old[key];
- QJsonObject columns,tables,fks;auto oc=old["columns"].toObject(),ot=old["tables"].toObject(),of=old["foreignKeys"].toObject();
- for(const auto &t:s.tables){tables[t.id]=ot.value(t.id).toString(t.name);for(const auto &c:t.columns){auto p=oc[c.id].toObject();if(p.isEmpty())p={{"name",c.name},{"type",physicalDefaultType(c.dataType,result["profile"].toString())},{"length",100},{"precision",c.dataType=="money"?MoneyPrecision:12},{"scale",c.dataType=="money"?MoneyScale:2},{"identity",false},{"start",1},{"defaultMode","none"},{"defaultValue",""},{"sourceType",c.dataType}};
+ QJsonObject columns,tables,fks,logicalNames;auto oc=old["columns"].toObject(),ot=old["tables"].toObject(),of=old["foreignKeys"].toObject(),ol=old["logicalTableNames"].toObject();
+ for(const auto &t:s.tables){auto name=ot.value(t.id).toString(t.name);if(name==ol.value(t.id).toString(t.name))name=t.name;tables[t.id]=name;logicalNames[t.id]=t.name;for(const auto &c:t.columns){auto p=oc[c.id].toObject();if(p.isEmpty())p={{"name",c.name},{"type",physicalDefaultType(c.dataType,result["profile"].toString())},{"length",100},{"precision",c.dataType=="money"?MoneyPrecision:12},{"scale",c.dataType=="money"?MoneyScale:2},{"identity",false},{"start",1},{"defaultMode","none"},{"defaultValue",""},{"sourceType",c.dataType}};
    // A renamed logical element tracks its name unless a physical override exists.
    if(p.value("logicalName").toString(c.name)==p["name"].toString())p["name"]=c.name;
    p["logicalName"]=c.name;
@@ -26,7 +27,7 @@ QJsonObject physicalDefaults(const LogicalSchema &s,const QJsonObject &old){
    columns[c.id]=p;
   }for(const auto &f:t.foreignKeys)fks[f.id]=of.contains(f.id)?of[f.id].toObject():QJsonObject{{"delete","NO ACTION"},{"update","NO ACTION"}};
  }
- result["columns"]=columns;result["tables"]=tables;result["foreignKeys"]=fks;return result;
+ result["columns"]=columns;result["tables"]=tables;result["logicalTableNames"]=logicalNames;result["foreignKeys"]=fks;return result;
 }
 bool validPhysicalStorage(const QJsonObject &p,QString &error){
  auto fail=[&]{error="Invalid physical configuration / Configurazione fisica non valida";return false;};
@@ -34,12 +35,13 @@ bool validPhysicalStorage(const QJsonObject &p,QString &error){
  if(p["profile"]!="hsqldb-1.8"&&(!p["createDatabase"].isBool()||!QStringList{"utf8mb4_unicode_ci","utf8mb4_bin"}.contains(p["collation"].toString())))return fail();
  for(auto key:{"draft","generatedText","generatedDigest"})if(!p[key].isString()||p[key].toString().size()>(QString(key)=="generatedDigest"?64:2000000))return fail();
  for(auto key:{"columns","tables","foreignKeys"})if(!p[key].isObject()||p[key].toObject().size()>40000)return fail();
- for(auto value:p["tables"].toObject())if(!value.isString()||value.toString().size()>128)return fail();
+ for(auto value:p["tables"].toObject())if(!value.isString()||value.toString().size()>200)return fail();
+ if(p.contains("logicalTableNames")){if(!p["logicalTableNames"].isObject()||p["logicalTableNames"].toObject().size()>20000)return fail();for(auto value:p["logicalTableNames"].toObject())if(!value.isString()||value.toString().size()>200)return fail();}
  for(auto value:p["columns"].toObject()){
   if(!value.isObject())return fail();
   auto c=value.toObject();
   for(auto key:{"name","type","sourceType","defaultMode","defaultValue"})if(!c[key].isString()||c[key].toString().size()>10000)return fail();
-  if(c["name"].toString().size()>128||!physicalTypes(p["profile"].toString()).contains(c["type"].toString())||!validGenericType(c["sourceType"].toString())||!c["identity"].isBool())return fail();
+  if(c["name"].toString().size()>200||!physicalTypes(p["profile"].toString()).contains(c["type"].toString())||!validGenericType(c["sourceType"].toString())||!c["identity"].isBool())return fail();
   if(!QStringList{"none","literal","current"}.contains(c["defaultMode"].toString()))return fail();
   for(auto key:{"length","precision","scale","start"})if(!c[key].isDouble()||c[key].toDouble()!=c[key].toInt()||c[key].toInt()<0)return fail();
   if(c["length"].toInt()>1000000||c["precision"].toInt()>65||c["scale"].toInt()>38||c["start"].toInt()>2000000000)return fail();
@@ -47,7 +49,7 @@ bool validPhysicalStorage(const QJsonObject &p,QString &error){
  for(auto value:p["foreignKeys"].toObject()){if(!value.isObject())return fail();for(auto key:{"delete","update"})if(!QStringList{"NO ACTION","CASCADE","SET NULL"}.contains(value.toObject()[key].toString()))return fail();}
  return true;
 }
-QString physicalDigest(const LogicalSchema &s,const QJsonObject &p){auto config=p;for(auto k:{"draft","generatedDigest","generatedText","includeNotes","generatedNotesDigest"})config.remove(k);auto logical=s.json();auto tables=logical["tables"].toArray();for(int i=0;i<tables.size();++i){auto t=tables[i].toObject();t.remove("position");tables[i]=t;}logical["tables"]=tables;return QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(QJsonObject{{"logical",logical},{"physical",config}}).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());}
+QString physicalDigest(const LogicalSchema &s,const QJsonObject &p){auto config=p;for(auto k:{"draft","generatedDigest","generatedText","includeNotes","generatedNotesDigest","logicalTableNames"})config.remove(k);auto logical=s.json();auto tables=logical["tables"].toArray();for(int i=0;i<tables.size();++i){auto t=tables[i].toObject();t.remove("position");tables[i]=t;}logical["tables"]=tables;return QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(QJsonObject{{"logical",logical},{"physical",config}}).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());}
 static bool validName(QString s){if(s.trimmed().isEmpty()||s.size()>128)return false;for(auto ch:s)if(ch.category()==QChar::Other_Control||ch.category()==QChar::Other_Surrogate)return false;return true;}
 SqlResult generateHsql(const Model &m,const QJsonObject &p,bool en){if(p["profile"]!="hsqldb-1.8"){SqlResult r;r.errors<<"HSQLDB profile required / Profilo HSQLDB richiesto";return r;}return generateSql(m,p,en);}
 SqlResult generateSql(const Model &m,const QJsonObject &p,bool en){
@@ -107,7 +109,7 @@ SqlResult generateSql(const Model &m,const QJsonObject &p,bool en){
     else if(type=="DATE"||type=="TIME"||type=="TIMESTAMP"||type=="DATETIME"){
      if(type=="DATE")valid=QDate::fromString(value,"yyyy-MM-dd").isValid()&&value.size()==10;
      if(type=="TIME")valid=QTime::fromString(value,"HH:mm:ss").isValid()&&value.size()==8;
-     if(type=="TIMESTAMP"||type=="DATETIME")valid=QDateTime::fromString(value,"yyyy-MM-dd HH:mm:ss").isValid()&&value.size()==19;
+     if(type=="TIMESTAMP"||type=="DATETIME")valid=value.size()==19&&value[10]==' '&&QDate::fromString(value.left(10),"yyyy-MM-dd").isValid()&&QTime::fromString(value.mid(11),"HH:mm:ss").isValid();
      if(server&&(type=="DATE"||type=="DATETIME"))valid&=value.left(4).toInt()>=1000;
      if(server&&type=="TIMESTAMP")valid&=value>="1970-01-01 00:00:01"&&value<="2038-01-19 03:14:07";
      def="'"+value+"'";
@@ -161,7 +163,7 @@ SqlResult generateSql(const Model &m,const QJsonObject &p,bool en){
  if(!server)r.warnings.prepend(tr("Usa uno schema HSQLDB esistente e vuoto. Lo script non crea un file .odb. In Base: Strumenti → SQL, una istruzione alla volta; poi aggiorna le tabelle.","Use an existing empty HSQLDB schema. The script does not create an .odb file. In Base: Tools → SQL, one statement at a time; then refresh tables."));
  if(!r.errors.isEmpty()){r.statements.clear();return r;}
  r.manifest={{"profile",profile},{"schema",schema},{"tables",manifestTables}};
- r.text="-- Database Schema Studio 0.9.7 | "+physicalProfileName(profile)+"\n-- "+tr("Controlli statici superati; questo script non è stato eseguito dall'app.","Static checks passed; this script has not been executed by the app.")+"\n";
+ r.text="-- Database Schema Studio " DBSCHEMA_VERSION " | "+physicalProfileName(profile)+"\n-- "+tr("Controlli statici superati; questo script non è stato eseguito dall'app.","Static checks passed; this script has not been executed by the app.")+"\n";
  for(auto warning:r.warnings)r.text+="-- "+warning.replace('\n',' ').replace('\r',' ')+"\n";
  r.text+="\n"+r.statements.join("\n\n")+"\n";if(r.text.size()>2000000){r.errors<<tr("SQL troppo grande: limite 2 milioni di caratteri.","SQL too large: limit is 2 million characters.");r.text.clear();r.statements.clear();}return r;
 }

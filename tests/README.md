@@ -1,50 +1,49 @@
 # Collaudo di sviluppo
 
-Prima di avviare un test, attendere la fine della compilazione e del packaging. Usare una cartella di collaudo in `work` con eseguibile, tutte le DLL del pacchetto e plugin accanto all’eseguibile; copiarvi anche `fixtures` e `test-fixtures` dalla build. Per offscreen aggiungere `platforms/qoffscreen.dll` dall’SDK. Non avviare il prodotto da cartelle ancora in costruzione e non affidarsi al PATH del processo chiamante.
+## Preparazione e sicurezza
 
-Eseguire `check-runtime.ps1 -RuntimeFolder <cartella-collaudo>` prima dell’avvio: controlla firma del pacchetto completato e dipendenze DLL ricorsive. `package.ps1` esegue lo stesso controllo prima di terminare. Nei comandi automatizzati usare `Start-Process -Wait -PassThru -WindowStyle Hidden`, verificare ExitCode e interrompere la procedura in caso di errore prima di leggere o copiare i risultati.
+Compilare con `build.ps1` (Release) oppure `build.ps1 -Configuration Debug`, in cartelle distinte. Attendere la fine della compilazione, quindi usare `package.ps1` con una destinazione vuota. Non avviare l'eseguibile della build da solo. Copiare `fixtures` e `test-fixtures` dalla build nel pacchetto di collaudo; per i test senza schermo aggiungere `platforms/qoffscreen.dll` dall'SDK Qt.
 
-Dalla cartella di collaudo completa:
+Prima dell'avvio eseguire `check-runtime.ps1 -RuntimeFolder <pacchetto>`. Negli script usare `Start-Process -Wait -PassThru -WindowStyle Hidden` e controllare ExitCode prima di utilizzare i risultati. Le modalità di prova creano automaticamente un profilo temporaneo; non usano le preferenze o il documento dell'utente. Conservare risultati, schermate e database temporanei fuori dal repository e dalla distribuzione.
 
-```powershell
-.\DbSchemaStudio.exe --self-test "$env:TEMP\DbSchemaStudio-tests"
-.\DbSchemaStudio.exe --display-test "$env:TEMP\DbSchemaStudio-display"
-```
+## Suite e GUI
 
-I test non usano il documento aperto dell'utente. La suite necessita di `fixtures/iscrizioni.rise` accanto all'eseguibile; fixture e risultati non sono distribuiti nel pacchetto utenti. Per test senza schermo si può usare il plugin Qt offscreen presente nell'SDK; per collaudi delle dimensioni della finestra utilizzare il plugin Windows con uno schermo adeguato.
+Passare all'eseguibile del pacchetto completo una delle seguenti opzioni, seguita da una cartella di risultati:
 
-Conservare qui soltanto sorgenti/fixture riproducibili. Scrivere risultati e immagini in una cartella temporanea o in `work`, non negli esempi del prodotto. `fixtures/test-limite-azienda` è un caso complesso di regressione, non un tutorial.
+| Opzione | Copertura |
+| --- | --- |
+| `--self-test` | Concettuale, logico, SQL, salvataggi, annullamenti, recupero, importazione RISE, PDF, note, esempi e regressioni; mutazioni deterministiche di JSON e XML |
+| `--display-test` | GUI nativa, italiano/inglese, temi, caratteri ingranditi, dialoghi e schermate |
+| `--sql-display-test` | Finestra SQL nei tre profili e nelle due lingue |
+| `--benchmark` | Tre misure per Ordini, test limite e modello da 150 entità: disegno, selezione, modifica, serializzazione, traduzione e SQL |
+| `--guide-assets` | Immagini della guida Ordini |
 
-Per ripetere il test limite dopo la build: `tests/verify_limite.ps1`. Copia i modelli in una cartella temporanea e verifica chiavi composte, ISA, provenienza dei tipi e rigenerazione; i risultati restano nella cartella temporanea.
+Usare `QT_QPA_PLATFORM=offscreen` per la suite e le misure; `windows` per le prove di dimensionamento. Per un secondo fattore DPI usare `QT_SCALE_FACTOR`, tenendo conto che moltiplica quello dello schermo.
 
-## SQL HSQLDB / Base
+`tests/session_verify.ps1 -Runtime <pacchetto>` prova il blocco della seconda istanza, termina soltanto il proprio processo di prova e verifica il recupero in un nuovo processo. Profilo e documenti sono temporanei. `tests/verify_limite.ps1 -BuildDirectory <build>` prepara un runtime completo separato e verifica chiavi composte, ISA, provenienza dei tipi e rigenerazione del caso complesso.
 
-`--self-test` produce casi `hsql-*.xml` con SQL e metadati attesi nella cartella temporanea indicata. `build.ps1` copia gli esempi in `test-fixtures` accanto alla build; CMake li copia analogamente. Nessun risultato va nella distribuzione utenti.
+## HSQLDB e LibreOffice Base
 
-Con JDK 17 o superiore e il jar HSQLDB di LibreOffice:
+`--self-test` produce i file `hsql-*.xml` con SQL e metadati attesi. Con JDK 17 o superiore e LibreOffice:
 
 ```powershell
 & "$env:JAVA_HOME\bin\javac.exe" -cp 'C:\Program Files\LibreOffice\program\classes\*' -d $env:TEMP tests/HsqlVerify.java tests/BaseVerify.java
-& "$env:JAVA_HOME\bin\java.exe" -cp "$env:TEMP;C:\Program Files\LibreOffice\program\classes\hsqldb.jar" HsqlVerify "$env:TEMP\DbSchemaStudio-tests"
+& "$env:JAVA_HOME\bin\java.exe" -cp "$env:TEMP;C:\Program Files\LibreOffice\program\classes\hsqldb.jar" HsqlVerify '<corpus-temporaneo>'
 $env:UNO_PATH='C:\Program Files\LibreOffice\program'
-& "$env:JAVA_HOME\bin\java.exe" -cp "$env:TEMP;C:\Program Files\LibreOffice\program\classes\*" BaseVerify 'C:\Program Files\LibreOffice\program\soffice.exe' "$env:TEMP\DbSchemaStudio-tests\hsql-ordini.xml"
+& "$env:JAVA_HOME\bin\java.exe" -cp "$env:TEMP;C:\Program Files\LibreOffice\program\classes\*" BaseVerify 'C:\Program Files\LibreOffice\program\soffice.exe' '<corpus-temporaneo>\hsql-ordini.xml'
 ```
 
-Adattare percorsi JDK/LibreOffice. Il primo test usa database JDBC in memoria; il secondo avvia LibreOffice headless con un profilo temporaneo separato, crea un .odb temporaneo e ne controlla la riapertura. Non usa documenti o profili personali. Per dati modificati manualmente non attribuire le verifiche al testo originale.
+Adattare i percorsi. HsqlVerify usa database JDBC in memoria; BaseVerify avvia LibreOffice headless con un profilo separato, crea un `.odb` temporaneo e lo riapre. Il riferimento è HSQLDB **1.8.0**, jar LibreOffice SHA256 `ff1ad9cae10cafaa440c3e966f383c68ef25a7b490c1a893bd9117b13f738716`; la compatibilità non si estende a HSQLDB 2.x.
 
-Profilo di riferimento: HSQLDB dichiara versione **1.8.0** (jar distribuito da LibreOffice, SHA256 `ff1ad9cae10cafaa440c3e966f383c68ef25a7b490c1a893bd9117b13f738716`); Java Temurin 21.0.5, Windows x64; LibreOffice build `bce0998afefdbc355585ca324285661a2170ba77`. Questo identifica il motore effettivamente provato, senza estendere la compatibilità a HSQLDB 2.x.
+## MySQL e MariaDB
 
-Controllo GUI fisico/SQL a DPI nativi: `DbSchemaStudio.exe --sql-display-test <cartella-temporanea>`. Usare sempre un pacchetto completo; impostare QT_QPA_PLATFORM=windows per i test di dimensionamento.
-
-## MySQL / MariaDB (0.9.1)
-
-`--self-test` genera anche `mysql-8.4-*.json` e `mariadb-10.11-*.json`, con DDL, manifest dei metadati e prove di inserimento. `server_verify.py` usa PyMySQL (solo sviluppo), connessioni loopback e database temporanei con prefisso univoco; rifiuta server il cui datadir non contenga `DbSchemaStudio-091-`. Avviare i motori con dati nuovi in directory dedicate, `--no-defaults`, bind 127.0.0.1, nessun servizio Windows, pagina InnoDB 16 KiB. Non usare server personali. Il test richiede root locale senza password esclusivamente su queste istanze effimere; terminarle dopo il collaudo.
+Il corpus comprende `mysql-8.4-*.json` e `mariadb-10.11-*.json`. `server_verify.py` richiede PyMySQL, solo per sviluppo. Avviare motori isolati con datadir nuovi contenenti `DbSchemaStudio-beta1-`, `--no-defaults`, bind `127.0.0.1`, porta libera, nessun servizio Windows e pagina InnoDB da 16 KiB. Configurare root locale senza password esclusivamente su queste istanze effimere; terminarle al termine. Non usare server personali.
 
 ```powershell
-python tests/server_verify.py <corpus-temporaneo> --port 39318 --profile mysql-8.4
-python tests/server_verify.py <corpus-temporaneo> --port 39319 --profile mariadb-10.11
+python tests/server_verify.py '<corpus-temporaneo>' --port <porta> --profile mysql-8.4 --expected-datadir '<datadir-esatto>'
+python tests/server_verify.py '<corpus-temporaneo>' --port <porta> --profile mariadb-10.11 --expected-datadir '<datadir-esatto>'
 ```
 
-Riferimenti: MySQL Community Server **8.4.8** Win64 (archivio ufficiale `https://cdn.mysql.com/archives/mysql-8.4/mysql-8.4.8-winx64.zip`); MariaDB **10.11.16** Win64 (`https://archive.mariadb.org/mariadb-10.11.16/winx64-packages/`), SHA256 ZIP `b1659bd9fe816624632c6b445ce4ad1ed6758a199e35f89e2448aef99828527b`, verificato contro sha256sums.txt ufficiale. Nessun motore, driver Python o risultato di collaudo entra nella distribuzione utenti.
+Il driver rifiuta datadir diversi da quello indicato. Riferimenti: MySQL Community Server **8.4.8** Win64 e MariaDB **10.11.16** Win64. Il corpus copre esempi, tipi e default, cardinalità binarie e ricorsive, chiavi composte, UNIQUE, CHECK, FK, azioni referenziali e rifiuto di dati non validi. Le combinazioni non consentite dal motore vengono controllate prima della generazione.
 
-Il corpus comprende esercizi, Ordini, test limite, tipi/default, chiavi composte, UNIQUE, CHECK booleani, rifiuto di FK orfane/NULL/duplicati e azioni FK. Le combinazioni CHECK+CASCADE/SET NULL vietate dai motori sono testate come errori statici; le azioni compatibili vengono eseguite sul server. Le prove GUI native coprono entrambe le lingue e tutti e tre i profili.
+Motori, driver, fixture e risultati non fanno parte del pacchetto utenti. Una suite superata documenta i percorsi provati; non dimostra l'assenza di ogni possibile difetto.

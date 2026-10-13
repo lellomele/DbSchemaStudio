@@ -1,4 +1,4 @@
-﻿param([string]$QtPrefix=(Join-Path $PSScriptRoot '..\..\work\qt6-sdk\mingw64'),[string]$CompilerPrefix='C:\msys64\mingw64',[string]$Executable=(Join-Path $PSScriptRoot '..\..\work\qt6-build-097\DbSchemaStudio.exe'),[string]$Destination=(Join-Path $PSScriptRoot '..\DbSchemaStudio-0.9.7-Qt6'))
+﻿param([string]$QtPrefix=(Join-Path $PSScriptRoot '..\..\work\qt6-sdk\mingw64'),[string]$CompilerPrefix='C:\msys64\mingw64',[string]$Executable=(Join-Path $PSScriptRoot 'build\DbSchemaStudio.exe'),[string]$Destination=(Join-Path $PSScriptRoot 'dist\DbSchemaStudio'))
 $ErrorActionPreference='Stop'
 $QtPrefix=[IO.Path]::GetFullPath($QtPrefix)
 if((Test-Path -LiteralPath $Destination) -and (Get-ChildItem -LiteralPath $Destination -Force | Select-Object -First 1)){throw 'Destination must be empty; choose a new release folder.'}
@@ -52,6 +52,8 @@ foreach($example in @('Ordini-guida','Esercizi-guidati','UML-libro','Panoramica'
  Get-ChildItem -LiteralPath $source -File | Where-Object { $_.Extension -eq '.schema' -or $_.Name -eq 'LEGGIMI.md' } | ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $target }
 }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'GUIDA-UTENTE.md') -Destination (Join-Path $destinationRoot 'LEGGIMI.md')
+$englishReadme=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'README.md') -Raw
+$englishReadme.Replace('(README.it.md)','(LEGGIMI.md)').Replace('(GUIDA-UTENTE.md)','(LEGGIMI.md)') | Set-Content -LiteralPath (Join-Path $destinationRoot 'README.md') -Encoding utf8
 $hash=(Get-FileHash -LiteralPath (Join-Path $destinationRoot 'DbSchemaStudio.exe') -Algorithm SHA256).Hash
 ($hash+'  DbSchemaStudio.exe') | Set-Content -LiteralPath (Join-Path $destinationRoot 'SHA256.txt') -Encoding ascii
 & (Join-Path $PSScriptRoot 'check-runtime.ps1') -RuntimeFolder $destinationRoot -CompilerPrefix $CompilerPrefix

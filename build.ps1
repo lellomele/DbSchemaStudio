@@ -1,4 +1,4 @@
-﻿param([string]$QtPrefix=(Join-Path $PSScriptRoot '..\..\work\qt6-sdk\mingw64'),[string]$CompilerPrefix='C:\msys64\mingw64',[string]$BuildDirectory=(Join-Path $PSScriptRoot '..\..\work\qt6-build-097'))
+﻿param([string]$QtPrefix=(Join-Path $PSScriptRoot '..\..\work\qt6-sdk\mingw64'),[string]$CompilerPrefix='C:\msys64\mingw64',[string]$BuildDirectory=(Join-Path $PSScriptRoot 'build'),[ValidateSet('Release','Debug')][string]$Configuration='Release')
 $ErrorActionPreference='Stop'
 New-Item -ItemType Directory -Path $BuildDirectory -Force | Out-Null
 $buildRoot=[IO.Path]::GetFullPath($BuildDirectory)
@@ -6,7 +6,8 @@ $QtPrefix=[IO.Path]::GetFullPath($QtPrefix)
 $env:PATH=(Join-Path $QtPrefix 'bin')+';'+(Join-Path $CompilerPrefix 'bin')+';'+$env:PATH
 $compiler=Join-Path $CompilerPrefix 'bin\g++.exe'
 $include=Join-Path $QtPrefix 'include\qt6'
-$compileArgs=@('-I',(Join-Path $PSScriptRoot 'src'),'-std=c++17','-O2','-Wall','-Wextra','-Wpedantic','-DQT_NO_DEBUG','-DUNICODE','-D_UNICODE','-isystem',"$include",'-isystem',"$include\QtWidgets",'-isystem',"$include\QtGui",'-isystem',"$include\QtCore",'-isystem',"$include\QtPrintSupport",'-c')
+$compileArgs=@('-I',(Join-Path $PSScriptRoot 'src'),'-std=c++17','-Wall','-Wextra','-Wpedantic','-DUNICODE','-D_UNICODE','-isystem',"$include",'-isystem',"$include\QtWidgets",'-isystem',"$include\QtGui",'-isystem',"$include\QtCore",'-isystem',"$include\QtPrintSupport",'-c')
+$compileArgs+=if($Configuration -eq 'Debug'){@('-O0','-g','-D_GLIBCXX_ASSERTIONS')}else{@('-O2','-DQT_NO_DEBUG')}
 $rcc=Join-Path $QtPrefix 'share\qt6\bin\rcc.exe'
 $resourceTemp=Join-Path ([IO.Path]::GetTempPath()) ('DbSchemaStudio-icons-'+[Guid]::NewGuid().ToString('N')+'.cpp')
 try {

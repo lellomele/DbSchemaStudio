@@ -22,7 +22,7 @@ QStringList LogicalSchema::issues(bool en)const{
 }
 bool LogicalSchema::parse(const QJsonObject &root,LogicalSchema &out,QString &error){
  auto fail=[&]{error="Invalid logical model";return false;};
- if((root.value("version").toInt()!=1&&root.value("version").toInt()!=2)||root.value("isaStrategy")!="joined"||!root.value("tables").isArray()||!root.value("messages").isArray()||!root.value("oneToOne").isObject()||!QRegularExpression("^[0-9a-f]{64}$").match(root.value("sourceDigest").toString()).hasMatch())return fail();
+ if((root.value("version")!=1&&root.value("version")!=2)||root.value("isaStrategy")!="joined"||!root.value("tables").isArray()||!root.value("messages").isArray()||!root.value("oneToOne").isObject()||!QRegularExpression("^[0-9a-f]{64}$").match(root.value("sourceDigest").toString()).hasMatch())return fail();
  LogicalSchema candidate;candidate.sourceDigest=root["sourceDigest"].toString();auto choices=root["oneToOne"].toObject();for(auto i=choices.begin();i!=choices.end();++i){if(!i.value().isString()||(i.value()!="A"&&i.value()!="B"))return fail();candidate.oneToOne[i.key()]=i.value().toString();}
  auto tables=root["tables"].toArray();if(tables.isEmpty()||tables.size()>20000)return fail();int columnCount=0;
  auto strings=[](const QJsonObject&j,const QStringList &keys){for(auto k:keys)if(!j[k].isString()||j[k].toString().size()>200)return false;return true;};
